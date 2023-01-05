@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Card = () => {
   const [info, setInfo] = useState();
@@ -26,11 +26,15 @@ const Card = () => {
               <Card.Title>{house.address}</Card.Title>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item>Number of guests {house.numberOfGuests}</ListGroup.Item>
+              <ListGroup.Item>
+                Number of guests {house.numberOfGuests}
+              </ListGroup.Item>
               <ListGroup.Item>{house.rate}</ListGroup.Item>
             </ListGroup>
             <ListGroup>
-              <ListGroup.Item><FontAwesomeIcon icon="fa-solid fa-star" /> {house.stars}</ListGroup.Item>
+              <ListGroup.Item>
+                <FontAwesomeIcon icon="fa-solid fa-star" /> {house.stars}
+              </ListGroup.Item>
             </ListGroup>
           </Card>
         </Link>
@@ -39,14 +43,14 @@ const Card = () => {
   };
 
   useEffect(() => {
-    fetchHouses()
-  },[])
+    fetchHouses();
+  }, []);
 
   const loading = () => {
-    <div>Loading. . .</div>
-  }
+    <div>Loading. . .</div>;
+  };
 
-  return info ? loaded() : loading()
+  return info ? loaded() : loading();
 };
 
 export default Card;
