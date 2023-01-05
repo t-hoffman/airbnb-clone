@@ -1,8 +1,10 @@
 import React from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Footer = () => {
   return (
-    <div>
+    <>
+    <div className='left-side-of-footer'>
         <p><FontAwesomeIcon icon="fa-thin fa-copyright" /> CommandoLando,Inc.</p>
         <div>.</div>
         <p>Terms</p>
@@ -15,6 +17,12 @@ const Footer = () => {
         <div>.</div>
         <p>Destinations</p>
     </div>
+    <div className='right-side-of-footer'>
+        <p><FontAwesomeIcon icon="fa-thin fa-globe" /> English (US)</p>
+        <p>$ USD</p>
+        <p>Support & Resources</p>
+    </div>
+    </>
   )
 }
 
