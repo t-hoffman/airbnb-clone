@@ -28,6 +28,8 @@ const Card = () => {
             <ListGroup className="list-group-flush">
               <ListGroup.Item>Number of guests {house.numberOfGuests}</ListGroup.Item>
               <ListGroup.Item>{house.rate}</ListGroup.Item>
+            </ListGroup>
+            <ListGroup>
               <ListGroup.Item><FontAwesomeIcon icon="fa-solid fa-star" /> {house.stars}</ListGroup.Item>
             </ListGroup>
           </Card>
