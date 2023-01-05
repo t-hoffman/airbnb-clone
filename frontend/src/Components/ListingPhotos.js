@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
+//Photos for listing page
+
 const ImageCards = () => {
     const [info, setInfo] = useState()
 

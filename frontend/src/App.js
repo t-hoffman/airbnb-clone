@@ -1,9 +1,13 @@
-import SearchBar from "Components/SearchBar"
+import React from "react"
+import LandingPage from "Pages/LandingPage"
+import {Routes, Route} from 'react-router-dom'
 
 
 export default function App() {
   return( <>
-  <SearchBar />
+<Routes>
+<Route path='/' element= {<LandingPage />} />
+</Routes>
   </>
 )
 }

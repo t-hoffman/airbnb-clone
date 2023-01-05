@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router'
 import { useState, useEffect } from 'react'
 
+//Title of listing page (under header)
+
 const Title = () => {
     const [info, setInfo] = useState()
 
