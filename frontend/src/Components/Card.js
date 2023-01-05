@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
-const Card = () => {
+const Cards = () => {
   const [info, setInfo] = useState();
+
+
 
   const fetchHouses = async () => {
     try {
-      const res = await fetch("");
+      const res = await fetch('../practiceData.json');
       const data = await res.json();
-      setInfo(data.info);
+      console.log(data)
+      setInfo(data);
+      
     } catch (error) {
       console.error(error);
     }
@@ -19,9 +24,9 @@ const Card = () => {
   const loaded = () => {
     return info.map((house, idx) => (
       <div key={idx} className="landing-cards">
-        <Link to={`/${id}`}>
+        <Link to={`/${house.name}`}>
           <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={house.photo[0]} />
+            <Card.Img variant="top" src={house.photos[0]} />
             <Card.Body>
               <Card.Title>{house.address}</Card.Title>
             </Card.Body>
@@ -53,4 +58,4 @@ const Card = () => {
   return info ? loaded() : loading();
 };
 
-export default Card;
+export default Cards;
