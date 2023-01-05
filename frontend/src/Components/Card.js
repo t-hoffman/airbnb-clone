@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Card = () => {
   const [info, setInfo] = useState();
@@ -27,6 +28,7 @@ const Card = () => {
             <ListGroup className="list-group-flush">
               <ListGroup.Item>Number of guests {house.numberOfGuests}</ListGroup.Item>
               <ListGroup.Item>{house.rate}</ListGroup.Item>
+              <ListGroup.Item><FontAwesomeIcon icon="fa-solid fa-star" /> {house.stars}</ListGroup.Item>
             </ListGroup>
           </Card>
         </Link>
