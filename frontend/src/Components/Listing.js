@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import Card from 'react-bootstrap/Card'
-import Carousel from 'react-bootstrap/Carousel'
 
+//
 const Listing = () => {
     const [info, setInfo] = useState([])
 

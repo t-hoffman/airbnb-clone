@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
+import { Card, Carousel } from 'react-bootstrap';
 import ListGroup from "react-bootstrap/ListGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 const Cards = () => {
   const [info, setInfo] = useState();
-
-
 
   const fetchHouses = async () => {
     try {
@@ -24,9 +22,18 @@ const Cards = () => {
   const loaded = () => {
     return info.map((house, idx) => (
       <div key={idx} className="landing-cards">
-        <Link to={`/${house.name}`}>
+        {/* <Link to={`/${house.name}`}> */}
           <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={house.photos[0]} />
+          <Carousel>
+      {house.photos.map((photo,idx) => (
+        <Carousel.Item interval={3.6e+6}>
+          <img
+        key={idx}
+        src={photo}
+      />
+      </Carousel.Item>
+      ))}
+  </Carousel>
             <Card.Body>
               <Card.Title>{house.address}</Card.Title>
             </Card.Body>
@@ -42,7 +49,7 @@ const Cards = () => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
-        </Link>
+        {/* </Link> */}
       </div>
     ));
   };

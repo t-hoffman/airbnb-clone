@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+//Title of listing page (under header)
+
 const Title = () => {
   const [info, setInfo] = useState();
 
