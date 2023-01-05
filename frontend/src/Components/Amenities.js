@@ -6,45 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Amenities = () => {
   return (
     <div className='amenities-container'>
-        <div>
-            <FontAwesomeIcon icon="fa-thin fa-car" />
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-mug-hot" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-wifi" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-lock" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-trash" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-bath" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-gamepad" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-bed-front" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-solar-panel" />
-
-        </div>
-        <div>
-        <FontAwesomeIcon icon="fa-thin fa-martini-glass-citrus" />
-
-        </div>
+        <div><FontAwesomeIcon icon="fa-thin fa-car" /> Parking</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-mug-hot" /> Coffee</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-wifi" /> Wifi</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-lock" /> Alarm System</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-trash" /> Trash Services</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-bath" /> Bath Tub & Shower</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-gamepad" /> Video Games</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-bed-front" /> California King Bed</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-solar-panel" /> Solar</div>
+        <div><FontAwesomeIcon icon="fa-thin fa-martini-glass-citrus" /> Beverages</div>
     </div>
   )
 }
