@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Card, Carousel } from 'react-bootstrap';
 import ListGroup from "react-bootstrap/ListGroup";
-// import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Cards = () => {
   const [info, setInfo] = useState();
@@ -37,8 +38,15 @@ const Cards = () => {
               <Card.Title>{house.address}</Card.Title>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item>Number of guests {house.numberOfGuests}</ListGroup.Item>
+              <ListGroup.Item>
+                Number of guests {house.numberOfGuests}
+              </ListGroup.Item>
               <ListGroup.Item>{house.rate}</ListGroup.Item>
+            </ListGroup>
+            <ListGroup>
+              <ListGroup.Item>
+                <FontAwesomeIcon icon="fa-solid fa-star" /> {house.stars}
+              </ListGroup.Item>
             </ListGroup>
           </Card>
         {/* </Link> */}
@@ -47,14 +55,14 @@ const Cards = () => {
   };
 
   useEffect(() => {
-    fetchHouses()
-  },[])
+    fetchHouses();
+  }, []);
 
   const loading = () => {
-    <div>Loading. . .</div>
-  }
+    <div>Loading. . .</div>;
+  };
 
-  return info ? loaded() : loading()
+  return info ? loaded() : loading();
 };
 
 export default Cards;

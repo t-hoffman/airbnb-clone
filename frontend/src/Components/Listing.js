@@ -24,9 +24,11 @@ const Listing = () => {
         ))
     }
 
-  return (
-    <div>Listing</div>
-  )
+    const loading = () => {
+        <div>Loading . . .</div>
+    }
+
+  return info ? loaded() : loading()
 }
 
 export default Listing
