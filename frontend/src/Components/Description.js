@@ -1,18 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
-const Description = (props) => {
 
- const { id } = useParams();
+const Description = () => {
  
   const [listing, setListing] = useState();
 
+  const randomIndex = () => {
+   return Math.floor(Math.random() * 16)
+  }
+
   const getListing = async () => {
     try {
-      const res = await fetch(`/${id}`);
+      const res = await fetch('../descriptionData.json');
       const fetchedListing = await res.json();
-      setListing(fetchedListing);
+      setListing(fetchedListing[randomIndex()]);
     } catch (error) {
       console.error(error);
     }
@@ -20,12 +22,12 @@ const Description = (props) => {
 
   useEffect(() => {
     getListing();
-  }, [id]);
+  }, []);
 
   const loaded = () => {
     return (
       <div>
-        <h1>{listing.name}</h1>
+        <h1>{listing.description}</h1>
       </div>
     );
   };
