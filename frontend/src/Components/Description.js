@@ -1,16 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 
 const Description = (props) => {
-
- const { id } = useParams();
  
   const [listing, setListing] = useState();
 
   const getListing = async () => {
     try {
-      const res = await fetch(`/${id}`);
+      const res = await fetch('/public/descriptionData.json');
       const fetchedListing = await res.json();
       setListing(fetchedListing);
     } catch (error) {
@@ -20,12 +18,12 @@ const Description = (props) => {
 
   useEffect(() => {
     getListing();
-  }, [id]);
+  }, []);
 
   const loaded = () => {
     return (
       <div>
-        <h1>{listing.name}</h1>
+        <h1>{listing.description}</h1>
       </div>
     );
   };
