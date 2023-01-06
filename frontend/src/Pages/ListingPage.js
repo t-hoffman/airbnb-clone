@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Title from "Components/Title";
 import Amenities from "Components/Amenities";
+import CheckoutCard from "Components/CheckoutCard";
 
 
 const ListingPage = () => {
@@ -40,7 +41,8 @@ const ListingPage = () => {
           <h3>{listing.roomType} hosted by {listing.host.name}</h3>
            <img src={listing.host.photo} />
            <Amenities />
-           
+           <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} />
+
            
 
 
