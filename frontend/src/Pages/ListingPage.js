@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Title from "Components/Title";
 import Amenities from "Components/Amenities";
+import Description from "Components/Description";
 
 
 const ListingPage = () => {
@@ -40,7 +41,7 @@ const ListingPage = () => {
           <h3>{listing.roomType} hosted by {listing.host.name}</h3>
            <img src={listing.host.photo} />
            <Amenities />
-           
+           <Description />
            
 
 

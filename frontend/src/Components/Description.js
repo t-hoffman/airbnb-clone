@@ -2,15 +2,19 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 
-const Description = (props) => {
+const Description = () => {
  
   const [listing, setListing] = useState();
 
+  const randomIndex = () => {
+   return Math.floor(Math.random() * 16)
+  }
+
   const getListing = async () => {
     try {
-      const res = await fetch('/public/descriptionData.json');
+      const res = await fetch('../descriptionData.json');
       const fetchedListing = await res.json();
-      setListing(fetchedListing);
+      setListing(fetchedListing[randomIndex()]);
     } catch (error) {
       console.error(error);
     }
