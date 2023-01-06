@@ -9,31 +9,31 @@ const Amenities = () => {
         <Icons.FaCar /> Parking
       </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-mug-hot" /> Coffee
+          <Icons.FaMugHot /> Coffee
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-wifi" /> Wifi
+          <Icons.FaWifi /> Wifi
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-lock" /> Alarm System
+          <Icons.FaLock /> Alarm System
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-trash" /> Trash Services
+          <Icons.FaTrash /> Trash Services
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-bath" /> Bath Tub & Shower
+          <Icons.FaBath /> Bath Tub & Shower
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-gamepad" /> Video Games
+          <Icons.FaGamepad /> Video Games
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-bed-front" /> California King Bed
+          <Icons.FaBed /> California King Bed
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-solar-panel" /> Solar
+          <Icons.FaSolarPanel /> Solar
         </div>
         <div>
-          <FontAwesomeIcon icon="fa-thin fa-martini-glass-citrus" /> Beverages
+          <Icons.FaGlassMartini /> Beverages
         </div>
     </div>
   );
