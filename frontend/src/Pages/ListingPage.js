@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Title from "Components/Title";
 import Amenities from "Components/Amenities";
 import Description from "Components/Description";
-
+import CheckoutCard from "Components/CheckoutCard";
 
 const ListingPage = () => {
     const { id } = useParams();
@@ -42,10 +42,7 @@ const ListingPage = () => {
            <img src={listing.host.photo} />
            <Amenities />
            <Description />
-           
-
-
-
+           <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} /> 
         </div>
       );
     };
