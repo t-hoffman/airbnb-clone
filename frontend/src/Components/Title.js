@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Icons from 'react-icons/fa'
 
 //Title of listing page (under header)
 
@@ -29,7 +29,7 @@ const Title = () => {
       <div key={idx} className="container">
         <h1>{info.name}</h1>
         <span>
-          <FontAwesomeIcon icon="fa-solid fa-star" /> {info.stars}
+          <Icons.FaStar /> {info.stars}
         </span>
         <span>{info.review}</span>
         <span>{info.address}</span>
@@ -45,3 +45,4 @@ const Title = () => {
 };
 
 export default Title;
+

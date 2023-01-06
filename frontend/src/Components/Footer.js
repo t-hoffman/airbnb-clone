@@ -1,11 +1,11 @@
 import React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Icons from 'react-icons/fa'
 
 const Footer = () => {
   return (
     <>
     <div className='left-side-of-footer'>
-        <p><FontAwesomeIcon icon="fa-thin fa-copyright" /> CommandoLando,Inc.</p>
+        <p><Icons.FaCopyright /> CommandoLando,Inc.</p>
         <div>.</div>
         <p>Terms</p>
         <div>.</div>
@@ -18,7 +18,7 @@ const Footer = () => {
         <p>Destinations</p>
     </div>
     <div className='right-side-of-footer'>
-        <p><FontAwesomeIcon icon="fa-thin fa-globe" /> English (US)</p>
+        <p><Icons.FaGlobe /> English (US)</p>
         <p>$ USD</p>
         <p>Support & Resources</p>
     </div>
