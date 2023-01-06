@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 const Cards = () => {
   const [info, setInfo] = useState();
 
+  
   const fetchHouses = async () => {
     try {
-      const res = await fetch('../practiceData.json');
+      const res = await fetch('/home');
       const data = await res.json();
       console.log(data)
       setInfo(data);
@@ -22,7 +23,7 @@ const Cards = () => {
   const loaded = () => {
     return info.map((house, idx) => (
       <div key={idx} className="landing-cards">
-        {/* <Link to={`/${house.name}`}> */}
+        <Link to={`/${house._id}`}>
           <Card style={{ width: "18rem" }}>
           <Carousel>
       {house.photos.map((photo,idx) => (
@@ -49,7 +50,7 @@ const Cards = () => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
-        {/* </Link> */}
+        </Link>
       </div>
     ));
   };

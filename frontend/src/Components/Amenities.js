@@ -1,6 +1,6 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import * as Icons from 'react-icons/fa'
+// import React from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import * as Icons from 'react-icons/fa'
 
 const Amenities = () => {
   return (
