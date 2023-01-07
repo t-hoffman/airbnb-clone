@@ -3,6 +3,7 @@ import { Button, Card, Dropdown }from 'react-bootstrap'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { differenceInDays } from 'date-fns';
+import * as Icons from 'react-icons/fa'
 
 const CheckoutCard = (props) => {
     const [startDate, setStartDate] = useState(null);
@@ -37,6 +38,7 @@ const CheckoutCard = (props) => {
         <Card.Body>
             <h3>${props.price} night</h3>
             <div>
+            <Icons.FaStar size={15}/>
             {props.stars}
             {props.review} reviews
             </div>
