@@ -1,0 +1,284 @@
+@font-face {
+    font-family: 'Cereal';
+    src: url('./AirbnbCereal_W_Lt.otf');
+    src: url('./AirbnbCereal_W_Lt.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'Cereal';
+    src: url('./AirbnbCereal_W_Bd.otf');
+    src: url('./AirbnbCereal_W_Bd.otf') format('opentype');
+    font-weight: bold;
+} */
+
+@font-face {
+    font-family: 'Cereal';
+    src: url('./AirbnbCereal_W_Md.otf');
+    src: url('./AirbnbCereal_W_Md.otf') format('opentype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Cereal Header';
+    src: url('./AirbnbCereal_W_Md.otf');
+    src: url('./AirbnbCereal_W_Md.otf') format('opentype');
+    font-weight: lighter;
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cereal', sans-serif, Arial, Helvetica;
+}
+
+* { box-sizing: border-box }
+
+h1,h2,h3,h4,h5,h6 { font-family: 'Cereal Header' }
+.cereal-header { font-family: 'Cereal Header' }
+
+a, a:hover, a:visited {
+    font-family: 'Cereal Header';
+    color: black;
+    text-decoration: underline;
+}
+
+.abnb-container { width: 100%; height: 100% }
+.abnb-list-container { width: 1200px; height: 100%; margin: 0 auto; }
+
+.abnb-navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+}
+
+.abnb-navbar div {
+    display: flex;
+    align-items: center;
+    width: calc(100% / 3);
+    padding: 10px;
+}
+
+.abnb-navbar h1 { color: #FF385C; font-size: 16pt }
+.abnb-search { width: 70%; height: 100% }
+
+.abnb-search-input {
+    border-radius: 40px;
+    border: 1px solid #cacaca;
+    box-shadow: 2px 2px 5px #efefef;
+}
+
+.abnb-search input, .abnb-search input:focus {
+    background-color: white;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 10pt;
+}
+
+.abnb-search span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #FF385C;
+    border-radius: 50%;
+    padding: 10px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.abnb-navbar .right {
+    width: fit-content;
+    color: #3a3a3a;
+    border: 1px solid #cacaca;
+    padding: 15px;
+    border-radius: 60px;
+    font-size: 14pt;
+}
+
+.abnb-navbar .right i { cursor: pointer }
+
+.abnb-icons {
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+}
+
+.abnb-icons img { margin: 0 50px; width: 25px}
+.abnb-main-cont { width: 100% }
+
+.main-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    list-style: none;
+    text-align: center;
+}
+
+.main-list div { margin: 15px }
+.main-list img { border-radius: 15px; width: 300px; height: 265px; }
+
+.abnb-list-main-cont { padding-left: 50px }
+.listing-title {
+    font-family: 'Cereal Header';
+    font-weight: lighter;
+    font-size: 18pt;
+    margin-bottom: 5px;
+}
+
+.list-photos { 
+    width: 100%;
+    display: flex;
+    margin: 25px 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.main-photo { 
+    width: 50%; 
+    height: 540px; 
+    padding-right: 5px; 
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.smaller-photos { width: 50%; height: 537px }
+.smaller-photos .small-column {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 3px;
+    position: relative;
+}
+
+.more-photos {
+    width: fit-content;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: 1px solid #000;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.more-photos:hover { background-color: #efefef }
+.more-photos:active { transform: scale(0.95) }
+.more-photos:focus { outline: none }
+
+.list-info {
+    width: 100%;
+    padding: 30px 0;
+    border-bottom: 1px solid #efefef;
+    font-size: 12pt;
+}
+
+.list-info-left { width: 65%; padding-right: 50px}
+.list-info-right { width: 35%; padding: 50px 0 0 25px }
+
+.info-calendar {
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    padding: 20px 20px 10px 20px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 20px #e6e6e6;
+}
+
+.calendar-sticky { position: sticky; top: 50px; font-size: 12pt; }
+.info-calendar a { font-family: 'Cereal' }
+
+.info-calendar button {
+    width: 100%;
+    padding: 15px;
+    color: white;
+    font-size: 12pt;
+    font-family: 'Cereal Header';
+    text-align: center;
+    border-radius: 7px;
+    background-color: #F22D57;
+    border: none;
+    margin-top: 15px;
+    transition: transform 0.1s;
+}
+
+.info-checkin {
+    width: 100%;
+    border: 1px solid #cacaca;
+    border-radius: 7px;
+    font-size: 10pt;
+}
+
+#info-checkin div { width: 50%; padding: 10px }
+.info-price {font-size: 16pt; font-family: 'Cereal Header'; }
+
+.review-img {
+    border-radius: 50px; 
+    width: 50px; 
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.host-img {
+    border-radius: 50px; 
+    width: 70px; 
+    height: 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.super-host-icon {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.abnb-button {
+    border: 1px solid black;
+    background-color: white;
+    font-family: 'Cereal Header';
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: transform 0.1s;
+}
+.abnb-button:hover { background-color: #efefef }
+.abnb-button:active { transform: scale(0.95); }
+.abnb-button:focus { outline: none }
+
+.abnb-whitebox {
+    padding: 25px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.rating-light {
+    width: 150px; 
+    height: 5px; 
+    background-color: #efefef; 
+    border-radius: 5px; 
+    overflow: hidden;
+}
+
+.rating-dark {
+    background-color: #000; 
+    height: 100%; 
+    border-radius: 5px;
+}
+
+.main-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    border-top: 1px solid #cacaca;
+    background-color: white;
+    display: flex;
+    font-size: 10pt;
+}
