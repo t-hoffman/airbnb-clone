@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-
-const Reviews = () => {
-    const [review, setReview] = useState();
+import React from "react";
 
 
-    const fetchReview = async () => {
-        try {
-          const res = await fetch('../practiceData.json');
-          const data = await res.json();
-          console.log(data)
-          setInfo(data);
-          
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-
+const Reviews = (props) => {
 
   return (
-    <div>Reviews</div>
+    <>
+      <div>{props.name}</div>  
+      <div>{props.photo}</div>  
+      <div>{props.date}</div>  
+      <div>{props.comments}</div>
+    </>
   )
 }
 

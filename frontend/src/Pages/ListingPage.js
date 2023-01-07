@@ -5,27 +5,28 @@ import Title from "Components/Title";
 import Amenities from "Components/Amenities";
 import Description from "Components/Description";
 import CheckoutCard from "Components/CheckoutCard";
+import Reviews from "Components/Reviews";
 
 const ListingPage = () => {
     const { id } = useParams();
  
     const [listing, setListing] = useState(null);
-  
+
     const getListing = async () => {
       try {
         const res = await fetch(`/home/${id}`);
         const fetchedListing = await res.json();
-        console.log(fetchedListing)
         setListing(fetchedListing);
+        console.log()
       } catch (error) {
         console.error(error);
       }
     };
-  
+
     useEffect(() => {
       getListing();
     }, [id]);
-  
+
     const loaded = () => {
       return (
         <div>
@@ -42,7 +43,8 @@ const ListingPage = () => {
            <img src={listing.host.photo} />
            <Amenities />
            <Description />
-           <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} /> 
+           <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} />
+            
         </div>
       );
     };
