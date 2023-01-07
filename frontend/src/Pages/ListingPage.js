@@ -5,6 +5,7 @@ import Title from "Components/Title";
 import Amenities from "Components/Amenities";
 import Description from "Components/Description";
 import CheckoutCard from "Components/CheckoutCard";
+import Reviews from "Components/Reviews";
 
 const ListingPage = () => {
     const { id } = useParams();
@@ -43,6 +44,16 @@ const ListingPage = () => {
            <Amenities />
            <Description />
            <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} /> 
+           {listing.reviews.map((review, idx) => (
+            <Reviews key={idx}
+            name={review.author.name} 
+            photo={review.author.photo} 
+            date={review.date}
+            comments={review.comments}
+            />
+           ))}
+           
+           
         </div>
       );
     };
