@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 const Reviews = (props) => {
-   
+  
   return (
     <>
     <div>{props.name}</div>
