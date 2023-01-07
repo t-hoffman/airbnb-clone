@@ -43,8 +43,15 @@ const ListingPage = () => {
            <img src={listing.host.photo} />
            <Amenities />
            <Description />
-           <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} />
-            
+           <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} /> 
+           {listing.reviews.map((review, idx) => (
+            <Reviews key={idx}
+            name={review.author.name} 
+            photo={review.author.photo} 
+            date={review.date}
+            comments={review.comments}
+            />
+           ))}
         </div>
       );
     };
