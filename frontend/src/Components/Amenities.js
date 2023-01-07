@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as Icons from 'react-icons/fa'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Amenities = () => {
   return (
