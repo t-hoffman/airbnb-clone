@@ -45,7 +45,7 @@ const CheckoutCard = (props) => {
 
   return (
     <>
-    <Card>
+    {/* <Card>
         <Card.Body>
             <h3>${props.price} night</h3>
             <div>
@@ -130,7 +130,66 @@ const CheckoutCard = (props) => {
             <div>${price.toFixed(2)}</div>
         </Card.Footer>
 
-    </Card>
+    </Card> */}
+      <div className="calendar-sticky">
+        <div className="info-calendar">
+          <div className="d-flex">
+            <div className="w-50">
+              <span className="info-price">${parseInt(props.price).toLocaleString("en-US")}</span> night
+            </div>
+            <div className="w-50 text-right"><a href="#" style={{color:'#717171',fontSize:'10pt',fontFamily:'Cereal Header'}}>2 Reviews</a></div>
+          </div>
+          <div className="info-checkin mt-4">
+            <div className="d-flex" id="info-checkin" style={{borderBottom:'1px solid #cacaca'}}>
+              <div style={{borderRight:'1px solid #cacaca'}}>
+                <span className="cereal-header" style={{fontSize:'8pt'}}>CHECK-IN</span><br />
+                1/30/2023
+              </div>
+              <div>
+                <span className="cereal-header" style={{fontSize:'8pt'}}>CHECKOUT</span><br />
+                2/4/2023
+              </div>
+            </div>
+            <div style={{padding:'10px'}}>
+              <span className="cereal-header" style={{fontSize:'8pt'}}>GUESTS</span><br />
+              1 guest
+            </div>
+          </div>
+          <p>
+            <button className="reserve-btn">Reserve</button>
+          </p>
+          <p className="text-center p-2" style={{fontSize:'10.8pt'}}>
+            You won't be charged yet
+          </p>
+          <p>
+            <div className="d-flex">
+              <div className="w-50 pb-3"><a href="#">${parseInt(props.price).toLocaleString("en-US")} x 5 nights</a></div>
+              <div className="w-50 text-right">${(parseInt(props.price)*5).toLocaleString("en-US")}</div>
+            </div>
+            <div className="d-flex">
+              <div className="w-50 pb-3"><a href="#">Cleaning fee</a></div>
+              <div className="w-50 text-right">$450</div>
+            </div>
+            <div className="d-flex">
+              <div className="w-50 pb-2"><a href="#">Service fee</a></div>
+              <div className="w-50 text-right">$1,865</div>
+            </div>
+          </p>
+          <p className="pt-2" style={{borderTop:'1px solid #efefef'}}>
+            <div className="d-flex">
+              <div className="w-50"><span className="cereal-header">Total before taxes</span></div>
+              <div className="w-50 text-right"><span className="cereal-header">${((parseInt(props.price)*5)+450+1865).toLocaleString("en-US")}</span></div>
+            </div>
+          </p>
+        </div>
+        <p>&nbsp;</p>
+        <div className="abnb-whitebox position-sticky">
+          <div className="d-flex">
+            <div className="w-100"><b>Good price. &nbsp; </b> Your dates are $90 less than the avg. nightly rate over the last 3 months.</div>
+            <div className="pl-5"></div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

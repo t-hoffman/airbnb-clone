@@ -26,8 +26,8 @@ const Description = () => {
 
   const loaded = () => {
     return (
-      <div>
-        <h1>{listing.description}</h1>
+      <div className="list-info">
+        {listing.description}
       </div>
     );
   };
