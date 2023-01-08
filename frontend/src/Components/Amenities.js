@@ -10,33 +10,6 @@ const Amenities = () => {
         {/* <Icons.FaCar /> Parking */}
       </div>
         <div>
-<<<<<<< HEAD
-          <Icons.FaMugHot /> Coffee
-        </div>
-        <div>
-          <Icons.FaWifi /> Wifi
-        </div>
-        <div>
-          <Icons.FaLock /> Alarm System
-        </div>
-        <div>
-          <Icons.FaTrash /> Trash Services
-        </div>
-        <div>
-          <Icons.FaBath /> Bath Tub & Shower
-        </div>
-        <div>
-          <Icons.FaGamepad /> Video Games
-        </div>
-        <div>
-          <Icons.FaBed /> California King Bed
-        </div>
-        <div>
-          <Icons.FaSolarPanel /> Solar
-        </div>
-        <div>
-          <Icons.FaGlassMartini /> Beverages
-=======
           {/* <FontAwesomeIcon icon="fa-thin fa-mug-hot" /> Coffee */}
         </div>
         <div>
@@ -62,7 +35,6 @@ const Amenities = () => {
         </div>
         <div>
           {/* <FontAwesomeIcon icon="fa-thin fa-martini-glass-citrus" /> Beverages */}
->>>>>>> tyler
         </div>
     </div>
   );

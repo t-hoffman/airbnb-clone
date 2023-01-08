@@ -1,14 +1,6 @@
 import React from 'react'
 import Cards from 'Components/Cards'
 import Amenities from 'Components/Amenities'
-<<<<<<< HEAD
-import Description from 'Components/Description'
-const LandingPage = () => {
-  return (
-    <div>
-       <Cards />
-    </div>
-=======
 
 const LandingPage = () => {
   return (
@@ -31,7 +23,6 @@ const LandingPage = () => {
         </div>
       </div>
     </>
->>>>>>> tyler
   )
 }
 
