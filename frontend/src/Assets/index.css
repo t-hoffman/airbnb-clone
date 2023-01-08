@@ -246,6 +246,12 @@ a, a:hover, a:visited {
     order: 2;
 }
 
+.rating-cont { order: 1; flex-wrap: wrap }
+
+.rating-cont .rating-block:nth-child(2):nth-last-child(3) {
+    order: 2;
+}
+
 .host-img {
     border-radius: 50px; 
     width: 70px; 
