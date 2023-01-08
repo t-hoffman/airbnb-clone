@@ -32,28 +32,43 @@ const Chart = (props) => {
 
   //create an array of objects to map through, to create each bar for the chart.
   const avgRating= [
-    {label:'home', value: homeRating.toFixed(1)},
-    {label:'cleanliness', value:cleanlinessRating.toFixed(1)},
-    {label:'checkIn' , value:checkInRating.toFixed(1)},
-    {label:'accuracy', value:accuracyRating.toFixed(1)},
-    {label:'location', value:locationRating.toFixed(1)},
-    {label:'value' , value: valueRating.toFixed(1)}
+    {label:'Home', value: homeRating.toFixed(1)},
+    {label:'Cleanliness', value:cleanlinessRating.toFixed(1)},
+    {label:'CheckIn' , value:checkInRating.toFixed(1)},
+    {label:'Accuracy', value:accuracyRating.toFixed(1)},
+    {label:'Location', value:locationRating.toFixed(1)},
+    {label:'Value' , value: valueRating.toFixed(1)}
 ]
 
     console.log(cleanlinessRating)
   
   console.log(cleanliness)
-  return (
-    <div className='chart'>
+  return (<>
+    {/* <div className='chart'> */}
+    <div className="d-flex mt-5 mb-2 rating-cont" style={{width:'85%'}}>
       {avgRating.map(item => (
-        <div key={item.label} className="bar-container">
-          {console.log(item.label)}
-          <span className='label'>{item.label}</span>
-          <span className='bar' style={{width: `${item.value *20}%`}} />
-          <div>{item.value}</div>
+        // <div key={item.label} className="bar-container">
+        //   {console.log(item.label)}
+        //   <span className='label'>{item.label}</span>
+        //   <span className='bar' style={{width: `${item.value *20}%`}} />
+        //   <div>{item.value}</div>
+        // </div>
+        <div className="d-flex mr-5 mb-2 rating-block">
+          <div className="w-100 d-flex align-items-end">{item.label}</div>
+          <div className="d-flex text-right">
+            <div className="d-flex">
+              <div className="w-100 d-flex align-items-center">
+                <div className="rating-light">
+                  <div className="rating-dark" style={{width: `${item.value *20}%`}}></div>
+                </div>
+              </div>
+              <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value}</b></div>
+            </div>
+          </div>
         </div>
       ))}
     </div>
+    </>
   )
 }
 
