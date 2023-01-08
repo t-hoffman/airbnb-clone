@@ -4,7 +4,7 @@ import Amenities from 'Components/Amenities'
 
 const LandingPage = () => {
   return (
-    <>
+    <div className="abnb-container">
       <div className="abnb-icons">
         <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" />
         <img src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg" />
@@ -22,7 +22,7 @@ const LandingPage = () => {
           <Cards />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

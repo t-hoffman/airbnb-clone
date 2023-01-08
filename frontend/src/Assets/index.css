@@ -52,13 +52,15 @@ a, a:hover, a:visited {
 }
 
 .abnb-list-container { 
-    width: 1200px; 
+    width: 1300px; 
     height: 100%; 
     margin: 0 auto; 
     margin-bottom: 25px; 
+    padding-bottom: 50px;
+    z-index: 0;
 }
 
-.abnb-1200 { width: 1200px }
+.abnb-1200 { width: 1300px !important }
 
 .abnb-navbar {
     display: flex;
