@@ -10,13 +10,9 @@ const Cards = () => {
   
   const fetchHouses = async () => {
     try {
-<<<<<<< HEAD
-      const res = await fetch('/home');
-=======
       const ran1 = Math.floor(Math.random() * (45 - 25) + 25);
       const ran2 = Math.floor(Math.random() * (15 - 1) + 1);
       const res = await fetch(`/home/limit/${ran1}/${ran2}`);
->>>>>>> tyler
       const data = await res.json();
       console.log(data)
       setInfo(data);
@@ -27,40 +23,6 @@ const Cards = () => {
   };
 
   const loaded = () => {
-<<<<<<< HEAD
-    return info.map((house, idx) => (
-      <div key={idx} className="landing-cards">
-        <Link to={`/${house._id}`}>
-          <Card style={{ width: "18rem" }}>
-          <Carousel>
-      {house.photos.map((photo,idx) => (
-        <Carousel.Item interval={3.6e+6}>
-          <img
-        key={idx}
-        src={photo}
-      />
-      </Carousel.Item>
-      ))}
-  </Carousel>
-            <Card.Body>
-              <Card.Title>{house.address}</Card.Title>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroup.Item>
-                Number of guests {house.numberOfGuests}
-              </ListGroup.Item>
-              <ListGroup.Item>{house.rate}</ListGroup.Item>
-            </ListGroup>
-            <ListGroup>
-              <ListGroup.Item>
-                <FontAwesomeIcon icon="fa-solid fa-star" /> {house.stars}
-              </ListGroup.Item>
-            </ListGroup>
-          </Card>
-        </Link>
-      </div>
-    ));
-=======
     return info.map((house, idx) => {
       const addSplit = house.address.split(',');
       const address = `${addSplit[0]}, ${addSplit[1]}`;
@@ -109,7 +71,6 @@ const Cards = () => {
       //   </ListGroup>
       // </Card>
     });
->>>>>>> tyler
   };
 
   useEffect(() => {
