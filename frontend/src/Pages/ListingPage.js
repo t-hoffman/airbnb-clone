@@ -6,7 +6,7 @@ import Amenities from "Components/Amenities";
 import Description from "Components/Description";
 import CheckoutCard from "Components/CheckoutCard";
 import Reviews from "Components/Reviews";
-
+import Chart from "Components/Chart";
 const ListingPage = () => {
     const { id } = useParams();
  
@@ -50,8 +50,14 @@ const ListingPage = () => {
             photo={review.author.photo} 
             date={review.date}
             comments={review.comments}
+            ratings={review.ratings}
             />
            ))}
+
+        <Chart ratings={listing.reviews} />
+           
+
+
         </div>
       );
     };
