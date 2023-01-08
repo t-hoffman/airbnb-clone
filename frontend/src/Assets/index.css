@@ -44,8 +44,20 @@ a, a:hover, a:visited {
     text-decoration: underline;
 }
 
-.abnb-container { width: 100%; height: 100% }
-.abnb-list-container { width: 1200px; height: 100%; margin: 0 auto; }
+.abnb-container { 
+    width: 100%; 
+    height: 100%; 
+    margin-bottom: 25px; 
+    z-index: 0;
+}
+
+.abnb-list-container { 
+    width: 1200px; 
+    height: 100%; 
+    margin: 0 auto; 
+    margin-bottom: 25px; 
+}
+
 .abnb-1200 { width: 1200px }
 
 .abnb-navbar {
@@ -85,7 +97,7 @@ a, a:hover, a:visited {
     justify-content: center;
     color: white;
     background-color: #FF385C;
-    border-radius: 25%;
+    border-radius: 50%;
     padding: 10px;
     margin-left: 15px;
     cursor: pointer;
@@ -282,6 +294,7 @@ a, a:hover, a:visited {
     background-color: white;
     display: flex;
     font-size: 10pt;
+    z-index: 100;
 }
 
 .abnb-card {
@@ -316,13 +329,7 @@ a, a:hover, a:visited {
 
 .carousel-control-prev { left: 10px; color: black !important; }
 .carousel-control-next { right: 10px; color: black !important; }
-
-
-.carousel-control-prev, 
-.carousel-control-next {  }
-
 .carousel-control-prev:hover,
 .carousel-control-next:hover { opacity: 100% }
-
 .carousel:hover .carousel-control-next, 
 .carousel:hover .carousel-control-prev { display: flex }
