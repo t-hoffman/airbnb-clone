@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Carousel } from 'react-bootstrap';
 import ListGroup from "react-bootstrap/ListGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Cards = () => {
@@ -24,17 +25,26 @@ const Cards = () => {
 
   const loaded = () => {
     return info.map((house, idx) => {
-      const addSplit = house.address.split(',');
-      const address = `${addSplit[0]}, ${addSplit[1]}`;
-      const name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name;
+      const addSplit = house.address.split(','),
+            address = `${addSplit[0]}, ${addSplit[1]}`,
+            name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
+            photos = house.photos.splice(0,20);
+            
       return (
-        <div className="abnb-card">
-          <Carousel indicators={false} interval={null}>
-            {house.photos.map((photo,pidx) => (
-              <Carousel.Item>
+        <div className="abnb-card" key={idx}>
+          <Carousel indicators={false} 
+                    interval={null} 
+                    variant="dark" 
+                    prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
+                    nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
+          fade>
+          {
+            photos.map((photo,pidx) => (
+              <Carousel.Item key={pidx}>
                 <img src={photo} alt={address} />
-            </Carousel.Item>
-            ))}
+              </Carousel.Item>
+            ))
+          }
           </Carousel>
           
           <div className="pt-3 pb-5">
@@ -43,33 +53,10 @@ const Cards = () => {
               <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div>
             </div>
             <div style={{color:'#717171'}}>{name}<br />Feb 19 - 24</div>
-            <b>${house.rate}</b> night
+            <b>${parseInt(house.rate).toLocaleString("en-US")}</b> night
           </div>
         </div>
       )
-      // <Card>
-      //   <Carousel>
-      //     {house.photos.map((photo,pidx) => (
-      //       <Carousel.Item interval={3.6e+6}>
-      //         <img src={photo} alt={house.address} />
-      //     </Carousel.Item>
-      //     ))}
-      //   </Carousel>
-      //   <Card.Body>
-      //     <Card.Title>{house.address}</Card.Title>
-      //   </Card.Body>
-      //   <ListGroup className="list-group-flush">
-      //     <ListGroup.Item>
-      //       Number of guests {house.numberOfGuests}
-      //     </ListGroup.Item>
-      //     <ListGroup.Item>{house.rate}</ListGroup.Item>
-      //   </ListGroup>
-      //   <ListGroup>
-      //     <ListGroup.Item>
-      //       <i className="fa fa-star"></i> {house.stars}
-      //     </ListGroup.Item>
-      //   </ListGroup>
-      // </Card>
     });
   };
 
