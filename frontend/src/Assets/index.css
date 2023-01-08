@@ -190,7 +190,7 @@ a, a:hover, a:visited {
     width: 100%;
     padding: 30px 0;
     border-bottom: 1.5px solid #efefef;
-    font-size: 12pt;
+    font-size: 13pt;
 }
 
 .list-info-left { width: 65%; padding-right: 50px}
@@ -202,6 +202,7 @@ a, a:hover, a:visited {
     padding: 20px 20px 10px 20px;
     border-radius: 15px;
     box-shadow: 4px 4px 20px #e6e6e6;
+    font-size: 13pt;
 }
 
 .calendar-sticky { position: sticky; top: 50px; font-size: 12pt; }
@@ -239,6 +240,12 @@ a, a:hover, a:visited {
     background-size: cover;
 }
 
+.review-cont { order: 1; flex-wrap: wrap }
+
+.review-cont .review-block:nth-child(2):nth-last-child(3) {
+    order: 2;
+}
+
 .host-img {
     border-radius: 50px; 
     width: 70px; 
@@ -271,6 +278,7 @@ a, a:hover, a:visited {
     border: 1.5px solid #ddd;
     background-color: white;
     border-radius: 10px;
+    font-size: 13pt;
 }
 
 .rating-light {
