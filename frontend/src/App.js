@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import LandingPage from "Pages/LandingPage";
 import ListingPage from "Pages/ListingPage";
