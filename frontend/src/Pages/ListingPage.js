@@ -11,22 +11,22 @@ const ListingPage = () => {
     const { id } = useParams();
  
     const [listing, setListing] = useState(null);
-  
+
     const getListing = async () => {
       try {
         const res = await fetch(`/home/${id}`);
         const fetchedListing = await res.json();
-        console.log(fetchedListing)
         setListing(fetchedListing);
+        console.log()
       } catch (error) {
         console.error(error);
       }
     };
-  
+
     useEffect(() => {
       getListing();
     }, [id]);
-  
+
     const loaded = () => {
       return (
         <div>
@@ -53,8 +53,11 @@ const ListingPage = () => {
             ratings={review.ratings}
             />
            ))}
+
         <Chart ratings={listing.reviews} />
            
+
+
         </div>
       );
     };
