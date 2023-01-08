@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Button, Card, Dropdown }from 'react-bootstrap'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -12,12 +12,17 @@ const CheckoutCard = (props) => {
     const [children, setChildren] = useState(0);
     const [infants, setInfants] = useState(0);
     const [pets, setPets] = useState(0);
+    const [nights, setNights]= useState(null)
+    const [price, setPrice]= useState(0);
+    const [cleanFee, setCleanFee] = useState(null)
 
     const cleaningFee = 50;
-    const serviceFee = 20;
+    const serviceFee = .03;
 
     const calculateNumberOfDays = () => {
+      if(startDate && endDate){
         return differenceInDays(endDate, startDate)
+      }
     }
     const amountOfStay = () => {
        return props.price * calculateNumberOfDays();
@@ -26,11 +31,17 @@ const CheckoutCard = (props) => {
        return cleaningFee * calculateNumberOfDays();
     }
     const amountOfService = () => {
-       return serviceFee * calculateNumberOfDays();
+       return serviceFee * amountOfStay();
     }
     const calculateStay = () => {
-        return amountOfStay() + amountOfCleaning() + amountOfService()
+        return amountOfStay() + amountOfService()
     }
+
+    useEffect(()=> {
+      setNights(calculateNumberOfDays())
+      setPrice(calculateStay())
+
+    }, [])
 
   return (
     <>
@@ -105,22 +116,24 @@ const CheckoutCard = (props) => {
     <Button variant='danger' size='lg'> Reserve</Button>
     <p>You won't be charged yet</p>
     <br/>
-    <span>${props.price}X{calculateNumberOfDays()}nights</span>
+    <span>${props.price} X </span><span>{calculateNumberOfDays()}nights</span>
     <span>${amountOfStay()}</span>
     <br/>
     <span>Cleaning fee</span>
-    <span>${amountOfCleaning()}</span>
+    <span>${cleaningFee}</span>
     <br/>
     <span>Service fee</span>
-    <span>${amountOfService()}</span>
+    <span>${amountOfService().toFixed(2)}</span>
         </Card.Body>
         <Card.Footer>
             <h3>Total before taxes</h3>
-            <div>${calculateStay()}</div>
+            <div>${price.toFixed(2)}</div>
         </Card.Footer>
+
     </Card>
     </>
   )
 }
 
 export default CheckoutCard;
+
