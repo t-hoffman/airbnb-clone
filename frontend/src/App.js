@@ -1,10 +1,12 @@
 import React from "react";
+import SearchBar from "Components/SearchBar";
 import LandingPage from "Pages/LandingPage";
 import ListingPage from "Pages/ListingPage";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode"
+import './Assets/index.css'
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 
 export default function App() {
     const [user, setUser] = useState({})
@@ -42,8 +44,19 @@ export default function App() {
     google.accounts.id.prompt()
   }, []);
 
+    const params = Object.keys(useParams()),
+          paramCheck = params.length ? true : false,
+          divClass = params.length ? 'abnb-list-container' : 'abnb-container';
+
   return (
     <>
+    {
+        !paramCheck && <SearchBar />
+    }
+    <div className={divClass}>
+    {
+      paramCheck && <SearchBar />
+    }
     {/* This is the sign in button div */}
     <div id="signInDiv"></div>
     {/* This means that our user acutally has full user attributes. Which means we havea  user that is logged in. So we put log out button inside this conditional */}
@@ -54,6 +67,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/:id" element={<ListingPage />} />
       </Routes>
+    </div>
     </>
   );
 }
