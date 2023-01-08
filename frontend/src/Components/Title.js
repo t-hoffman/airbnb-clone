@@ -1,47 +1,23 @@
 import React from "react";
-import { useParams } from "react-router";
-import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Icons from 'react-icons/fa'
+import {FiShare} from 'react-icons/fi'
 
 //Title of listing page (under header)
 
-const Title = () => {
-  const [info, setInfo] = useState();
+const Title = (props) => {
 
-  const { idx } = useParams();
-
-  const fetchInfo = async () => {
-    try {
-      const res = await fetch("");
-      const data = await res.json();
-      setInfo(); //Need to insert data into setInfo
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchInfo();
-  }, []);
-
-  const loaded = () => {
     return (
-      <div key={idx} className="container">
-        <h1>{info.name}</h1>
-        <span>
-          <FontAwesomeIcon icon="fa-solid fa-star" /> {info.stars}
-        </span>
-        <span>{info.review}</span>
-        <span>{info.address}</span>
+      <div className="container">
+        <h1>{props.name}</h1>
+        <div><Icons.FaStar size={20} />{props.stars}</div>
+        <div>{props.review}reviews</div>
+        <div>{props.address}</div>
+        <div><FiShare /> Share</div>
+        <div><Icons.FaRegHeart/> Save</div>
       </div>
     );
   };
 
-  const loading = () => {
-    <div>Loading . . .</div>;
-  };
 
-  return info ? loaded() : loading();
-};
 
 export default Title;

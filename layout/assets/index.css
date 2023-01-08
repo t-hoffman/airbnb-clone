@@ -76,6 +76,10 @@ a, a:hover, a:visited {
     outline: none;
     width: 100%;
     font-size: 10pt;
+<<<<<<< HEAD
+    font-weight: bold;
+=======
+>>>>>>> tyler
 }
 
 .abnb-search span {
@@ -206,6 +210,11 @@ a, a:hover, a:visited {
     transition: transform 0.1s;
 }
 
+<<<<<<< HEAD
+.info-calendar button:focus { outline: none }
+
+=======
+>>>>>>> tyler
 .info-checkin {
     width: 100%;
     border: 1px solid #cacaca;
