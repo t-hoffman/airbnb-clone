@@ -7,6 +7,7 @@ import Description from "Components/Description";
 import CheckoutCard from "Components/CheckoutCard";
 import Reviews from "Components/Reviews";
 import Chart from "Components/Chart";
+
 const ListingPage = () => {
     const { id } = useParams();
  

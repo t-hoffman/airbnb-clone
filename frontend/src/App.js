@@ -48,12 +48,12 @@ export default function App() {
   return (
     <>
       {/* This is the sign in button div */}
-      {/* <div id="signInDiv"></div> */}
+      <div id="signInDiv"></div>
       {/* This means that our user acutally has full user attributes. Which means we havea  user that is logged in. So we put log out button inside this conditional */}
       { Object.keys(user).length != 0 && 
       <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
       }
-      <SearchBar />
+      <SearchBar loc={window.location.pathname} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/:id" element={<ListingPage />} />
