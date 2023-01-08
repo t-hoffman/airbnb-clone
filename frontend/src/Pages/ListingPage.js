@@ -112,9 +112,9 @@ const ListingPage = () => {
               </div>
             </div>
             <div className="list-info">
-              <h1 className="listing-title"><i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{listing.stars} · # reviews</h1>
+              <h1 className="listing-title"><i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{listing.stars} · {listing.reviews.length} reviews</h1>
               <Chart ratings={listing.reviews} />
-              <div className="d-flex mt-5 review-cont">
+              <div className="d-block mt-5 w-100">
               {
                 listing.reviews.map((review, idx) => (
                   <Reviews 

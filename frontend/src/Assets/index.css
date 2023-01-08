@@ -240,12 +240,6 @@ a, a:hover, a:visited {
     background-size: cover;
 }
 
-.review-cont { order: 1; flex-wrap: wrap }
-
-.review-cont .review-block:nth-child(2):nth-last-child(3) {
-    order: 2;
-}
-
 .host-img {
     border-radius: 50px; 
     width: 70px; 
