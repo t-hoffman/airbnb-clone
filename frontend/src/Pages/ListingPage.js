@@ -7,10 +7,15 @@ import Description from "Components/Description";
 import CheckoutCard from "Components/CheckoutCard";
 import Reviews from "Components/Reviews";
 import Chart from "Components/Chart";
+import ListingMap from "Components/ListingMap";
+
+
 const ListingPage = () => {
     const { id } = useParams();
  
     const [listing, setListing] = useState(null);
+
+  
 
     const getListing = async () => {
       try {
@@ -55,6 +60,11 @@ const ListingPage = () => {
            ))}
 
         <Chart ratings={listing.reviews} />
+        <br/>
+        <ListingMap lat={listing.location.lat} long={listing.location.long}/>
+        
+      
+           
            
 
 
