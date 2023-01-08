@@ -39,13 +39,13 @@ const Chart = (props) => {
     {label:'Location', value:locationRating.toFixed(1)},
     {label:'Value' , value: valueRating.toFixed(1)}
 ]
-
+console.log(avgRating)
     console.log(cleanlinessRating)
   
   console.log(cleanliness)
   return (<>
     {/* <div className='chart'> */}
-    <div className="d-block mt-5 mb-2" style={{width:'85%'}}>
+    <div className="d-block mt-5">
       {avgRating.map(item => (
         // <div key={item.label} className="bar-container">
         //   {console.log(item.label)}
@@ -53,8 +53,8 @@ const Chart = (props) => {
         //   <span className='bar' style={{width: `${item.value *20}%`}} />
         //   <div>{item.value}</div>
         // </div>
-        <div className="d-inline-block mr-5 mb-2" style={{width:'42.5%'}}>
-          <div className="d-flex">
+        <div className="d-inline-block w-50">
+          <div className="d-flex mb-3" style={{paddingRight:'125px'}}>
             <div className="w-100 d-flex align-items-end">{item.label}</div>
             <div className="d-flex text-right">
               <div className="d-flex">
@@ -63,7 +63,7 @@ const Chart = (props) => {
                     <div className="rating-dark" style={{width: `${item.value *20}%`}}></div>
                   </div>
                 </div>
-                <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value}</b></div>
+                <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value !== 'NaN' ? item.value : '0.0'}</b></div>
               </div>
             </div>
           </div>
