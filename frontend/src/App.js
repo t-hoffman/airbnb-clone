@@ -5,6 +5,7 @@ import ListingPage from "Pages/ListingPage";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode"
 import './Assets/index.css'
+import Test from "test";
 
 import { Routes, Route, useParams } from "react-router-dom";
 
@@ -66,6 +67,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/:id" element={<ListingPage />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </div>
     </>

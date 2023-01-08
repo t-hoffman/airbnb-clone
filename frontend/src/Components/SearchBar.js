@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchBar = () => {
-  const params = Object.keys(useParams());
+  const params = useParams();
   const navClass = params.length ? 'abnb-navbar justify-content-center' : 'abnb-navbar';
   const divClass = params.length ? 'abnb-1200' : 'w-100 p-0';
-
+console.log(params)
   return (
     <div className={navClass}>
     <div className={divClass}>

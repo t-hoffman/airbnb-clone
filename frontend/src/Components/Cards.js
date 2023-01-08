@@ -10,9 +10,8 @@ const Cards = () => {
   
   const fetchHouses = async () => {
     try {
-      const ran1 = Math.floor(Math.random() * (45 - 25) + 25);
-      const ran2 = Math.floor(Math.random() * (15 - 1) + 1);
-      const res = await fetch(`/home/limit/${ran1}/${ran2}`);
+      const ran1 = Math.floor(Math.random() * (14 - 1 +1)) + 1;
+      const res = await fetch(`/home/limit/50/${ran1}`);
       const data = await res.json();
       console.log(data)
       setInfo(data);
@@ -40,7 +39,7 @@ const Cards = () => {
           {
             photos.map((photo,pidx) => (
               <Carousel.Item key={pidx}>
-                <Link to="#"><img src={photo} alt={address} /></Link>
+                <Link to={`/${house._id}`}><img src={photo} alt={address} /></Link>
               </Carousel.Item>
             ))
           }
