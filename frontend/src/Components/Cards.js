@@ -11,7 +11,7 @@ const Cards = () => {
     try {
       const ran1 = Math.floor(Math.random() * (45 - 25) + 25);
       const ran2 = Math.floor(Math.random() * (15 - 1) + 1);
-      const res = await fetch(`https://air-bnb-clone-backend.herokuapp.com/home/limit/${ran1}/${ran2}`);
+      const res = await fetch(`/home/limit/${ran1}/${ran2}`);
       const data = await res.json();
       console.log(data)
       setInfo(data);
