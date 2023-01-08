@@ -8,7 +8,7 @@ const Title = (props) => {
 
     return (
       <div className="d-flex">
-        <div className="w-100">
+        <div className="w-100" style={{fontSize:'12pt'}}>
           <h1 className="listing-title mt-4">{props.name}</h1>
           <Icons.FaStar size={16} /> &nbsp; <b>{props.stars} &nbsp; · &nbsp;</b> 
           <a href="#">{props.review} reviews</a> &nbsp; &nbsp; 
