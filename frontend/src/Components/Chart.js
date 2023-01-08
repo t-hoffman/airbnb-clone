@@ -45,7 +45,7 @@ const Chart = (props) => {
   console.log(cleanliness)
   return (<>
     {/* <div className='chart'> */}
-    <div className="d-flex mt-5 mb-2 rating-cont" style={{width:'85%'}}>
+    <div className="d-block mt-5 mb-2" style={{width:'85%'}}>
       {avgRating.map(item => (
         // <div key={item.label} className="bar-container">
         //   {console.log(item.label)}
@@ -53,16 +53,18 @@ const Chart = (props) => {
         //   <span className='bar' style={{width: `${item.value *20}%`}} />
         //   <div>{item.value}</div>
         // </div>
-        <div className="d-flex mr-5 mb-2 rating-block">
-          <div className="w-100 d-flex align-items-end">{item.label}</div>
-          <div className="d-flex text-right">
-            <div className="d-flex">
-              <div className="w-100 d-flex align-items-center">
-                <div className="rating-light">
-                  <div className="rating-dark" style={{width: `${item.value *20}%`}}></div>
+        <div className="d-inline-block mr-5 mb-2" style={{width:'42.5%'}}>
+          <div className="d-flex">
+            <div className="w-100 d-flex align-items-end">{item.label}</div>
+            <div className="d-flex text-right">
+              <div className="d-flex">
+                <div className="w-100 d-flex align-items-center">
+                  <div className="rating-light">
+                    <div className="rating-dark" style={{width: `${item.value *20}%`}}></div>
+                  </div>
                 </div>
+                <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value}</b></div>
               </div>
-              <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value}</b></div>
             </div>
           </div>
         </div>

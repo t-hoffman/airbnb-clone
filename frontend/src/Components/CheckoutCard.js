@@ -16,7 +16,8 @@ const CheckoutCard = (props) => {
     const [price, setPrice]= useState(0);
     const [cleanFee, setCleanFee] = useState(null)
 
-    const cleaningFee = 50;
+    const cleaningFee = Math.floor(Math.random() * (500 - 50 +1) + 50) + 1,
+          sFee = Math.floor(Math.random() * (2000 - 50 +1) + 50) + 1;
     const serviceFee = .03;
 
     const calculateNumberOfDays = () => {
@@ -42,6 +43,8 @@ const CheckoutCard = (props) => {
       setPrice(calculateStay())
 
     }, [])
+    
+    
 
   return (
     <>
@@ -168,17 +171,17 @@ const CheckoutCard = (props) => {
             </div>
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">Cleaning fee</a></div>
-              <div className="w-50 text-right">$450</div>
+              <div className="w-50 text-right">${cleaningFee.toLocaleString("en-US")}</div>
             </div>
             <div className="d-flex">
               <div className="w-50 pb-2"><a href="#">Service fee</a></div>
-              <div className="w-50 text-right">$1,865</div>
+              <div className="w-50 text-right">${sFee.toLocaleString("en-US")}</div>
             </div>
           </p>
           <p className="pt-2" style={{borderTop:'1px solid #efefef'}}>
             <div className="d-flex">
               <div className="w-50"><span className="cereal-header">Total before taxes</span></div>
-              <div className="w-50 text-right"><span className="cereal-header">${((parseInt(props.price)*5)+450+1865).toLocaleString("en-US")}</span></div>
+              <div className="w-50 text-right"><span className="cereal-header">${((parseInt(props.price)*5)+cleaningFee+sFee).toLocaleString("en-US")}</span></div>
             </div>
           </p>
         </div>
