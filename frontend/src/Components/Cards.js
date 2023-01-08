@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, Carousel } from 'react-bootstrap';
-import ListGroup from "react-bootstrap/ListGroup";
+import { Carousel } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Cards = () => {
@@ -41,7 +40,7 @@ const Cards = () => {
           {
             photos.map((photo,pidx) => (
               <Carousel.Item key={pidx}>
-                <img src={photo} alt={address} />
+                <Link to="#"><img src={photo} alt={address} /></Link>
               </Carousel.Item>
             ))
           }
@@ -65,7 +64,7 @@ const Cards = () => {
   }, []);
 
   const loading = () => {
-    <div>Loading. . .</div>;
+    return <h2>Loading. . .</h2>;
   };
 
   return info ? loaded() : loading();
