@@ -4,12 +4,6 @@ import Amenities from 'Components/Amenities'
 
 const LandingPage = () => {
   return (
-
-    <div>
-       <Cards />
-        
-    </div>
-
     <>
       <div className="abnb-icons">
         <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" />
@@ -29,7 +23,6 @@ const LandingPage = () => {
         </div>
       </div>
     </>
-
   )
 }
 
