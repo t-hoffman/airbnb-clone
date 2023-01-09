@@ -1,0 +1,12 @@
+.map-wrap {
+    background: rgba(67, 134, 124, 0.1);
+    /* float: right; */
+    width: 53%;
+    height: 115%;
+    margin-top: -3%;
+  }
+  .leaflet-container {
+    width: 50vw;
+    height: 50vh;
+    opacity: 1;
+  }
