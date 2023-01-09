@@ -10,6 +10,8 @@ import Chart from "Components/Chart";
 import ListingMap from "Components/ListingMap";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const ListingPage = () => {
     const { id } = useParams();
@@ -30,9 +32,13 @@ const ListingPage = () => {
     useEffect(() => {
       getListing();
     }, [id]);
-
+    const [show, setShow] = useState(false);
+    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+      
     const loaded = () => {
-      return (
+      return (<>
         <div className="abnb-list-container">
           <div className="abnb-list-main-cont" style={{fontSize: '11pt'}}>
             <Title name={listing.name} stars={listing.stars} review={listing.reviews.length} address={listing.address} />
@@ -175,7 +181,26 @@ const ListingPage = () => {
             </div>
           </div>
         </div>
+        <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
       </div>
+      
+      <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal heading</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleClose}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
+    </>
       );
     };
   
