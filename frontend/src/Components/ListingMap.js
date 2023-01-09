@@ -4,7 +4,7 @@ import React from 'react'
 
 const ListingMap = (props) => {
   return (
-    <div className="list-info">
+    <div className="list-info" id="where">
       <h1 className="listing-title">Where you’ll be</h1>
       <p></p>
       {props.address}
