@@ -60,7 +60,13 @@ a, a:hover, a:visited {
     z-index: 0;
 }
 
+.logo a, .logo a:visited { color: #FF385C; text-decoration: none }
+
 .abnb-1200 { width: 1300px !important }
+
+.right a, .right a:visited {
+    text-decoration: none;
+}
 
 .abnb-navbar {
     display: flex;
@@ -138,7 +144,7 @@ a, a:hover, a:visited {
 /* .main-list div { margin: 15px } */
 /* .main-list img { border-radius: 15px; width: 300px; height: 265px; } */
 
-.abnb-list-main-cont { padding-left: 50px }
+.abnb-list-main-cont { padding-left: 50px; padding-top: 25px }
 .listing-title {
     font-family: 'Cereal Header';
     font-size: 18pt;
@@ -208,7 +214,7 @@ a, a:hover, a:visited {
 .calendar-sticky { position: sticky; top: 50px; font-size: 12pt; }
 .info-calendar a { font-family: 'Cereal' }
 
-.info-calendar button {
+.info-calendar button, .abnb-reserve-btn {
     width: 100%;
     padding: 15px;
     color: white;
@@ -337,3 +343,61 @@ a, a:hover, a:visited {
 .carousel-control-next:hover { opacity: 100% }
 .carousel:hover .carousel-control-next, 
 .carousel:hover .carousel-control-prev { display: flex }
+
+.abnb-form {
+    width: 100%;
+    display: block;
+}
+
+.form-block {
+    width: 50%;
+    display: inline-block;
+}
+
+.form-title {
+    width: 200px;
+    padding: 15px;
+    background-color: #efefef;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.input-surround {
+    margin-bottom: 40px;
+    margin-right: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #efefef;
+}
+
+.form-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 10px;
+    padding: 10px ;
+}
+
+.form-input input {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.form-input textarea {
+    width: 100%;
+    height: 250px;
+    outline: none;
+    border: none;
+    resize: none;
+}
+
+.form-input select {
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
