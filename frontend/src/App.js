@@ -53,7 +53,7 @@ export default function App() {
       { Object.keys(user).length != 0 && 
       <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
       }
-      <SearchBar loc={window.location.pathname} />
+      <SearchBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/:id" element={<ListingPage />} />

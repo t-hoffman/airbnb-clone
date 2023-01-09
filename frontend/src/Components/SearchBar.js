@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchBar = (props) => {
-  const params = props.loc === '/';
-  const navClass = params ? 'abnb-navbar' : 'abnb-navbar justify-content-center';
-  const divClass = params ? 'w-100 p-0' : 'abnb-1200';
+  const { pathname } = useLocation();
+  const navClass = pathname === '/' ? 'abnb-navbar' : 'abnb-navbar justify-content-center';
+  const divClass = pathname === '/' ? 'w-100 p-0' : 'abnb-1200';
 
   const loaded = () => {
     return (
