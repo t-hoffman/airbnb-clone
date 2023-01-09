@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { differenceInDays } from 'date-fns';
 import * as Icons from 'react-icons/fa'
+import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 
 const CheckoutCard = (props) => {
     const [startDate, setStartDate] = useState(null);
@@ -13,64 +14,75 @@ const CheckoutCard = (props) => {
     const [infants, setInfants] = useState(0);
     const [pets, setPets] = useState(0);
     const [nights, setNights]= useState(null)
-    const [price, setPrice]= useState(0);
-    const [cleanFee, setCleanFee] = useState(null)
+    const [amountOfStay, setAmountOfStay] = useState(null);
+    const [amountOfService, setAmountOfService] = useState(null);
+    const [total, setTotal] = useState(null);
 
-    const cleaningFee = Math.floor(Math.random() * (500 - 50 +1) + 50) + 1,
-          sFee = Math.floor(Math.random() * (2000 - 50 +1) + 50) + 1;
+    
+
+    const cleaningFee = Math.floor(Math.random() * (500 - 50 +1) + 50) + 1;
     const serviceFee = .03;
 
-    const calculateNumberOfDays = () => {
-      if(startDate && endDate){
-        return differenceInDays(endDate, startDate)
-      }
-    }
-    const amountOfStay = () => {
-       return props.price * calculateNumberOfDays();
-    }
-    const amountOfCleaning = () => {
-       return cleaningFee * calculateNumberOfDays();
-    }
-    const amountOfService = () => {
-       return serviceFee * amountOfStay();
-    }
-    const calculateStay = () => {
-        return amountOfStay() + amountOfService()
-    }
-
-    useEffect(()=> {
-      setNights(calculateNumberOfDays())
-      setPrice(calculateStay())
-
-    }, [])
-    
-    
-
+    useEffect(() => {
+      const calculateNumberOfDays = () => {
+        if (startDate && endDate) {
+          return differenceInDays(endDate, startDate);
+        }
+      };
+  
+      const calculateAmountOfStay = () => {
+        return props.price * calculateNumberOfDays();
+      };
+  
+      const calculateAmountOfService = () => {
+        return serviceFee * calculateAmountOfStay();
+      };
+  
+      const calculateTotal = () => {
+        return calculateAmountOfStay() + calculateAmountOfService();
+      };
+  
+      setNights(calculateNumberOfDays());
+      setAmountOfStay(calculateAmountOfStay());
+      setAmountOfService(calculateAmountOfService().toFixed(2));
+      setTotal(calculateTotal());
+    }, [startDate, endDate, props.price]);
   return (
     <>
-    {/* <Card>
-        <Card.Body>
-            <h3>${props.price} night</h3>
-            <div>
-            <Icons.FaStar size={15}/>
-            {props.stars}
-            {props.review} reviews
+      <div className="calendar-sticky">
+        <div className="info-calendar">
+          <div className="d-flex">
+            <div className="w-50">
+              <span className="info-price">${props.price}</span>night
             </div>
-            <DatePicker
-        selected={startDate}
-        onChange={date => setStartDate(date)}
-        startDate={startDate}
-        endDate={endDate}
-        placeholderText="Start date"
-      />
-      <DatePicker
-        selected={endDate}
-        onChange={date => setEndDate(date)}
-        startDate={startDate}
-        endDate={endDate}
-        placeholderText="End date"
-      />
-      <Dropdown>
+            <div className="w-50 text-right"><a href="#reviews" style={{color:'#717171',fontSize:'10pt',fontFamily:'Cereal Header'}}>{props.review} Reviews</a></div>
+          </div>
+          <div className="info-checkin mt-4">
+            <div className="d-flex" id="info-checkin" style={{borderBottom:'1px solid #cacaca'}}>
+              <div style={{borderRight:'1px solid #cacaca'}}>
+                <span className="cereal-header" style={{fontSize:'8pt'}}>CHECK-IN</span><br />
+                <DatePicker
+                   selected={startDate}
+                  onChange={date => setStartDate(date)}
+                  startDate={startDate}
+                   endDate={endDate}
+                  placeholderText="Start date" />
+              </div>
+              <div>
+                <span className="cereal-header" style={{fontSize:'8pt'}}>CHECKOUT</span><br />
+                <DatePicker
+                  selected={endDate}
+                  onChange={date => setEndDate(date)}
+                  startDate={startDate}
+                  endDate={endDate}
+                  placeholderText="End date"
+                  />
+              </div>
+            </div>
+            
+            <div style={{padding:'10px'}}>
+              <select className="cereal-header" style={{fontSize:'8pt'}}>GUESTS</select><br/>
+              <Dropdown>
       <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
        Number of guests
       </Dropdown.Toggle>
@@ -116,46 +128,6 @@ const CheckoutCard = (props) => {
          </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-    <Button variant='danger' size='lg'> Reserve</Button>
-    <p>You won't be charged yet</p>
-    <br/>
-    <span>${props.price} X </span><span>{calculateNumberOfDays()}nights</span>
-    <span>${amountOfStay()}</span>
-    <br/>
-    <span>Cleaning fee</span>
-    <span>${cleaningFee}</span>
-    <br/>
-    <span>Service fee</span>
-    <span>${amountOfService().toFixed(2)}</span>
-        </Card.Body>
-        <Card.Footer>
-            <h3>Total before taxes</h3>
-            <div>${price.toFixed(2)}</div>
-        </Card.Footer>
-
-    </Card> */}
-      <div className="calendar-sticky">
-        <div className="info-calendar">
-          <div className="d-flex">
-            <div className="w-50">
-              <span className="info-price">${parseInt(props.price).toLocaleString("en-US")}</span> night
-            </div>
-            <div className="w-50 text-right"><a href="#reviews" style={{color:'#717171',fontSize:'10pt',fontFamily:'Cereal Header'}}>{props.review} Reviews</a></div>
-          </div>
-          <div className="info-checkin mt-4">
-            <div className="d-flex" id="info-checkin" style={{borderBottom:'1px solid #cacaca'}}>
-              <div style={{borderRight:'1px solid #cacaca'}}>
-                <span className="cereal-header" style={{fontSize:'8pt'}}>CHECK-IN</span><br />
-                1/30/2023
-              </div>
-              <div>
-                <span className="cereal-header" style={{fontSize:'8pt'}}>CHECKOUT</span><br />
-                2/4/2023
-              </div>
-            </div>
-            <div style={{padding:'10px'}}>
-              <span className="cereal-header" style={{fontSize:'8pt'}}>GUESTS</span><br />
-              1 guest
             </div>
           </div>
           <div>
@@ -164,26 +136,29 @@ const CheckoutCard = (props) => {
           <div className="text-center p-2" style={{fontSize:'10.8pt'}}>
             You won't be charged yet
           </div>
+          {nights && (
+            <>
           <div className="mb-2">
             <div className="d-flex">
-              <div className="w-50 pb-3"><a href="#">${parseInt(props.price).toLocaleString("en-US")} x 5 nights</a></div>
-              <div className="w-50 text-right">${(parseInt(props.price)*5).toLocaleString("en-US")}</div>
+              <div className="w-50 pb-3"><a href="#">${parseInt(props.price).toLocaleString("en-US")} x {nights} nights</a></div>
+              <div className="w-50 text-right">${amountOfStay}</div>
             </div>
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">Cleaning fee</a></div>
-              <div className="w-50 text-right">${cleaningFee.toLocaleString("en-US")}</div>
+              <div className="w-50 text-right">${cleaningFee}</div>
             </div>
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">Service fee</a></div>
-              <div className="w-50 text-right">${sFee.toLocaleString("en-US")}</div>
+              <div className="w-50 text-right">${amountOfService}</div>
             </div>
           </div>
           <div className="pt-3 pb-3" style={{borderTop:'1.5px solid #efefef'}}>
             <div className="d-flex">
               <div className="w-50"><span className="cereal-header">Total before taxes</span></div>
-              <div className="w-50 text-right"><span className="cereal-header">${((parseInt(props.price)*5)+cleaningFee+sFee).toLocaleString("en-US")}</span></div>
+              <div className="w-50 text-right"><span className="cereal-header">${total}</span></div>
             </div>
           </div>
+          </> )}
         </div>
         <div>&nbsp;</div>
         <div className="abnb-whitebox position-sticky mt-3">
