@@ -11,7 +11,7 @@ const Reviews = (props) => {
           <div className="pl-3"><span className="cereal-header">{props.name}</span><br /><span style={{fontSize:'10pt'}}>{props.date}</span></div>
         </div>
         <div className="pt-3">
-          <p>{props.comments}</p>
+          <div>{props.comments}</div>
           {/* <a href="#">Show more</a> */}
         </div>
       </div>

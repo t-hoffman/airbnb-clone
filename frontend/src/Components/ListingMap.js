@@ -4,12 +4,12 @@ import React from 'react'
 
 const ListingMap = (props) => {
   return (
-    <div class="list-info">
-      <h1 class="listing-title">Where you’ll be</h1>
+    <div className="list-info">
+      <h1 className="listing-title">Where you’ll be</h1>
       <p></p>
       {props.address}
       <p>&nbsp;</p>
-      <img src="./map.png" class="w-100" />
+      <img src="./map.png" className="w-100" />
     </div>
   )
 }
