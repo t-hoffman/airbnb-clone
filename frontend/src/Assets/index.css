@@ -73,7 +73,8 @@ a, a:hover, a:visited {
     display: flex;
     align-items: center;
     width: calc(100% / 3);
-    padding: 10px;
+    padding: 5px;
+    margin-bottom: 2px;
 }
 
 .abnb-navbar h1 { color: #FF385C; font-size: 16pt }
@@ -100,7 +101,7 @@ a, a:hover, a:visited {
     color: white;
     background-color: #FF385C;
     border-radius: 50%;
-    padding: 10px;
+    padding: 12px;
     margin-left: 15px;
     cursor: pointer;
 }
@@ -140,7 +141,6 @@ a, a:hover, a:visited {
 .abnb-list-main-cont { padding-left: 50px }
 .listing-title {
     font-family: 'Cereal Header';
-    font-weight: lighter;
     font-size: 18pt;
     margin-bottom: 5px;
 }

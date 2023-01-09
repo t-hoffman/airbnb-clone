@@ -59,10 +59,10 @@ const ListingPage = () => {
                   <div className="d-flex">
                     <div className="w-100">
                       <h1 className="listing-title">{listing.roomType} hosted by {listing.host.name}</h1>
-                      8 guests &nbsp; · &nbsp;
-                      4 bedrooms &nbsp; · &nbsp;
-                      4 beds &nbsp; · &nbsp;
-                      5 baths
+                      {Math.floor((Math.random() * (10 - 1 +1))+1)} guests &nbsp; · &nbsp;
+                      {Math.floor((Math.random() * (6 - 1 +1))+1)} bedrooms &nbsp; · &nbsp;
+                      {Math.floor((Math.random() * (6 - 1 +1))+1)} beds &nbsp; · &nbsp;
+                      {Math.floor((Math.random() * (6 - 1 +1))+1)} baths
                     </div>
                     <div>
                       <div className="host-img" style={{backgroundImage: `url(${listing.host.photo})`}}>
@@ -114,7 +114,7 @@ const ListingPage = () => {
                 <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} />
               </div>
             </div>
-            <div className="list-info">
+            <div className="list-info" id="reviews">
               <h1 className="listing-title"><i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{listing.stars} · {listing.reviews.length} reviews</h1>
               <Chart ratings={listing.reviews} />
               <div className="d-block mt-5 w-100">
@@ -160,9 +160,9 @@ const ListingPage = () => {
               </div>
               <div className="pl-5" style={{width:'30%'}}>
                 <div>Language: English</div>
-                <div>Response rate: 100%</div>
+                <div className="pt-2">Response rate: 100%</div>
                 <div className="pt-2">Response time: within an hour</div>
-                <div className="pt-2">
+                <div className="pt-3">
                   <button className="abnb-button">Contact Host</button>
                 </div>
                 <div className="d-flex pt-3">
