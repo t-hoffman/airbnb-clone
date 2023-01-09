@@ -52,7 +52,7 @@ const ListingPage = () => {
                 <div className="d-flex h-50">
                   <div className="small-column" style={{backgroundImage: `url(${listing.photos[3]})`}}></div>
                   <div className="small-column" style={{backgroundImage: `url(${listing.photos[4]})`}}>
-                    <button className="more-photos"><i className="fas fa-grip-vertical"></i> &nbsp; Show all photos</button>
+                    <button className="more-photos" onClick={handleShow}><i className="fas fa-grip-vertical"></i> &nbsp; Show all photos</button>
                   </div>
                 </div>
               </div>
@@ -181,9 +181,6 @@ const ListingPage = () => {
             </div>
           </div>
         </div>
-        <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
       </div>
       
       <Modal show={show} onHide={handleClose}>
