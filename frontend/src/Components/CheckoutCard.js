@@ -81,10 +81,10 @@ const CheckoutCard = (props) => {
             </div>
             
             <div style={{padding:'10px'}}>
-              <select className="cereal-header" style={{fontSize:'8pt'}}>GUESTS</select><br/>
+              {/* <div className="cereal-header" style={{fontSize:'8pt'}}>GUESTS</div><br/> */}
               <Dropdown>
-      <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
-       Number of guests
+      <Dropdown.Toggle variant="outline-dark" id="dropdown-basic" style={{width:'100%',fontSize:'8pt',fontWeight:'bold'}}>
+       GUESTS
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
@@ -131,7 +131,7 @@ const CheckoutCard = (props) => {
             </div>
           </div>
           <div>
-            <button className="reserve-btn">Reserve</button>
+            <button className="abnb-reserve-btn">Reserve</button>
           </div>
           <div className="text-center p-2" style={{fontSize:'10.8pt'}}>
             You won't be charged yet

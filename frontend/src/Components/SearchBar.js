@@ -11,7 +11,7 @@ const SearchBar = () => {
       <div className={navClass}>
         <div className={divClass}>
           <div className="pl-5 logo"><h1><a href="/">airbnb</a></h1></div>
-          <div className="abnb-search">
+          <div className="abnb-search justify-content-center">
             <div className="abnb-search-input pl-4" style={{width:'300px'}}>
               <input type="text" />
               <span className="sbutton">
@@ -21,7 +21,7 @@ const SearchBar = () => {
           </div>
           <div className={rightPadding}>
             <div className="right">
-              <a href="/manage/add" className="pr-4" style={{fontSize: '10pt'}}>Airbnb your home</a> <i className="fa fa-bars"></i>
+              <a href="/manage/add"style={{fontSize:'10pt'}}>Airbnb your home</a> &nbsp; | &nbsp; <a href="/manage/" className="pr-4" style={{fontSize:'10pt'}}>Manage</a> <i className="fa fa-bars"></i>
             </div>
           </div>
         </div>
