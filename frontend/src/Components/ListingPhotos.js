@@ -8,7 +8,7 @@ const ListingPhotos = (props) => {
   const handleShow = () => setShow(true);
 
   const pics = props.photos.map((pic, idx) => (
-    <img src={pic} alt='images of home' width={463} height={300} key={idx} />
+    <img src={pic} alt='images of home' width={463} key={idx} />
   ))
   
   useEffect(() => {
