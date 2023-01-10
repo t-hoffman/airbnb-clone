@@ -10,8 +10,8 @@ import Chart from "Components/Chart";
 import ListingMap from "Components/ListingMap";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { Modal, Button } from "react-bootstrap";
+import ListingPhotos from "Components/ListingPhotos";
 
 const ListingPage = () => {
     const { id } = useParams();
@@ -32,10 +32,7 @@ const ListingPage = () => {
     useEffect(() => {
       getListing();
     }, [id]);
-    const [show, setShow] = useState(false);
-    
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  
       
     const loaded = () => {
       return (<>
@@ -52,7 +49,7 @@ const ListingPage = () => {
                 <div className="d-flex h-50">
                   <div className="small-column" style={{backgroundImage: `url(${listing.photos[3]})`}}></div>
                   <div className="small-column" style={{backgroundImage: `url(${listing.photos[4]})`}}>
-                    <button className="more-photos" onClick={handleShow}><i className="fas fa-grip-vertical"></i> &nbsp; Show all photos</button>
+                    <ListingPhotos photos={listing.photos}/>
                   </div>
                 </div>
               </div>
@@ -183,20 +180,20 @@ const ListingPage = () => {
         </div>
       </div>
       
-      <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
+      {/* <Modal show={show} onHide={handleClose}>
+    <Modal.Header closeButton>
+      <Modal.Title>Modal heading</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleClose}>
+        Close
+      </Button>
+      <Button variant="primary" onClick={handleClose}>
+        Save Changes
+      </Button>
+    </Modal.Footer>
+  </Modal> */}
     </>
       );
     };

@@ -1,41 +1,39 @@
-import React from "react";
-import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import { Modal, Button } from 'react-bootstrap'
+import { useState } from 'react'
 
-//Photos for listing page
+const ListingPhotos = (props) => {
+  const [show, setShow] = useState(false);
+    
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-const ImageCards = () => {
-  const [info, setInfo] = useState();
+  const pics = props.photos.map((pic, idx) => (
+    <img src={pic} alt='images of home' width={463} height={300}/>
+  ))
 
-  const { idx } = useParams();
+  return (
+    <>
+    <button className="more-photos" onClick={handleShow}><i className="fas fa-grip-vertical"></i> &nbsp; Show all photos</button>
+    <Modal show={show} onHide={handleClose}>
+    <Modal.Header closeButton>
+      <Modal.Title>Modal heading</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>{pics}</Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleClose}>
+        Close
+      </Button>
+      <Button variant="primary" onClick={handleClose}>
+        Save Changes
+      </Button>
+    </Modal.Footer>
+  </Modal>
+  </>
+  )
+}
 
-  const fetchInfo = async () => {
-    try {
-      const res = await fetch("");
-      const data = await res.json();
-      setInfo(); //Need to insert data into setInfo
-    } catch (error) {
-      console.error(error);
-    }
-  };
+export default ListingPhotos
 
-  useEffect(() => {
-    fetchInfo();
-  }, []);
+ 
 
-  const loaded = () => {
-    return (
-      <div key={idx} className="photo-container">
-        {info.photos}
-      </div>
-    );
-  };
 
-  const loading = () => {
-    <div>Loading. . .</div>;
-  };
-
-  return info ? loaded() : loading();
-};
-
-export default ImageCards;
