@@ -8,7 +8,7 @@ const DeleteListing = () => {
   
   const deleteById = async () => {
     try {
-      const deletedListing = await fetch(`/home/${id}`, { method: 'DELETE' });
+      const deletedListing = await fetch(`https://air-bnb-clone-backend.herokuapp.com/home/${id}`, { method: 'DELETE' });
       console.log(deletedListing)
     } catch (error) {
       console.error(error);

@@ -4,7 +4,7 @@ const Search = ({ query }) => {
   const [data, setData] = useState();
 
   const fetchData = async () => {
-    const resp = await fetch(`/home/location/${query}`);
+    const resp = await fetch(`https://air-bnb-clone-backend.herokuapp.com/home/location/${query}`);
     const json = await resp.json();
     setData(json);
   }
