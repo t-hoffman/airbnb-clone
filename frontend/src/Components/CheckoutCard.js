@@ -53,9 +53,13 @@ const CheckoutCard = (props) => {
         <div className="info-calendar">
           <div className="d-flex">
             <div className="w-50">
-              <span className="info-price">${props.price}</span>night
+              <span className="info-price">${parseInt(props.price).toLocaleString("en-US")}</span> night
             </div>
-            <div className="w-50 text-right"><a href="#reviews" style={{color:'#717171',fontSize:'10pt',fontFamily:'Cereal Header'}}>{props.review} Reviews</a></div>
+            <div className="w-50 text-right">
+              <a href="#reviews" style={{fontSize:'10pt',fontFamily:'Cereal Header',color:'#717171'}}>
+                {props.review} Reviews
+              </a>
+            </div>
           </div>
           <div className="info-checkin mt-4">
             <div className="d-flex" id="info-checkin" style={{borderBottom:'1px solid #cacaca'}}>

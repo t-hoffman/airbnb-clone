@@ -1,4 +1,4 @@
-import { Modal, Button } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import { useState } from 'react'
 
 const ListingPhotos = (props) => {
@@ -15,19 +15,11 @@ const ListingPhotos = (props) => {
     <>
     <button className="more-photos" onClick={handleShow}><i className="fas fa-grip-vertical"></i> &nbsp; Show all photos</button>
     <Modal show={show} onHide={handleClose}>
-    <Modal.Header closeButton>
-      <Modal.Title>Modal heading</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>{pics}</Modal.Body>
-    <Modal.Footer>
-      <Button variant="secondary" onClick={handleClose}>
-        Close
-      </Button>
-      <Button variant="primary" onClick={handleClose}>
-        Save Changes
-      </Button>
-    </Modal.Footer>
-  </Modal>
+      <Modal.Header closeButton>
+        <Modal.Title>All photos</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{pics}</Modal.Body>
+    </Modal>
   </>
   )
 }

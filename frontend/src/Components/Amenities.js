@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Amenities = () => {
   const allAmenities = [
