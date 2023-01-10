@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
 const ListingForm = ({ type }) => {
-  const { id } = useParams();
+  let { id } = useParams();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -67,24 +67,16 @@ const ListingForm = ({ type }) => {
           superBoolean = formCopy.host.isSuperHost === 'true' ? true : false,
           body = {...formCopy, photos: photosArr, host: { ...formCopy.host, isSuperHost: superBoolean }};
 
-    if (type === 'add') {
-      try {
-        const addListing = await fetch(`/home/`, 
-        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    try {
+      id = id ? id : '';
+      const method = type === 'add' ? 'POST' : 'PUT',
+            options = { method: method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
 
-        navigate('/manage/');
-      } catch (error) {
-        console.error(error)
-      }
-    } else if (type === 'edit') {
-      try {
-        const editListing = await fetch(`/home/${id}`, 
-        { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      const listing = await fetch(`/home/${id}`, options);
 
-        navigate('/manage/');
-      } catch (error) {
-        console.error(error)
-      }
+      navigate('/manage/');
+    } catch (error) {
+      console.error(error)
     }
   }
   

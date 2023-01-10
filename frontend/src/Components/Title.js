@@ -3,8 +3,6 @@ import * as Icons from 'react-icons/fa'
 import {FiShare} from 'react-icons/fi'
 import ListingPhotos from "./ListingPhotos";
 
-//Title of listing page (under header)
-
 const Title = (props) => {
   const { listing } = props,
         { name, stars, address } = props.listing,
@@ -43,7 +41,5 @@ const Title = (props) => {
     </>
   );
 };
-
-
 
 export default Title;
