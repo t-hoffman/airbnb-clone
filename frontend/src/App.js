@@ -3,8 +3,6 @@ import SearchBar from "Components/SearchBar";
 import LandingPage from "Pages/LandingPage";
 import ListingPage from "Pages/ListingPage";
 import ManageListings from "Pages/ManageListings";
-import { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode"
 import { Routes, Route } from "react-router-dom";
 import './Assets/index.css'
 import GoogleLogin from "Components/GoogleLogin";
