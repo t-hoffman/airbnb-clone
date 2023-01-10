@@ -29,7 +29,3 @@ const ListingPhotos = (props) => {
 }
 
 export default ListingPhotos
-
- 
-
-
