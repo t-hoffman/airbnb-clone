@@ -11,7 +11,7 @@ const Cards = () => {
   const fetchHouses = async () => {
     try {
       const ran1 = Math.floor(Math.random() * (18 - 1 +1)) + 1;
-      const res = await fetch(`https://air-bnb-clone-backend.herokuapp.com/home/limit/50/${ran1}`);
+      const res = await fetch(`/home/limit/50/${ran1}`);
       const data = await res.json();
       console.log(data)
       setInfo(data);
