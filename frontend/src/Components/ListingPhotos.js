@@ -1,5 +1,5 @@
 import { Modal } from 'react-bootstrap'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const ListingPhotos = (props) => {
   const [show, setShow] = useState(false);
@@ -10,6 +10,10 @@ const ListingPhotos = (props) => {
   const pics = props.photos.map((pic, idx) => (
     <img src={pic} alt='images of home' width={463} height={300} key={idx} />
   ))
+  
+  useEffect(() => {
+    setShow(props.sendShow);
+  }, [props.sendShow]);
 
   return (
     <>

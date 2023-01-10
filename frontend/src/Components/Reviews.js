@@ -7,7 +7,7 @@ const Reviews = ({ data }) => {
     
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const allReviews = data.reviews.map((review, idx) => <ReviewCard review={review} idx={idx} modal={true} />);
+  const allReviews = data.reviews.map((review, idx) => <ReviewCard review={review} idx={idx} modal={true} key={idx} />);
   if (data.reviews.length > 0) {
     return (
       <div className="list-info" id="reviews">
@@ -16,7 +16,7 @@ const Reviews = ({ data }) => {
         <Chart ratings={data.reviews} />
         <div className="d-block mt-5 w-100">
         {
-          data.reviews.map((review, idx) => <ReviewCard review={review} idx={idx} handleShow={handleShow} />)
+          data.reviews.map((review, idx) => <ReviewCard review={review} idx={idx} handleShow={handleShow} key={idx} />)
         }
         </div>
         <Modal show={show} onHide={handleClose}>
