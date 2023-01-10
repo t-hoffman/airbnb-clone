@@ -2,7 +2,7 @@ import React from "react";
 import SearchBar from "Components/SearchBar";
 import LandingPage from "Pages/LandingPage";
 import ListingPage from "Pages/ListingPage";
-import AddListing from "Pages/AddListing";
+import ManageListings from "Pages/ManageListings";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode"
 import './Assets/index.css'
@@ -58,7 +58,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/:id" element={<ListingPage />} />
-        <Route path="/add" element={<AddListing />} />
+        <Route path="/manage/*" element={<ManageListings />} />
       </Routes>
       </>
   );
