@@ -157,6 +157,7 @@ a, a:hover, a:visited, a:active, a:focus {
     margin: 25px 0;
     border-radius: 15px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .main-photo { 
