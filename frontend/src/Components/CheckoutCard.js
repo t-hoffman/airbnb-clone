@@ -6,6 +6,7 @@ import { differenceInDays } from 'date-fns';
 import * as Icons from 'react-icons/fa'
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 
+
 const CheckoutCard = (props) => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -62,10 +63,11 @@ const CheckoutCard = (props) => {
             </div>
           </div>
           <div className="info-checkin mt-4">
-            <div className="d-flex" id="info-checkin" style={{borderBottom:'1px solid #cacaca'}}>
+            <div className="d-flex" style={{borderBottom:'1px solid #cacaca'}}>
               <div style={{borderRight:'1px solid #cacaca'}}>
                 <span className="cereal-header" style={{fontSize:'8pt'}}>CHECK-IN</span><br />
                 <DatePicker
+                className='my-date-picker'
                    selected={startDate}
                   onChange={date => setStartDate(date)}
                   startDate={startDate}
@@ -75,6 +77,7 @@ const CheckoutCard = (props) => {
               <div>
                 <span className="cereal-header" style={{fontSize:'8pt'}}>CHECKOUT</span><br />
                 <DatePicker
+                className='my-date-picker'
                   selected={endDate}
                   onChange={date => setEndDate(date)}
                   startDate={startDate}
