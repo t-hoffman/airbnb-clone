@@ -6,46 +6,40 @@ const ListingForm = ({ type }) => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    title: '',
-    location: '',
-    lat: '',
-    long: '',
-    type: '',
-    numGuests: '',
+    userId: 1,
+    name: '',
+    address: '',
+    location: {
+        lat: '',
+        long: ''
+    },
+    numberOfGuests: '',
     rate: '',
-    rating: '',
+    roomType: '',
+    stars: '',
+    url: null,
     photos: '',
-    hostName: '',
-    about: '',
-    hostPhoto: '',
-    superHost: false
+    host: {
+        name: '',
+        about: '',
+        photo: '',
+        isSuperHost: false
+    }
   });
-
+  
   const fetchData = async () => {
-    const response = await fetch(`/home/${id}`);
-    const data = await response.json();
-    let photoString = '';
-    for (let photo of data.photos) {
-      photoString += photo + '\n';
+    const response = await fetch(`/home/${id}`),
+          data = await response.json();
+    let photosString = '';
+    for (let pic of data.photos) {
+      photosString += pic + '\n'
     }
+    data.photos = photosString;
+    delete data.reviews;
+    delete data._id;
+    delete data.__v;
 
-    const formData = {
-      title: data.name,
-      location: data.address,
-      lat: data.location.lat,
-      long: data.location.long,
-      type: data.roomType,
-      numGuests: data.numberOfGuests,
-      rate: data.rate,
-      rating: data.stars,
-      photos: photoString,
-      hostName: data.host.name,
-      about: data.host.about,
-      hostPhoto: data.host.photo,
-      superHost: data.host.isSuperHost
-    }
-
-    setForm(formData);
+    setForm(data);
   }
 
   useEffect(() => {
@@ -55,74 +49,45 @@ const ListingForm = ({ type }) => {
   }, []);
 
   const handleChange = (e) => {
-    setForm({...form, [e.target.id]: e.target.value})
+    const input = e.target.id;
+
+    if (input === 'lat' || input === 'long') {
+      setForm({...form, location: { ...form.location, [input]: e.target.value }});
+    } else if (input === 'hostName' || input === 'about' || input === 'hostPhoto' || input === 'isSuperHost') {
+      const hostInput = {hostName: 'name', hostPhoto: 'photo', isSuperHost: 'isSuperHost', about: 'about'}
+      setForm({...form, host: { ...form.host, [hostInput[input]]: e.target.value }});
+    } else {
+      setForm({...form, [input]: e.target.value});
+    }
   }
 
   const handleSubmit = async () => {
-    const splitPhotos = form.photos.split('\n'),
-          superHostBoolean = form.superHost === 'true' ? true : false;
-    
-    const photosArr = [];
-    if (splitPhotos && splitPhotos.length > 0) {
-      for (let photo of splitPhotos) {
-        if (photo) photosArr.push(photo)
-      }
-    }
+    const formCopy = {...form},
+          photosArr = formCopy.photos.split('\n').filter(pic => { if(pic) { return pic } }),
+          superBoolean = formCopy.host.isSuperHost === 'true' ? true : false,
+          body = {...formCopy, photos: photosArr, host: { ...formCopy.host, isSuperHost: superBoolean }};
 
-    const body = {
-      userId: 1,
-      name: form.title,
-      address: form.location,
-      location: {
-          lat: form.lat,
-          long: form.long
-      },
-      numberOfGuests: form.numGuests,
-      rate: form.rate,
-      roomType: form.type,
-      stars: form.rating,
-      url: null,
-      photos: photosArr,
-      host: {
-          name: form.hostName,
-          about: form.about,
-          photo: form.hostPhoto,
-          isSuperHost: superHostBoolean
-      }
-    }
     if (type === 'add') {
       try {
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(body)
-        }
-        const addListing = await fetch(`/home/`, options);
-        
+        const addListing = await fetch(`/home/`, 
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+
         navigate('/manage/');
       } catch (error) {
         console.error(error)
       }
     } else if (type === 'edit') {
       try {
-        const options = {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(body)
-        }
-        const editListing = await fetch(`/home/${id}`, options);
-        
+        const editListing = await fetch(`/home/${id}`, 
+        { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+
         navigate('/manage/');
       } catch (error) {
         console.error(error)
       }
     }
   }
-
+  
   return (
     <div className="abnb-list-container abnb-list-main-cont">
       <h1 className="listing-title" style={{fontSize:'20pt'}}>Add your listing</h1>
@@ -131,7 +96,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Title</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.title} id="title" placeholder="Oceanfront Laguna property ..." />
+              <input type="text" onChange={handleChange} value={form.name} id="name" placeholder="Oceanfront Laguna property ..." />
             </div>
           </div>
         </div>
@@ -139,7 +104,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Location</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.location} id="location" placeholder="Laguna Beach, California, United States" />
+              <input type="text" onChange={handleChange} value={form.address} id="address" placeholder="Laguna Beach, California, United States" />
             </div>
           </div>
         </div>
@@ -147,7 +112,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Latitude</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.lat} id="lat" />
+              <input type="text" onChange={handleChange} value={form.location.lat} id="lat" />
             </div>
           </div>
         </div>
@@ -155,7 +120,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Longitude</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.long} id="long" />
+              <input type="text" onChange={handleChange} value={form.location.long} id="long" />
             </div>
           </div>
         </div>
@@ -163,7 +128,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Listing type</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.type} id="type" placeholder="Entire home ..." />
+              <input type="text" onChange={handleChange} value={form.roomType} id="roomType" placeholder="Entire home ..." />
             </div>
           </div>
         </div>
@@ -173,7 +138,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Number of guests</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.numGuests} id="numGuests" placeholder="" />
+              <input type="text" onChange={handleChange} value={form.numberOfGuests} id="numberOfGuests" placeholder="" />
             </div>
           </div>
         </div>
@@ -189,7 +154,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title"><i className="fa fa-star"></i> &nbsp; Rating</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.rating} id="rating" placeholder="" />
+              <input type="text" onChange={handleChange} value={form.stars} id="stars" placeholder="" />
             </div>
           </div>
         </div>
@@ -210,7 +175,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Host name</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.hostName} id="hostName" placeholder="" />
+              <input type="text" onChange={handleChange} value={form.host.name} id="hostName" placeholder="" />
             </div>
           </div>
         </div>
@@ -219,7 +184,7 @@ const ListingForm = ({ type }) => {
         <div className="form-block w-100">
           <div className="d-flex input-surround">
             <div className="form-title">About</div>
-            <div className="form-input"><textarea onChange={handleChange} value={form.about} id="about" /></div>
+            <div className="form-input"><textarea onChange={handleChange} value={form.host.about} id="about" /></div>
           </div>
         </div>
       </div>
@@ -228,7 +193,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Photo</div>
             <div className="form-input">
-              <input type="text" onChange={handleChange} value={form.hostPhoto} id="hostPhoto" placeholder="" />
+              <input type="text" onChange={handleChange} value={form.host.photo} id="hostPhoto" placeholder="" />
             </div>
           </div>
         </div>
@@ -236,7 +201,7 @@ const ListingForm = ({ type }) => {
           <div className="d-flex input-surround">
             <div className="form-title">Super host:</div>
             <div className="form-input">
-              <select onChange={handleChange} value={form.superHost} id="superHost">
+              <select onChange={handleChange} value={form.host.isSuperHost} id="isSuperHost">
                 <option value={true}>Yes</option>
                 <option value={false}>No</option>
               </select>
