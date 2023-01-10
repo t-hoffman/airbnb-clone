@@ -135,7 +135,7 @@ const ListingPage = () => {
               }
               </div>
           </div>
-          <ListingMap adress={listing.address} lat={listing.location.lat} long={listing.location.long} />
+          <ListingMap address={listing.address} lat={listing.location.lat} long={listing.location.long} />
           <div className="list-info">
             <div className="d-flex">
               <div style={{width:'55%'}}>
