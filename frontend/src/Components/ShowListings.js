@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
 import { Carousel } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
@@ -42,7 +41,7 @@ const ShowListings = () => {
                       {
                         listing.photos.map((photo,pidx) => (
                           <Carousel.Item key={pidx}>
-                            <Link to={`/${listing._id}`}><img src={photo} alt={address} /></Link>
+                            <img src={photo} alt={address} />
                           </Carousel.Item>
                         ))
                       }

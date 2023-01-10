@@ -11,7 +11,6 @@ const ListingForm = ({ type }) => {
     lat: '',
     long: '',
     type: '',
-    desc: '',
     numGuests: '',
     rate: '',
     rating: '',
@@ -36,7 +35,6 @@ const ListingForm = ({ type }) => {
       lat: data.location.lat,
       long: data.location.long,
       type: data.roomType,
-      desc: '',
       numGuests: data.numberOfGuests,
       rate: data.rate,
       rating: data.stars,
@@ -170,14 +168,6 @@ const ListingForm = ({ type }) => {
           </div>
         </div>
       </div>
-      <div>
-        <div className="form-block w-100">
-          <div className="d-flex input-surround">
-            <div className="form-title">Description</div>
-            <div className="form-input"><textarea onChange={handleChange} value={form.desc} id="desc" className="abnb-desc" /></div>
-          </div>
-        </div>
-      </div>
       <div className="abnb-form">
         <div className="form-block">
           <div className="d-flex input-surround">
@@ -211,7 +201,7 @@ const ListingForm = ({ type }) => {
               Photos<br />
               <span style={{fontWeight:'normal',fontSize:'10pt'}}>URL to photos separated on each line.</span>
             </div>
-            <div className="form-input"><textarea onChange={handleChange} value={form.photos} id="photos" className="abnb-desc" /></div>
+            <div className="form-input"><textarea onChange={handleChange} value={form.photos} id="photos" /></div>
           </div>
         </div>
       </div>
@@ -229,7 +219,7 @@ const ListingForm = ({ type }) => {
         <div className="form-block w-100">
           <div className="d-flex input-surround">
             <div className="form-title">About</div>
-            <div className="form-input"><textarea onChange={handleChange} value={form.about} id="about" className="abnb-desc" /></div>
+            <div className="form-input"><textarea onChange={handleChange} value={form.about} id="about" /></div>
           </div>
         </div>
       </div>
