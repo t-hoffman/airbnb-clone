@@ -15,11 +15,11 @@ const ListingPhotos = (props) => {
     <>
     <button className="more-photos" onClick={handleShow}><i className="fas fa-grip-vertical"></i> &nbsp; Show all photos</button>
     <Modal show={show} onHide={handleClose}>
-    <Modal.Header closeButton>
-      <Modal.Title>All photos</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>{pics}</Modal.Body>
-  </Modal>
+      <Modal.Header closeButton>
+        <Modal.Title>All photos</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{pics}</Modal.Body>
+    </Modal>
   </>
   )
 }
