@@ -3,8 +3,7 @@ import { Button, Card, Dropdown }from 'react-bootstrap'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { differenceInDays } from 'date-fns';
-import * as Icons from 'react-icons/fa'
-import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import './CheckoutCard.css'
 
 
 const CheckoutCard = (props) => {
@@ -63,7 +62,7 @@ const CheckoutCard = (props) => {
             </div>
           </div>
           <div className="info-checkin mt-4">
-            <div className="d-flex" style={{borderBottom:'1px solid #cacaca'}}>
+            <div className="d-flex w-50 p-3" style={{borderBottom:'1px solid #cacaca'}}>
               <div style={{borderRight:'1px solid #cacaca'}}>
                 <span className="cereal-header" style={{fontSize:'8pt'}}>CHECK-IN</span><br />
                 <DatePicker
@@ -88,7 +87,6 @@ const CheckoutCard = (props) => {
             </div>
             
             <div style={{padding:'10px'}}>
-              {/* <div className="cereal-header" style={{fontSize:'8pt'}}>GUESTS</div><br/> */}
               <Dropdown>
       <Dropdown.Toggle variant="outline-dark" id="dropdown-basic" style={{width:'100%',fontSize:'8pt',fontWeight:'bold'}}>
        GUESTS
