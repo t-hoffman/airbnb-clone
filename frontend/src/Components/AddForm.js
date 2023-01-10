@@ -1,29 +1,78 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const AddListing = () => {
+const AddForm = ({ onAdd }) => {
   const [form, setForm] = useState({
-                            title: '',
-                            location: '',
-                            lat: '',
-                            long: '',
-                            type: '',
-                            desc: '',
-                            numGuests: '',
-                            rate: '',
-                            rating: '',
-                            photos: '',
-                            hostName: '',
-                            about: '',
-                            hostPhoto: '',
-                            superHost: false
-                          });
-  
+    title: '',
+    location: '',
+    lat: '',
+    long: '',
+    type: '',
+    desc: '',
+    numGuests: '',
+    rate: '',
+    rating: '',
+    photos: '',
+    hostName: '',
+    about: '',
+    hostPhoto: '',
+    superHost: false
+  });
+
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setForm({...form, [e.target.id]: e.target.value})
   }
 
-  const handleSubmit = () => {
-    console.log(form)
+  const handleSubmit = async () => {
+    const splitPhotos = form.photos.split('\n'),
+          superHostBoolean = form.superHost === 'true' ? true : false;
+    
+    const photosArr = [];
+    if (splitPhotos && splitPhotos.length > 0) {
+      for (let photo of splitPhotos) {
+        if (photo) photosArr.push(photo)
+      }
+    }
+
+    const body = {
+      userId: 1,
+      name: form.title,
+      address: form.location,
+      location: {
+          lat: form.lat,
+          long: form.long
+      },
+      numberOfGuests: form.numGuests,
+      rate: form.rate,
+      roomType: form.type,
+      stars: form.rating,
+      url: null,
+      photos: photosArr,
+      host: {
+          name: form.hostName,
+          about: form.about,
+          photo: form.hostPhoto,
+          isSuperHost: superHostBoolean
+      }
+    }
+
+    try {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+      const addListing = await fetch(`/home/`, options),
+            addedListing = await addListing.json();
+      
+      navigate('/manage/');
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -108,7 +157,10 @@ const AddListing = () => {
       <div>
         <div className="form-block w-100">
           <div className="d-flex input-surround">
-            <div className="form-title">Photos</div>
+            <div className="form-title">
+              Photos<br />
+              <span style={{fontWeight:'normal',fontSize:'10pt'}}>URL to photos separated on each line.</span>
+            </div>
             <div className="form-input"><textarea onChange={handleChange} value={form.photos} id="photos" className="abnb-desc" /></div>
           </div>
         </div>
@@ -159,4 +211,4 @@ const AddListing = () => {
   )
 }
 
-export default AddListing
+export default AddForm
