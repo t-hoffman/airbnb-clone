@@ -401,3 +401,6 @@ a, a:hover, a:visited {
     outline: none;
     border: none;
 }
+.dropdown-menu {
+    width: 100%;
+}
