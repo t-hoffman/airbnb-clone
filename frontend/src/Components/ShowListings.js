@@ -62,7 +62,7 @@ const ShowListings = () => {
                     What would you like to do?<br /><br />
                     <a href={`/manage/edit/${listing._id}`}>Edit</a><br />
                     <a href={`/${listing._id}`}>Go to listing</a><br />
-                    <a href={`/manage/delete/${listing.id}`}>Delete</a>
+                    <a href={`/manage/delete/${listing._id}`}>Delete</a>
                   </div>
                 </div>
               )
