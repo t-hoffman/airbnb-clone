@@ -6,8 +6,10 @@ const Layout = ({ children }) => {
   const divClass = pathname === '/' ? 'abnb-container' : 'abnb-list-container';
 
   return (
-    <div className={divClass}>
-      {children}
+    <>
+      <div className={divClass}>
+        {children}
+      </div>
       <div className="main-footer">
         © 2023 Airbnb, Inc. · Terms · Sitemap · Privacy · Your Privacy Choices <svg style={{margin:'4px 8px 0 8px'}} width="26" height="12" fill="none"><rect x="0.5" y="0.5" width="25" height="11" rx="5.5" fill="#fff"></rect><path d="M14 1h7a5 5 0 010 10H11l3-10z" fill="#06F"></path><path d="M4.5 6.5l1.774 1.774a.25.25 0 00.39-.049L9.5 3.5" stroke="#06F" style={{strokeLinecap:'round'}}></path><path d="M16.5 3.5L19 6m0 0l2.5 2.5M19 6l2.5-2.5M19 6l-2.5 2.5" stroke="#fff" style={{strokeLinecap:'round'}}></path><rect x="0.5" y="0.5" width="25" height="11" rx="5.5" stroke="#06F"></rect></svg> · Destinations
         <div className="d-flex position-absolute" style={{right:'50px'}}>
@@ -18,7 +20,7 @@ const Layout = ({ children }) => {
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',fill:'none',height:'16px',width:'16px',stroke:'currentcolor',strokeWidth:'4',overflow:'visible',margin:'3px 0 0 5px'}}><g fill="none"><path d="m4 20 11.2928932-11.29289322c.3905243-.39052429 1.0236893-.39052429 1.4142136 0l11.2928932 11.29289322"></path></g></svg>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
