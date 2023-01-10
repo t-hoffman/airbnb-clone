@@ -116,19 +116,7 @@ const ListingPage = () => {
               <h1 className="listing-title"><i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{listing.stars} · {listing.reviews.length} reviews</h1>
               <Chart ratings={listing.reviews} />
               <div className="d-block mt-5 w-100">
-              {
-                listing.reviews.map((review, idx) => (
-                  <Reviews 
-                    key={idx}
-                    idx={idx}
-                    name={review.author.name} 
-                    photo={review.author.photo} 
-                    date={review.date}
-                    comments={review.comments}
-                    ratings={review.ratings}
-                  />
-                ))
-              }
+                <Reviews data={listing.reviews} />
               </div>
           </div>
           <ListingMap address={listing.address} lat={listing.location.lat} long={listing.location.long} />

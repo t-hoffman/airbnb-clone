@@ -38,9 +38,9 @@ body,html {
 h1,h2,h3,h4,h5,h6 { font-family: 'Cereal Header' }
 .cereal-header { font-family: 'Cereal Header' }
 
-a, a:hover, a:visited, a:active {
+a, a:hover, a:visited, a:active, a:focus {
     font-family: 'Cereal Header';
-    color: black;
+    color: black !important;
     text-decoration: underline;
 }
 
