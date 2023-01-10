@@ -34,6 +34,8 @@ const ListingPage = () => {
   
       
     const loaded = () => {
+      const bedrooms = Math.floor((Math.random() * (6 - 1 +1))+1);
+      const whereSleep = new Array(bedrooms).fill('');
       return (<>
         <div className="abnb-list-container">
           <div className="abnb-list-main-cont" style={{fontSize: '11pt'}}>
@@ -62,7 +64,7 @@ const ListingPage = () => {
                     <div className="w-100">
                       <h1 className="listing-title">{listing.roomType} hosted by {listing.host.name}</h1>
                       {Math.floor((Math.random() * (10 - 1 +1))+1)} guests &nbsp; · &nbsp;
-                      {Math.floor((Math.random() * (6 - 1 +1))+1)} bedrooms &nbsp; · &nbsp;
+                      {bedrooms} bedrooms &nbsp; · &nbsp;
                       {Math.floor((Math.random() * (6 - 1 +1))+1)} beds &nbsp; · &nbsp;
                       {Math.floor((Math.random() * (6 - 1 +1))+1)} baths
                     </div>
@@ -92,22 +94,16 @@ const ListingPage = () => {
                 <Description />
                 <div className="list-info">
                   <h1 className="listing-title">Where you’ll sleep</h1>
-                  <div className="d-flex pt-3">
-                    <div className="abnb-whitebox mr-4 w-100">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M28 2a2 2 0 0 1 1.995 1.85L30 4l-.001 9.836 1.847 5.54a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232 1.845-5.537L2 4a2 2 0 0 1 1.697-1.977l.154-.018L4 2zm1.999 20H2l-.001 3.999h28zm-1.387-6H3.387l-1.333 4h27.891zM28 4H4l-.001 10H6v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h1.999zm-13 6H8v4h7zm9 0h-7v4h7z"></path></svg>
-                      <div className="pt-4"><b>Bedroom 1</b></div>
-                      <div className="pt-2" style={{fontSize:'11pt'}}>1 king bed</div>
-                    </div>
-                    <div className="abnb-whitebox mr-4 w-100">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M28 2a2 2 0 0 1 1.995 1.85L30 4l-.001 9.836 1.847 5.54a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232 1.845-5.537L2 4a2 2 0 0 1 1.697-1.977l.154-.018L4 2zm1.999 20H2l-.001 3.999h28zm-1.387-6H3.387l-1.333 4h27.891zM28 4H4l-.001 10H6v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h1.999zm-13 6H8v4h7zm9 0h-7v4h7z"></path></svg>
-                      <div className="pt-4"><b>Bedroom 2</b></div>
-                      <div className="pt-2" style={{fontSize:'11pt'}}>1 king bed</div>
-                    </div>
-                    <div className="abnb-whitebox mr-4 w-100">
-                      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M28 2a2 2 0 0 1 1.995 1.85L30 4l-.001 9.836 1.847 5.54a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232 1.845-5.537L2 4a2 2 0 0 1 1.697-1.977l.154-.018L4 2zm1.999 20H2l-.001 3.999h28zm-1.387-6H3.387l-1.333 4h27.891zM28 4H4l-.001 10H6v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h1.999zm-13 6H8v4h7zm9 0h-7v4h7z"></path></svg>
-                      <div className="pt-4"><b>Bedroom 3</b></div>
-                      <div className="pt-2" style={{fontSize:'11pt'}}>1 king bed</div>
-                    </div>
+                  <div className="d-block pt-3 w-100">
+                    {
+                      whereSleep.map((i,idx) => (
+                        <div className="abnb-whitebox d-inline-block mr-3 mb-3" style={{width:'30%'}}>
+                          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M28 2a2 2 0 0 1 1.995 1.85L30 4l-.001 9.836 1.847 5.54a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232 1.845-5.537L2 4a2 2 0 0 1 1.697-1.977l.154-.018L4 2zm1.999 20H2l-.001 3.999h28zm-1.387-6H3.387l-1.333 4h27.891zM28 4H4l-.001 10H6v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h1.999zm-13 6H8v4h7zm9 0h-7v4h7z"></path></svg>
+                          <div className="pt-4"><b>Bedroom {idx+1}</b></div>
+                          <div className="pt-2" style={{fontSize:'11pt'}}>1 king bed</div>
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
                 <Amenities />
