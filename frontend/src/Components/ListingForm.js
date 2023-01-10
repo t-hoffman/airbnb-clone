@@ -28,7 +28,7 @@ const ListingForm = ({ type }) => {
   });
   
   const fetchData = async () => {
-    const response = await fetch(`/home/${id}`),
+    const response = await fetch(`https://air-bnb-clone-backend.herokuapp.com/home/${id}`),
           data = await response.json();
     let photosString = '';
     for (let pic of data.photos) {

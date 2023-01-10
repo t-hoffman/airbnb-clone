@@ -16,7 +16,7 @@ const ListingPage = () => {
 
     const getListing = async () => {
       try {
-        const res = await fetch(`/home/${id}`);
+        const res = await fetch(`https://air-bnb-clone-backend.herokuapp.com/home/${id}`);
         const fetchedListing = await res.json();
         setListing(fetchedListing);
       } catch (error) {
@@ -32,7 +32,7 @@ const ListingPage = () => {
     const loaded = () => {
       const bedrooms = Math.floor((Math.random() * (6 - 1 +1))+1);
       const whereSleep = new Array(bedrooms).fill('');
-      
+
       return (
       <>
         <div className="abnb-list-main-cont" style={{fontSize: '11pt'}}>
