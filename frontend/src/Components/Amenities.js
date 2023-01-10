@@ -1,20 +1,8 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 
-const AmenitiesList = (props) => {
-  return (
-    <div className="d-inline-block w-50">
-      <div className="w-100 d-flex p-2">
-        {props.icon}
-        <span className="pl-3">{props.text}</span>
-      </div>
-    </div>
-  )
-}
-
 const Amenities = () => {
-  const amenities = [
+  const allAmenities = [
     ['Mountain view', <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M28 2a2 2 0 0 1 1.995 1.85L30 4v24a2 2 0 0 1-1.85 1.995L28 30H4a2 2 0 0 1-1.995-1.85L2 28V4a2 2 0 0 1 1.85-1.995L4 2zm-5.92 19.995L22 22H10l-.08-.005L4 27.916V28h24v-.085zM28 4H4v21.084l12-11.998 12 12zM16 15.915L11.915 20h8.17zM22 7a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path></svg>],
     ['Park view', <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M16 1a5 5 0 0 1 5 5 5 5 0 0 1 0 10 5.002 5.002 0 0 1-4 4.9v4.287C18.652 23.224 21.153 22 23.95 22a8.94 8.94 0 0 1 3.737.814l.313.15.002 2.328A6.963 6.963 0 0 0 23.95 24c-3.542 0-6.453 2.489-6.93 5.869l-.02.15-.006.098a1 1 0 0 1-.876.876L16 31a1 1 0 0 1-.974-.77l-.02-.124C14.635 26.623 11.615 24 7.972 24a6.963 6.963 0 0 0-3.97 1.234l.002-2.314c1.218-.6 2.57-.92 3.968-.92 2.818 0 5.358 1.24 7.028 3.224V20.9a5.002 5.002 0 0 1-3.995-4.683L11 16l-.217-.005a5 5 0 0 1 0-9.99L11 6l.005-.217A5 5 0 0 1 16 1zm2.864 14.1c-.811.567-1.799.9-2.864.9s-2.053-.333-2.864-.9l-.062.232a3 3 0 1 0 5.851.001zM11 8a3 3 0 1 0 .667 5.926l.234-.062A4.977 4.977 0 0 1 11 11c0-1.065.333-2.053.9-2.864l-.232-.062A3.013 3.013 0 0 0 11 8zm10 0c-.228 0-.45.025-.667.074l-.234.062C20.667 8.947 21 9.935 21 11a4.977 4.977 0 0 1-.9 2.864l.232.062A3 3 0 1 0 21 8zm-5 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-5a3 3 0 0 0-2.926 3.667l.062.234C13.947 6.333 14.935 6 16 6s2.053.333 2.864.9l.062-.232A3 3 0 0 0 16 3z"></path></svg>],
     ['Kitchen', <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M26 1a5 5 0 0 1 5 5c0 6.389-1.592 13.187-4 14.693V31h-2V20.694c-2.364-1.478-3.942-8.062-3.998-14.349L21 6l.005-.217A5 5 0 0 1 26 1zm-9 0v18.118c2.317.557 4 3.01 4 5.882 0 3.27-2.183 6-5 6s-5-2.73-5-6c0-2.872 1.683-5.326 4-5.882V1zM2 1h1c4.47 0 6.934 6.365 6.999 18.505L10 21H3.999L4 31H2zm14 20c-1.602 0-3 1.748-3 4s1.398 4 3 4 3-1.748 3-4-1.398-4-3-4zM4 3.239V19h3.995l-.017-.964-.027-.949C7.673 9.157 6.235 4.623 4.224 3.364l-.12-.07zm19.005 2.585L23 6l.002.31c.045 4.321 1.031 9.133 1.999 11.39V3.17a3.002 3.002 0 0 0-1.996 2.654zm3.996-2.653v14.526C27.99 15.387 29 10.4 29 6a3.001 3.001 0 0 0-2-2.829z"></path></svg>  ],
@@ -53,38 +41,64 @@ const Amenities = () => {
     ['Gym nearby', <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="M10 5a2 2 0 0 1 1.995 1.85L12 7v8h8V7a2 2 0 0 1 1.85-1.995L22 5h2a2 2 0 0 1 1.995 1.85L26 7v2h2a2 2 0 0 1 1.995 1.85L30 11v4h2v2h-2v4a2 2 0 0 1-1.85 1.995L28 23h-2v2a2 2 0 0 1-1.85 1.995L24 27h-2a2 2 0 0 1-1.995-1.85L20 25v-8h-8v8a2 2 0 0 1-1.85 1.995L10 27H8a2 2 0 0 1-1.995-1.85L6 25v-2H4a2 2 0 0 1-1.995-1.85L2 21v-4H0v-2h2v-4a2 2 0 0 1 1.85-1.995L4 9h2V7a2 2 0 0 1 1.85-1.995L8 5zm14 2h-2v18h2zM10 7H8v18h2zm18 4h-2v10h2zM6 11H4v10h2z"></path></svg>],
     ['Long term stays allowed', <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',height:'24px',width:'24px',fill:'currentcolor'}}><path d="m11.6667 0-.00095 1.666h8.667l.00055-1.666h2l-.00055 1.666 6.00065.00063c1.0543745 0 1.9181663.81587127 1.9945143 1.85073677l.0054857.14926323v15.91907c0 .4715696-.1664445.9258658-.4669028 1.2844692l-.1188904.1298308-8.7476886 8.7476953c-.3334303.3332526-.7723097.5367561-1.2381975.5778649l-.1758207.0077398h-12.91915c-2.68874373 0-4.88181754-2.1223321-4.99538046-4.7831124l-.00461954-.2168876v-21.66668c0-1.05436021.81587582-1.91815587 1.85073739-1.99450431l.14926261-.00548569 5.999-.00063.00095-1.666zm16.66605 11.666h-24.666v13.6673c0 1.5976581 1.24893332 2.9036593 2.82372864 2.9949072l.17627136.0050928 10.999-.0003.00095-5.6664c0-2.6887355 2.122362-4.8818171 4.7832071-4.9953804l.2168929-.0046196 5.66595-.0006zm-.081 8-5.58495.0006c-1.5977285 0-2.9037573 1.2489454-2.9950071 2.8237299l-.0050929.1762701-.00095 5.5864zm-18.586-16-5.999.00062v5.99938h24.666l.00065-5.99938-6.00065-.00062.00055 1.66733h-2l-.00055-1.66733h-8.667l.00095 1.66733h-2z"></path></svg>],  
   ];
+  const [amenities, setAmenities] = useState(null);
   
-  let shuffled = amenities
-    .map(value => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
-    shuffled = shuffled.splice(0, 10);
-  const modalAmenities = amenities.map(i => <AmenitiesList icon={i[1]} text={i[0]} />)
+  const randomAmenities = () => {
+    const rand = Math.floor(Math.random() * (allAmenities.length - 10 +1))+10;
+    const randAmenties = allAmenities.splice(0,rand);
+    let shuffled = randAmenties
+      .map(value => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+
+    setAmenities(shuffled)
+  }
+
+  useEffect(() => {
+    randomAmenities();
+  }, []);
+  
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  return (
-    <div className="list-info">
-      <h1 className="listing-title">What this place offers</h1>
-      <p className="pt-3"></p>
-      <div className="d-block w-100">
-      {
-        shuffled.map(icon => {
-          return <AmenitiesList icon={icon[1]} text={icon[0]} />
-        })
-      }
+  
+  if (amenities) {
+    const displayAmenities = [...amenities];
+    const modalAmenities = displayAmenities.map((i,idx) => <AmenitiesList icon={i[1]} text={i[0]} idx={idx} key={idx} />)
+  
+    return (
+      <div className="list-info">
+        <h1 className="listing-title">What this place offers</h1>
+        <p className="pt-3"></p>
+        <div className="d-block w-100">
+        {
+          displayAmenities.splice(0,10).map((icon,idx) => {
+            return <AmenitiesList icon={icon[1]} text={icon[0]} idx={idx} key={idx} />
+          })
+        }
+        </div>
+        <p>&nbsp;</p>
+        <button className="abnb-button" onClick={handleShow}>Show all {amenities.length} amenities</button>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Amenities</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{modalAmenities}</Modal.Body>
+        </Modal>
       </div>
-      <p>&nbsp;</p>
-      <button className="abnb-button" onClick={handleShow}>Show all {amenities.length} amenities</button>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Amenities</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{modalAmenities}</Modal.Body>
-      </Modal>
-    </div>
-  );
+    );
+  }
 };
+
+const AmenitiesList = (props) => {
+  return (
+    <div className="d-inline-block w-50" key={props.idx}>
+      <div className="w-100 d-flex p-2">
+        {props.icon}
+        <span className="pl-3">{props.text}</span>
+      </div>
+    </div>
+  )
+}
 
 export default Amenities;
