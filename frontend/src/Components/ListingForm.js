@@ -1,7 +1,10 @@
-import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AddForm = ({ onAdd }) => {
+const ListingForm = ({ type }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     title: '',
     location: '',
@@ -19,7 +22,39 @@ const AddForm = ({ onAdd }) => {
     superHost: false
   });
 
-  const navigate = useNavigate();
+  const fetchData = async () => {
+    const response = await fetch(`/home/${id}`);
+    const data = await response.json();
+    let photoString = '';
+    for (let photo of data.photos) {
+      photoString += photo + '\n';
+    }
+
+    const formData = {
+      title: data.name,
+      location: data.address,
+      lat: data.location.lat,
+      long: data.location.long,
+      type: data.roomType,
+      desc: '',
+      numGuests: data.numberOfGuests,
+      rate: data.rate,
+      rating: data.stars,
+      photos: photoString,
+      hostName: data.host.name,
+      about: data.host.about,
+      hostPhoto: data.host.photo,
+      superHost: data.host.isSuperHost
+    }
+
+    setForm(formData);
+  }
+
+  useEffect(() => {
+    if (id && type === 'edit') {
+      fetchData();
+    }
+  }, []);
 
   const handleChange = (e) => {
     setForm({...form, [e.target.id]: e.target.value})
@@ -57,21 +92,36 @@ const AddForm = ({ onAdd }) => {
           isSuperHost: superHostBoolean
       }
     }
-
-    try {
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
+    if (type === 'add') {
+      try {
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }
+        const addListing = await fetch(`/home/`, options);
+        
+        navigate('/manage/');
+      } catch (error) {
+        console.error(error)
       }
-      const addListing = await fetch(`/home/`, options),
-            addedListing = await addListing.json();
-      
-      navigate('/manage/');
-    } catch (error) {
-      console.error(error)
+    } else if (type === 'edit') {
+      try {
+        const options = {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }
+        const editListing = await fetch(`/home/${id}`, options);
+        
+        navigate('/manage/');
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 
@@ -211,4 +261,4 @@ const AddForm = ({ onAdd }) => {
   )
 }
 
-export default AddForm
+export default ListingForm
