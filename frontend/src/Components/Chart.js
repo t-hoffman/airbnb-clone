@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 //Mapping through data and pushing each rating customers left, into their own arrays
 const Chart = (props) => {
   const data = props.ratings
@@ -40,31 +38,26 @@ const Chart = (props) => {
   ]
   
   return (<>
-    {/* <div className='chart'> */}
     <div className="d-block mt-5">
-      {avgRating.map((item,idx) => (
-        // <div key={item.label} className="bar-container">
-        //   {console.log(item.label)}
-        //   <span className='label'>{item.label}</span>
-        //   <span className='bar' style={{width: `${item.value *20}%`}} />
-        //   <div>{item.value}</div>
-        // </div>
-        <div className="d-inline-block w-50" key={idx}>
-          <div className="d-flex mb-3" style={{paddingRight:'125px'}}>
-            <div className="w-100 d-flex align-items-end">{item.label}</div>
-            <div className="d-flex text-right">
-              <div className="d-flex">
-                <div className="w-100 d-flex align-items-center">
-                  <div className="rating-light">
-                    <div className="rating-dark" style={{width: `${item.value *20}%`}}></div>
+      {
+        avgRating.map((item,idx) => (
+          <div className="d-inline-block w-50" key={idx}>
+            <div className="d-flex mb-3" style={{paddingRight:'125px'}}>
+              <div className="w-100 d-flex align-items-end">{item.label}</div>
+              <div className="d-flex text-right">
+                <div className="d-flex">
+                  <div className="w-100 d-flex align-items-center">
+                    <div className="rating-light">
+                      <div className="rating-dark" style={{width: `${item.value *20}%`}}></div>
+                    </div>
                   </div>
+                  <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value !== 'NaN' ? item.value : '0.0'}</b></div>
                 </div>
-                <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value !== 'NaN' ? item.value : '0.0'}</b></div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
     </>
   )

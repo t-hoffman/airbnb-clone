@@ -26,7 +26,7 @@ const Cards = (props) => {
       const addSplit = house.address.split(','),
             address = `${addSplit[0]}, ${addSplit[1]}`,
             name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
-            photos = house.photos.splice(0,20),
+            photos = house.photos.splice(0,10),
             searchStyle = props.data ? {width: '23%', marginRight: '25px'} : {};
 
       return (
