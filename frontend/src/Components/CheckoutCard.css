@@ -1,0 +1,12 @@
+.my-date-picker {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.info-checkin button {
+  border: none;
+  outline: none;
+  text-align: left;
+  padding: 10px 5px;
+}
