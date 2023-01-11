@@ -6,8 +6,8 @@ const SearchBar = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
-  const divClass = pathname === '/' ? 'w-100 p-0' : 'abnb-1200',
-        rightPadding = pathname === '/' ? 'justify-content-end pr-5' : 'justify-content-end pr-0';
+  const divClass = pathname === '/' || pathname === '/omg' ? 'w-100 p-0' : 'abnb-1200',
+        rightPadding = pathname === '/' || pathname === '/omg' ? 'justify-content-end pr-5' : 'justify-content-end pr-0';
 
   const handleChange = (e) => { setQuery(e.target.value) }
   const handleClick  = (e) => { 

@@ -1,6 +1,6 @@
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import '../CssFiles/ListingMap.css'
+import '../CSS/ListingMap.css'
 
 const ListingMap = (props) => {
   const lat = props.lat ? props.lat : 0,

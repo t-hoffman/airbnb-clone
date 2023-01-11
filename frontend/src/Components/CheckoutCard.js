@@ -3,7 +3,7 @@ import { Button, Card, Dropdown }from 'react-bootstrap'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { differenceInDays } from 'date-fns';
-import '../CssFiles/CheckoutCard.css'
+import '../CSS/CheckoutCard.css'
 
 
 const CheckoutCard = (props) => {
@@ -21,7 +21,7 @@ const CheckoutCard = (props) => {
     
   //gets random cleaning fee generated, and gives a variable to calculate service fee
     const cleaningFee = Math.floor(Math.random() * (500 - 50 +1) + 50) + 1;
-    const serviceFee = .03;
+    const serviceFee = .10;
 
     useEffect(() => {
       

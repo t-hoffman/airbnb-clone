@@ -40,7 +40,8 @@ const Chart = (props) => {
   return (<>
     <div className="d-block mt-5">
       {
-        avgRating.map((item,idx) => (
+        avgRating.map((item,idx) => {
+          return item.value !== 'NaN' ? 
           <div className="d-inline-block w-50" key={idx}>
             <div className="d-flex mb-3" style={{paddingRight:'125px'}}>
               <div className="w-100 d-flex align-items-end">{item.label}</div>
@@ -55,8 +56,8 @@ const Chart = (props) => {
                 </div>
               </div>
             </div>
-          </div>
-        ))
+          </div> : '';
+        })
       }
     </div>
     </>

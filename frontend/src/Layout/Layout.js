@@ -4,7 +4,7 @@ import SearchBar from 'Components/SearchBar';
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation();
-  const divClass = pathname === '/' ? 'abnb-container' : 'abnb-list-container';
+  const divClass = pathname === '/' || pathname === '/omg' ? 'abnb-container' : 'abnb-list-container';
 
   return (
     <>
