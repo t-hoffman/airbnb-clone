@@ -21,7 +21,7 @@ const CheckoutCard = (props) => {
     
 
     const cleaningFee = Math.floor(Math.random() * (500 - 50 +1) + 50) + 1;
-    const serviceFee = .3;
+    const serviceFee = .03;
 
     useEffect(() => {
       const calculateNumberOfDays = () => {
