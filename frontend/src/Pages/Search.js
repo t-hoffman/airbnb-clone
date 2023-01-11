@@ -10,7 +10,9 @@ const Markers = (props) => {
 
   useEffect(() => {
     if (data) {
-      const location = [data[0].location.lat, data[0].location.long];
+      const lat = data[0].location.lat ? data[0].location.lat : 1,
+            long = data[0].location.long ? data[0].location.long : 1,
+            location = [lat, long];
       map.setView(location, map.getZoom());
     }
   }, [data]);
@@ -19,7 +21,9 @@ const Markers = (props) => {
     const allMarkers = data.map((home, idx) => {
 
       if (idx < 16) {
-        let coordinates = [home.location.lat, home.location.long];
+        let lat = home.location.lat ? home.location.lat : 1,
+            long = home.location.long ? home.location.long : 1,
+            coordinates = [lat, long];
         return (
           <Marker position={coordinates} key={idx}>
             <Popup>
@@ -86,7 +90,9 @@ const Search = (props) => {
         </span>
       )
     });
-    const location = data ? [data[0].location.lat, data[0].location.long] : '';
+    const lat = data[0].location.lat ? data[0].location.lat : 1,
+          long = data[0].location.long ? data[0].location.long : 1,
+          location = data ? [lat, long] : '';
     return (
       <div className="abnb-list-main-cont">
         <h1 className="listing-title">Search results</h1>
