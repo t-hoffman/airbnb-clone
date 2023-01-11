@@ -30,8 +30,9 @@ const ListingPage = () => {
   
       
     const loaded = () => {
-      const bedrooms = Math.floor((Math.random() * (6 - 1 +1))+1);
-      const whereSleep = new Array(bedrooms).fill('');
+      const bedrooms = Math.floor((Math.random() * (6 - 1 +1))+1),
+            whereSleep = new Array(bedrooms).fill(''),
+            hostMedal = listing.host.isSuperHost ? 'block' : 'none';
       
       return (
       <>
@@ -57,18 +58,22 @@ const ListingPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="list-info">
-                <div className="d-flex">
-                  <div className="pr-4">
-                    <FontAwesomeIcon icon={faMedal} style={{fontSize:'14pt'}} />
+              {
+                listing.host.isSuperHost ? (
+                  <div className="list-info">
+                    <div className="d-flex">
+                      <div className="pr-4">
+                        <FontAwesomeIcon icon={faMedal} style={{fontSize:'14pt',display:{hostMedal}}} />
+                      </div>
+                      <div className="w-100">
+                        <b>Fieldtrip is a Superhost
+                        </b><br />
+                        <span style={{fontSize:'10pt',color:'#717171'}}>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-100">
-                    <b>Fieldtrip is a Superhost
-                    </b><br />
-                    <span style={{fontSize:'10pt',color:'#717171'}}>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</span>
-                  </div>
-                </div>
-              </div>
+                ) : ''
+              }
               <div className="list-info"><img src="https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg" width="125px" style={{marginBottom:'20px'}} /><br />
                 Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.<br /><br />
                 <a href="#">Learn more</a>
