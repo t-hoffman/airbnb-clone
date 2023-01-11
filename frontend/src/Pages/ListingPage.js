@@ -30,8 +30,8 @@ const ListingPage = () => {
   
       
     const loaded = () => {
-      const bedrooms = Math.floor((Math.random() * (6 - 1 +1))+1);
-      const whereSleep = new Array(bedrooms).fill('');
+      const bedrooms = Math.floor((Math.random() * (6 - 1 +1))+1),
+            whereSleep = new Array(bedrooms).fill('');
       
       return (
       <>
