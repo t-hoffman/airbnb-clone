@@ -6,7 +6,7 @@ import Search from "Pages/Search";
 import Layout from "Layout/Layout";
 import NotFound from "Components/NotFound";
 import { Routes, Route } from "react-router-dom";
-import "./CssFiles/index.css";
+import "./CSS/index.css";
 
 export default function App() {
   return (

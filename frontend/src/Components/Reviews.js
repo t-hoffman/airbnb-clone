@@ -12,7 +12,7 @@ const Reviews = ({ data }) => {
     return (
       <div className="list-info" id="reviews">
         <h1 className="listing-title">
-        <i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{data.stars} {data.reviews.length} reviews</h1>
+        <i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{data.stars} - {data.reviews.length} reviews</h1>
         <Chart ratings={data.reviews} />
         <div className="d-block mt-5 w-100">
         {
@@ -35,7 +35,8 @@ const ReviewCard = (props) => {
   const { handleShow } = props;
 
   if (props.review.comments.length > 200 && !props.modal) {
-    comments = props.review.comments.slice(0, 200) + '...';
+    comments = comments.split('<br/>').join('\n');
+    comments = comments.slice(0, 200) + '...';
   }
 
   return (

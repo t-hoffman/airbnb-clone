@@ -49,7 +49,7 @@ const Cards = (props) => {
           <div className="pt-3 pb-5">
             <div className="d-flex">
               <div className="w-100"><b>{address}</b></div>
-              <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div>
+              {house.stars ? <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div> : ''}
             </div>
             <div style={{color:'#717171'}}>{name}<br />Feb 19 - 24</div>
             <b>${parseInt(house.rate).toLocaleString("en-US")}</b> night
