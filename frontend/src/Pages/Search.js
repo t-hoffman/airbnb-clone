@@ -82,21 +82,26 @@ const Search = (props) => {
       <div className="abnb-list-main-cont">
         <h1 className="listing-title">Search results</h1>
         <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
-        <div className="abnb-main-cont mt-5">
-          <div className="main-list">
-            <Cards data={data} /> 
-          </div>
-          <div className="text-center mt-3 pt-4" style={{borderTop:'1px solid #efefef'}}>
-            Pages: &nbsp; &nbsp; {pageList}
-          </div>
-          <div className="mt-5">
-            <MapContainer center={location} zoom={11} scrollWheelZoom={true}>
+        <div className="d-flex w-100 justify-content-center mt-5">
+          <div className="map-container">
+            <MapContainer center={location} zoom={10} scrollWheelZoom={true}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <Markers data={data} />
             </MapContainer>
+          </div>
+        </div>
+        <div className="abnb-main-cont mt-5">
+          <div className="text-center mb-3 pb-4" style={{borderBottom:'1px solid #efefef'}}>
+            Pages: &nbsp; &nbsp; {pageList}
+          </div>
+          <div className="main-list mt-5">
+            <Cards data={data} /> 
+          </div>
+          <div className="text-center mt-3 pt-4" style={{borderTop:'1px solid #efefef'}}>
+            Pages: &nbsp; &nbsp; {pageList}
           </div>
         </div>
       </div>

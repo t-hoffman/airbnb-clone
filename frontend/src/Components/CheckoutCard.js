@@ -146,7 +146,7 @@ const CheckoutCard = (props) => {
           <div className="mb-2">
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">${parseInt(props.price).toLocaleString("en-US")} x {nights} nights</a></div>
-              <div className="w-50 text-right">${amountOfStay.toLocaleString("en-US")}</div>
+              <div className="w-50 text-right">${Math.ceil(amountOfStay).toLocaleString("en-US")}</div>
             </div>
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">Cleaning fee</a></div>
