@@ -8,7 +8,7 @@ const ListingMap = (props) => {
         coordinates = [lat, long];
   
   return (
-    <div className="list-info">
+    <div className="list-info" id="where">
       <h2 className="listing-title">Location</h2>
       <div className="mb-4 mt-3" style={{fontSize:'13pt'}}>{props.address}</div>
       <MapContainer center={coordinates} zoom={13} scrollWheelZoom={false}>
