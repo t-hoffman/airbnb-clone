@@ -9,8 +9,9 @@ const Cards = (props) => {
 
   const fetchHouses = async () => {
     try {
-      const ran1 = Math.floor(Math.random() * (18 - 1 +1)) + 1;
-      const res = await fetch(`/home/limit?limit=50&page=${ran1}`);
+      const rand = [Math.floor(Math.random() * (18 - 1 +1)) + 1, 17];
+      const random = rand[Math.floor(Math.random() * (1 - 0 +1))]
+      const res = await fetch(`/home/limit?limit=50&page=${random}`);
       const data = await res.json();
 
       setInfo(data);
