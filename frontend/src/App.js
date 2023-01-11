@@ -14,13 +14,13 @@ export default function App() {
   
   return (
     <Layout>
-      <GoogleLogin />
       <SearchBar onSearch={setQuery} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/:id" element={<ListingPage />} />
+        <Route path="/listing/:id" element={<ListingPage />} />
         <Route path="/search" element={<Search query={query} />} />
         <Route path="/manage/*" element={<ManageListings />} />
+        <Route path="/*" element={<div>404 Not Found</div>} />
       </Routes>
     </Layout>
   );

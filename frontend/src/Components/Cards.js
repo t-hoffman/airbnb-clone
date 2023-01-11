@@ -39,7 +39,7 @@ const Cards = () => {
           {
             photos.map((photo,pidx) => (
               <Carousel.Item key={pidx}>
-                <Link to={`/${house._id}`}><img src={photo} alt={address} /></Link>
+                <Link to={`/listing/${house._id}`}><img src={photo} alt={address} /></Link>
               </Carousel.Item>
             ))
           }

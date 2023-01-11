@@ -3,9 +3,10 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import './ListingMap.css'
 
 const ListingMap = (props) => {
-  const coordinates =[ props.lat, props.long ]
-  console.log(coordinates)
-console.log(props)
+  const lat = props.lat ? props.lat : 0,
+        long = props.long ? props.long : 0,
+        coordinates = [lat, long];
+  
   return (
     <div className="list-info">
       <h2 className="listing-title">Location</h2>
