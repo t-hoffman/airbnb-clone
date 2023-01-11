@@ -12,7 +12,7 @@ const Reviews = ({ data }) => {
     return (
       <div className="list-info" id="reviews">
         <h1 className="listing-title">
-          <i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{data.stars} {data.reviews.length} reviews</h1>
+        <i className="fa fa-star" style={{fontSize:'11pt',marginRight:'10px'}}></i>{data.stars} {data.reviews.length} reviews</h1>
         <Chart ratings={data.reviews} />
         <div className="d-block mt-5 w-100">
         {
@@ -49,8 +49,7 @@ const ReviewCard = (props) => {
           <div>{comments}</div>
           {
             props.review.comments.length > 200 && !props.modal ? 
-              <a onClick={handleShow} style={{textDecoration:'underline',cursor:'pointer'}}>Show more</a> 
-              : ''
+              <a onClick={handleShow} style={{textDecoration:'underline',cursor:'pointer'}}>Show more</a> : ''
           }
         </div>
       </div>

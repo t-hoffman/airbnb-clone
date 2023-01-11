@@ -1,26 +1,24 @@
-import React, { useState } from "react";
-import SearchBar from "Components/SearchBar";
+import React from "react";
 import LandingPage from "Pages/LandingPage";
 import ListingPage from "Pages/ListingPage";
 import ManageListings from "Pages/ManageListings";
 import Search from "Pages/Search";
 import Layout from "Layout/Layout";
+import NotFound from "Components/NotFound";
 import { Routes, Route } from "react-router-dom";
-import "./Assets/index.css";
-import GoogleLogin from "Components/GoogleLogin";
+import "./CssFiles/index.css";
 
 export default function App() {
-  const [query, setQuery] = useState();
-  
   return (
     <Layout>
-      <SearchBar onSearch={setQuery} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/omg/" element={<LandingPage omg={true} />} />
         <Route path="/listing/:id" element={<ListingPage />} />
-        <Route path="/search" element={<Search query={query} />} />
+        <Route path="/search/:query" element={<Search />} />
+        <Route path="/search/:query/:page" element={<Search />} />
         <Route path="/manage/*" element={<ManageListings />} />
-        <Route path="/*" element={<div>404 Not Found</div>} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </Layout>
   );

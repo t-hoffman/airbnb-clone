@@ -1,78 +1,137 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 import Cards from 'Components/Cards';
-import { Carousel } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, useParams } from 'react-router-dom';
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
+import { Link } from 'react-router-dom';
 
-const Search = ({ query }) => {
+
+const Markers = (props) => {
+  const { data } = props;
+  const map = useMap();
+
+  useEffect(() => {
+    if (data) {
+      const location = [data[0].location.lat, data[0].location.long];
+      map.setView(location, map.getZoom());
+    }
+  }, [data]);
+
+  if (data) {
+    const allMarkers = data.map((home, idx) => {
+      console.log(home)
+      if (idx < 16) {
+        let coordinates = [home.location.lat, home.location.long];
+        return (
+          <Marker position={coordinates} key={idx}>
+            <Popup>
+              <Link to={`/listing/${home._id}`}><img style={{ width: '100%' }} src={home.photos[0]} key={idx} /></Link><br />
+              <h6>{home.name}</h6>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ marginRight: 'auto' }} >
+                  <div style={{ width: '60px' }}><i className="fa fa-star"></i> {home.stars}</div>
+                </div>
+                <div style={{ marginLeft: 'auto' }}>
+                  <span>${home.rate}</span>
+                </div>
+              </div>
+            </Popup>
+          </Marker>
+        )
+      }
+    })
+
+    return allMarkers;
+  }
+}
+
+const Search = (props) => {
+  const { query, page } = useParams();
   const [data, setData] = useState(null);
+  const [total, setTotal] = useState(null);
+  const pageNum = page ? page : 1,
+        pageLimit = 16,
+        navigate = useNavigate();
+
+  const countTotal = async () => {
+    const check = await fetch(`/home/location/${query}`),
+          checkJson = await check.json(),
+          totalCount = checkJson.length;
+
+    setTotal(totalCount);
+  }
 
   const fetchData = async () => {
-    const resp = await fetch(`/home/location/${query}`);
+    const resp = await fetch(`/home/location/${query}?limit=${pageLimit}&page=${pageNum}`);
     const json = await resp.json();
     setData(json);
   }
 
   useEffect(() => {
-    fetchData();
+    countTotal();
   }, [query]);
 
+  useEffect(() => {
+    fetchData();
+  }, [pageNum, query]);
+  
   const loaded = () => {
-    console.log(data)
+    const pageCount = Math.ceil(total/pageLimit);
+    const pageArr = new Array(pageCount).fill('');
+    const pageList = pageArr.map((i,idx) => { 
+      return (
+        <span key={idx}>
+          <a onClick={() => {navigate(`/search/${query}/${idx+1}`)}} style={{cursor:'pointer'}}>{idx+1}</a> 
+          {
+            idx !== pageArr.length-1 && <>&nbsp; | &nbsp;</>
+          }
+        </span>
+      )
+    });
+    const location = data ? [data[0].location.lat, data[0].location.long] : '';
     return (
       <div className="abnb-list-main-cont">
-        <h1 className="listing-title mb-0">Search results</h1>
+        <h1 className="listing-title">Search results</h1>
         <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
+        <div className="d-flex w-100 justify-content-center mt-5">
+          <div className="map-container">
+            <MapContainer center={location} zoom={10} scrollWheelZoom={true}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Markers data={data} />
+            </MapContainer>
+          </div>
+        </div>
         <div className="abnb-main-cont mt-5">
-          <div className="main-list">
-          {
-            data.map((house, idx) => {
-              const addSplit = house.address.split(','),
-              address = `${addSplit[0]}, ${addSplit[1]}`,
-              name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
-              photos = house.photos.splice(0,20);
-              return (
-                <div className="abnb-card" key={idx}>
-                  <Carousel indicators={false} 
-                            interval={null} 
-                            variant="dark" 
-                            prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
-                            nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
-                  fade>
-                  {
-                    photos.map((photo,pidx) => (
-                      <Carousel.Item key={pidx}>
-                        <Link to={`/listing/${house._id}`}><img src={photo} alt={address} /></Link>
-                      </Carousel.Item>
-                    ))
-                  }
-                  </Carousel>
-                  
-                  <div className="pt-3 pb-5">
-                    <div className="d-flex">
-                      <div className="w-100"><b>{address}</b></div>
-                      <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div>
-                    </div>
-                    <div style={{color:'#717171'}}>{name}<br />Feb 19 - 24</div>
-                    <b>${parseInt(house.rate).toLocaleString("en-US")}</b> night
-                  </div>
-                </div>
-              )
-            })
-          }  
+          <div className="text-center mb-3 pb-4" style={{borderBottom:'1px solid #efefef'}}>
+            Pages: &nbsp; &nbsp; {pageList}
+          </div>
+          <div className="main-list mt-5">
+            <Cards data={data} /> 
+          </div>
+          <div className="text-center mt-3 pt-4" style={{borderTop:'1px solid #efefef'}}>
+            Pages: &nbsp; &nbsp; {pageList}
           </div>
         </div>
       </div>
     )
   }
 
-  if (data) {
+  if (data && data.length > 0 && total) {
     return loaded();
   } else if (data && data.length === 0) {
-    return <h1 className="listing-title">No results</h1>
+    return (
+      <div className="abnb-list-main-cont text-align-center">
+        <h1 className="listing-title">Sorry, there are no results.  Please try again.</h1>
+      </div>
+    )
   } else {
-    return <h1 className="listing-title">Loading ...</h1>
+    return (
+      <div className="abnb-list-main-cont text-align-center">
+        <h1 className="listing-title">Loading ...</h1>
+      </div>
+    )
   }
 }
 

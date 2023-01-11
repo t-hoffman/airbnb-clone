@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const Cards = () => {
+const Cards = (props) => {
   const [info, setInfo] = useState();
 
-  
   const fetchHouses = async () => {
     try {
-      const ran1 = Math.floor(Math.random() * (18 - 1 +1)) + 1;
-      const res = await fetch(`/home/limit?limit=50&page=${ran1}`);
+      const rand = [Math.floor(Math.random() * (18 - 1 +1)) + 1, 17];
+      const random = props.omg ? 17 : rand[Math.floor(Math.random() * (1 - 0 +1))];
+      const res = await fetch(`/home/limit?limit=50&page=${random}`);
       const data = await res.json();
-      console.log(data)
+
       setInfo(data);
       
     } catch (error) {
@@ -26,25 +26,26 @@ const Cards = () => {
       const addSplit = house.address.split(','),
             address = `${addSplit[0]}, ${addSplit[1]}`,
             name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
-            photos = house.photos.splice(0,20);
-            
+            photos = house.photos.splice(0,10),
+            searchStyle = props.data ? {width: '23%', marginRight: '25px'} : {};
+
       return (
-        <div className="abnb-card" key={idx}>
-          <Carousel indicators={false} 
-                    interval={null} 
-                    variant="dark" 
-                    prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
-                    nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
-          fade>
-          {
-            photos.map((photo,pidx) => (
-              <Carousel.Item key={pidx}>
-                <Link to={`/listing/${house._id}`}><img src={photo} alt={address} /></Link>
-              </Carousel.Item>
-            ))
-          }
-          </Carousel>
+        <div className="abnb-card" style={searchStyle} key={idx}>
           
+            <Carousel indicators={false} 
+                      interval={null} 
+                      variant="dark" 
+                      prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
+                      nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
+            fade>
+            {
+              photos.map((photo,pidx) => (
+                <Carousel.Item key={pidx}>
+                  <Link to={`/listing/${house._id}`}><img src={photo} alt={house.address} key={house._id+pidx} /></Link>
+                </Carousel.Item>
+              ))
+            }
+            </Carousel>
           <div className="pt-3 pb-5">
             <div className="d-flex">
               <div className="w-100"><b>{address}</b></div>
@@ -59,8 +60,8 @@ const Cards = () => {
   };
 
   useEffect(() => {
-    fetchHouses();
-  }, []);
+    props.data ? setInfo(props.data) : fetchHouses();
+  }, [props.data]);
 
   const loading = () => {
     return <h2>Loading. . .</h2>;

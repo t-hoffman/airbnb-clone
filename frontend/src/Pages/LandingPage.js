@@ -1,8 +1,8 @@
 import React from 'react'
 import Cards from 'Components/Cards'
-import Amenities from 'Components/Amenities'
 
-const LandingPage = () => {
+
+const LandingPage = (props) => {
   return (
     <>
       <div className="abnb-icons">
@@ -19,7 +19,7 @@ const LandingPage = () => {
       </div>
       <div className="abnb-main-cont">
         <div className="main-list">
-          <Cards />
+          <Cards omg={props.omg} />
         </div>
       </div>
     </>
