@@ -28,23 +28,23 @@ const Cards = (props) => {
             photos = house.photos.splice(0,20),
             searchStyle = props.data ? {width: '23%', marginRight: '25px'} : {};
 
-            return (
+      return (
         <div className="abnb-card" style={searchStyle} key={idx}>
-          <Carousel indicators={false} 
-                    interval={null} 
-                    variant="dark" 
-                    prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
-                    nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
-          fade>
-          {
-            photos.map((photo,pidx) => (
-              <Carousel.Item key={pidx}>
-                <Link to={`/listing/${house._id}`}><img src={photo} alt={address} /></Link>
-              </Carousel.Item>
-            ))
-          }
-          </Carousel>
           
+            <Carousel indicators={false} 
+                      interval={null} 
+                      variant="dark" 
+                      prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
+                      nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
+            fade>
+            {
+              photos.map((photo,pidx) => (
+                <Carousel.Item key={pidx}>
+                  <Link to={`/listing/${house._id}`}><img src={photo} alt={house.address} key={house._id+pidx} /></Link>
+                </Carousel.Item>
+              ))
+            }
+            </Carousel>
           <div className="pt-3 pb-5">
             <div className="d-flex">
               <div className="w-100"><b>{address}</b></div>
