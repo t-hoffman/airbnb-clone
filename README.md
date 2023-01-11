@@ -12,7 +12,7 @@
 
 - <img src="Project-3-Frontend/frontend/src/images/img1.png" style="display: inline-block; margin: 0 auto; max-width: 150px"/>
 
-- <img src="src/images/im2.png" style="display: inline-block; margin: 0 auto; max-width: 150px"/>
+- <img src="src/images/im2.png" alt="Listing Page" style="display: inline-block; margin: 0 auto; max-width: 150px"/>
 
 - <img src="/Users/a.cheer/sei/projects/Airbnb-Clone/Project-3-Frontend/frontend/src/images/img3.png" style="display: inline-block; margin: 0 auto; max-width: 150px"/>
 
