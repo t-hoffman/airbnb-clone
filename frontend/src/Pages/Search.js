@@ -20,7 +20,7 @@ const Search = () => {
     console.log(data)
     return (
       <div className="abnb-list-main-cont">
-        <h1 className="listing-title mb-0">Search results</h1>
+        <h1 className="listing-title">Search results</h1>
         <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
         <div className="abnb-main-cont mt-5">
           <div className="main-list">

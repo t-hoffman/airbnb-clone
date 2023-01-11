@@ -12,7 +12,6 @@ import GoogleLogin from "Components/GoogleLogin";
 export default function App() {
   return (
     <Layout>
-      <SearchBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/listing/:id" element={<ListingPage />} />

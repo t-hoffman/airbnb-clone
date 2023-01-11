@@ -141,6 +141,12 @@ a, a:hover, a:visited, a:active, a:focus {
     text-align: center;
 }
 
+.abnb-card {
+    width: 300px;
+    margin-right: 15px;
+    text-align: left;
+}
+
 /* .main-list div { margin: 15px } */
 /* .main-list img { border-radius: 15px; width: 300px; height: 265px; } */
 
@@ -306,12 +312,6 @@ a, a:hover, a:visited, a:active, a:focus {
     display: flex;
     font-size: 10pt;
     z-index: 100;
-}
-
-.abnb-card {
-    width: 300px;
-    margin-right: 15px;
-    text-align: left;
 }
 
 .carousel, .carousel-item img {
