@@ -38,11 +38,8 @@ const Chart = (props) => {
     {label:'Accuracy', value:accuracyRating.toFixed(1)},
     {label:'Location', value:locationRating.toFixed(1)},
     {label:'Value' , value: valueRating.toFixed(1)}
-]
-console.log(avgRating)
-    console.log(cleanlinessRating)
+  ]
   
-  console.log(cleanliness)
   return (<>
     {/* <div className='chart'> */}
     <div className="d-block mt-5">

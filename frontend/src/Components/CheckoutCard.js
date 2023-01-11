@@ -21,7 +21,7 @@ const CheckoutCard = (props) => {
     
 
     const cleaningFee = Math.floor(Math.random() * (500 - 50 +1) + 50) + 1;
-    const serviceFee = .03;
+    const serviceFee = .3;
 
     useEffect(() => {
       const calculateNumberOfDays = () => {
@@ -62,8 +62,8 @@ const CheckoutCard = (props) => {
             </div>
           </div>
           <div className="info-checkin mt-4">
-            <div className="d-flex w-50 p-3" style={{borderBottom:'1px solid #cacaca'}}>
-              <div style={{borderRight:'1px solid #cacaca'}}>
+            <div className="d-flex w-100" style={{borderBottom:'1px solid #cacaca'}}>
+              <div className="p-3" style={{borderRight:'1px solid #cacaca'}}>
                 <span className="cereal-header" style={{fontSize:'8pt'}}>CHECK-IN</span><br />
                 <DatePicker
                 className='my-date-picker'
@@ -73,7 +73,7 @@ const CheckoutCard = (props) => {
                    endDate={endDate}
                   placeholderText="Start date" />
               </div>
-              <div>
+              <div className="p-3">
                 <span className="cereal-header" style={{fontSize:'8pt'}}>CHECKOUT</span><br />
                 <DatePicker
                 className='my-date-picker'
@@ -146,21 +146,21 @@ const CheckoutCard = (props) => {
           <div className="mb-2">
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">${parseInt(props.price).toLocaleString("en-US")} x {nights} nights</a></div>
-              <div className="w-50 text-right">${amountOfStay}</div>
+              <div className="w-50 text-right">${amountOfStay.toLocaleString("en-US")}</div>
             </div>
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">Cleaning fee</a></div>
-              <div className="w-50 text-right">${cleaningFee}</div>
+              <div className="w-50 text-right">${cleaningFee.toLocaleString("en-US")}</div>
             </div>
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">Service fee</a></div>
-              <div className="w-50 text-right">${amountOfService}</div>
+              <div className="w-50 text-right">${Math.ceil(amountOfService).toLocaleString("en-US")}</div>
             </div>
           </div>
           <div className="pt-3 pb-3" style={{borderTop:'1.5px solid #efefef'}}>
             <div className="d-flex">
               <div className="w-50"><span className="cereal-header">Total before taxes</span></div>
-              <div className="w-50 text-right"><span className="cereal-header">${total}</span></div>
+              <div className="w-50 text-right"><span className="cereal-header">${Math.ceil(total).toLocaleString("en-US")}</span></div>
             </div>
           </div>
           </> )}
