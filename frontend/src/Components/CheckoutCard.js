@@ -142,13 +142,13 @@ const CheckoutCard = (props) => {
             </div>
           </div>
           <div>
-            <button className="abnb-reserve-btn">Reserve</button>
-          </div>
-          <div className="text-center p-2" style={{fontSize:'10.8pt'}}>
-            You won't be charged yet
+            <button className="abnb-reserve-btn mb-2">Reserve</button>
           </div>
           {nights && (
             <>
+          <div className="text-center p-2 pb-3" style={{fontSize:'10.8pt'}}>
+            You won't be charged yet
+          </div>
           <div className="mb-2">
             <div className="d-flex">
               <div className="w-50 pb-3"><a href="#">${parseInt(props.price).toLocaleString("en-US")} x {nights} nights</a></div>
