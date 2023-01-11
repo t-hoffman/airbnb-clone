@@ -10,11 +10,11 @@
 
 - Our app is the perfect way to find and book vacation rentals, apartments, and unique homes around the world. Our app allows you to view photos and videos of the rental, and book the rental. You can also leave reviews and ratings of your experience to help other users make more informed decisions. Want to take your house off the site? Have no fear, the delete option is here! Users can remove there house if they would like. We adhere to the Airbnb policies, including their cancellation policy, so you can rest assured your rental experience will be a positive one.
 
-- <img src="src/images/img1.png" />
+- <img src="src/images/img1.png" style="display: inline-block; margin: 0 auto; max-width: 150px"/>
 
-- <img src="src/images/im2.png" />
+- <img src="src/images/im2.png" style="display: inline-block; margin: 0 auto; max-width: 150px"/>
 
-- <img src="src/images/img3.png" />
+- <img src="src/images/img3.png" style="display: inline-block; margin: 0 auto; max-width: 150px"/>
 
 ## Technologies Used
 
