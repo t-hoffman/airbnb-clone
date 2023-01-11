@@ -10,15 +10,13 @@ import "./Assets/index.css";
 import GoogleLogin from "Components/GoogleLogin";
 
 export default function App() {
-  const [query, setQuery] = useState();
-  
   return (
     <Layout>
-      <SearchBar onSearch={setQuery} />
+      <SearchBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/listing/:id" element={<ListingPage />} />
-        <Route path="/search" element={<Search query={query} />} />
+        <Route path="/search/:query" element={<Search />} />
         <Route path="/manage/*" element={<ManageListings />} />
         <Route path="/*" element={<div>404 Not Found</div>} />
       </Routes>

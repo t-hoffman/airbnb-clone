@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const Cards = () => {
+const Cards = (props) => {
   const [info, setInfo] = useState();
 
   
@@ -59,8 +59,8 @@ const Cards = () => {
   };
 
   useEffect(() => {
-    fetchHouses();
-  }, []);
+    props.data ? setInfo(props.data) : fetchHouses();
+  }, [props.data]);
 
   const loading = () => {
     return <h2>Loading. . .</h2>;
