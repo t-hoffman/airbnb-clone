@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom';
 
-
 const Markers = (props) => {
   const { data } = props;
   const map = useMap();
@@ -18,7 +17,7 @@ const Markers = (props) => {
 
   if (data) {
     const allMarkers = data.map((home, idx) => {
-      console.log(home)
+
       if (idx < 16) {
         let coordinates = [home.location.lat, home.location.long];
         return (
