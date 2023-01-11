@@ -16,6 +16,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/listing/:id" element={<ListingPage />} />
         <Route path="/search/:query" element={<Search />} />
+        <Route path="/search/:query/:page" element={<Search />} />
         <Route path="/manage/*" element={<ManageListings />} />
         <Route path="/*" element={<div>404 Not Found</div>} />
       </Routes>

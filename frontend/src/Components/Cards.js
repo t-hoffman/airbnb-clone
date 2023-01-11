@@ -12,7 +12,7 @@ const Cards = (props) => {
       const ran1 = Math.floor(Math.random() * (18 - 1 +1)) + 1;
       const res = await fetch(`/home/limit?limit=50&page=${ran1}`);
       const data = await res.json();
-      console.log(data)
+
       setInfo(data);
       
     } catch (error) {
