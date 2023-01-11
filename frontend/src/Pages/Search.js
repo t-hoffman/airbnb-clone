@@ -17,17 +17,20 @@ const Markers = (props) => {
 
   if (data) {
     const allMarkers = data.map((home, idx) => {
-      if (idx < 20) {
+      if (idx < 16) {
         let coordinates = [home.location.lat, home.location.long];
         return (
-          <Marker key={idx} position={coordinates} >
-            <Popup><Link to={`/listing/${home._id}`}><img style={{ width: '100%' }} src={home.photos[0]} /></Link>
-              <br />
-              {home.name}</Popup>
+          <Marker position={coordinates} key={idx}>
+            <Popup>
+              <Link to={`/listing/${home._id}`}><img style={{ width: '100%' }} src={home.photos[0]} key={idx} /></Link><br />
+              {home.name}
+            </Popup>
           </Marker>
         )
       }
     })
+
+    return allMarkers;
   }
 }
 
@@ -35,18 +38,17 @@ const Search = (props) => {
   const { query, page } = useParams();
   const [data, setData] = useState(null);
   const [total, setTotal] = useState(null);
-  const pageNum = page ? page : 1;
-  const pageLimit = 16;
-  const navigate = useNavigate();
+  const pageNum = page ? page : 1,
+        pageLimit = 16,
+        navigate = useNavigate();
 
   const countTotal = async () => {
-    const check = await fetch(`/home/location/${query}`);
-    const checkJson = await check.json();
-    const totalCount = checkJson.length;
-    
+    const check = await fetch(`/home/location/${query}`),
+          checkJson = await check.json(),
+          totalCount = checkJson.length;
+
     setTotal(totalCount);
   }
-  const [multipleMarkers, setMutipleMarkers] = useState(null)
 
   const fetchData = async () => {
     const resp = await fetch(`/home/location/${query}?limit=${pageLimit}&page=${pageNum}`);
@@ -63,17 +65,16 @@ const Search = (props) => {
   }, [pageNum, query]);
   
   const loaded = () => {
-
     const pageCount = Math.ceil(total/pageLimit);
     const pageArr = new Array(pageCount).fill('');
     const pageList = pageArr.map((i,idx) => { 
       return (
-        <>
-          <a onClick={() => {navigate(`/search/${query}/${idx+1}`)}} key={idx} style={{cursor:'pointer'}}>{idx+1}</a> 
+        <span key={idx}>
+          <a onClick={() => {navigate(`/search/${query}/${idx+1}`)}} style={{cursor:'pointer'}}>{idx+1}</a> 
           {
             idx !== pageArr.length-1 && <>&nbsp; | &nbsp;</>
           }
-        </>
+        </span>
       )
     });
     const location = data ? [data[0].location.lat, data[0].location.long] : '';
@@ -89,13 +90,12 @@ const Search = (props) => {
             Pages: &nbsp; &nbsp; {pageList}
           </div>
           <div className="mt-5">
-            <MapContainer center={location} zoom={10} scrollWheelZoom={true}>
+            <MapContainer center={location} zoom={11} scrollWheelZoom={true}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <Markers data={data} />
-
             </MapContainer>
           </div>
         </div>
