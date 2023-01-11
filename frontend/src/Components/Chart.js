@@ -1,6 +1,5 @@
 import React from 'react'
-// import ChartBar from './ChartBar'
-import './Chart.css'
+
 
 
 //Mapping through data and pushing each rating customers left, into their own arrays
