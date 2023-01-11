@@ -13,6 +13,7 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/omg/" element={<LandingPage omg={true} />} />
         <Route path="/listing/:id" element={<ListingPage />} />
         <Route path="/search/:query" element={<Search />} />
         <Route path="/search/:query/:page" element={<Search />} />
