@@ -93,7 +93,7 @@ const Search = (props) => {
         <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
         <div className="d-flex w-100 justify-content-center mt-5">
           <div className="map-container">
-            <MapContainer center={location} zoom={10} scrollWheelZoom={true}>
+            <MapContainer center={location} zoom={10} scrollWheelZoom={false}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
