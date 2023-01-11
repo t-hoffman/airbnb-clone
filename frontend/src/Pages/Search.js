@@ -79,7 +79,7 @@ const Search = (props) => {
     const pageList = pageArr.map((i,idx) => { 
       return (
         <span key={idx}>
-          <a onClick={() => {navigate(`/search/${query}/${idx+1}`)}} style={{cursor:'pointer'}}>{idx+1}</a> 
+          <a onClick={() => {navigate(`/search/${query}/${idx+1}`); window.scrollTo({top: 100, bottom: 0, behavior: 'smooth'})}} style={{cursor:'pointer'}}>{idx+1}</a> 
           {
             idx !== pageArr.length-1 && <>&nbsp; | &nbsp;</>
           }
@@ -102,7 +102,7 @@ const Search = (props) => {
             </MapContainer>
           </div>
         </div>
-        <div className="abnb-main-cont mt-5">
+        <div className="abnb-main-cont mt-5" id="results">
           <div className="text-center mb-3 pb-4" style={{borderBottom:'1px solid #efefef'}}>
             Pages: &nbsp; &nbsp; {pageList}
           </div>
