@@ -17,7 +17,7 @@ const Title = (props) => {
         <div className="w-100" style={{fontSize:'12pt'}}>
           <h1 className="listing-title" style={{fontSize:'20pt'}}>{name}</h1>
           <Icons.FaStar size={16} /> &nbsp; <b>{stars} &nbsp; · &nbsp;</b> 
-          <a href="#reviews">{reviews} reviews</a> &nbsp; &nbsp; 
+          {reviews ? <><a href="#reviews">{reviews} reviews</a> &nbsp; &nbsp;</> : ''}
           <a href="#where">{address}</a>
         </div>
         <div className="text-right"><FiShare /> &nbsp; <a href="#">Share</a> &nbsp; &nbsp;</div>
