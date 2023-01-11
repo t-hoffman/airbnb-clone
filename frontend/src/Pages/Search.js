@@ -1,8 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import Cards from 'Components/Cards';
 import { useNavigate, useParams } from 'react-router-dom';
-import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom';
+
+const Markers = (props) => {
+  const { data } = props;
+  const map = useMap();
+
+  useEffect(() => {
+    if (data) {
+      const location = [data[0].location.lat, data[0].location.long];
+      map.setView(location, map.getZoom());
+    }
+  }, [data]);
+
+  if (data) {
+    const allMarkers = data.map((home, idx) => {
+      if (idx < 20) {
+        let coordinates = [home.location.lat, home.location.long];
+        return (
+          <Marker key={idx} position={coordinates} >
+            <Popup><Link to={`/listing/${home._id}`}><img style={{ width: '100%' }} src={home.photos[0]} /></Link>
+              <br />
+              {home.name}</Popup>
+          </Marker>
+        )
+      }
+    })
+  }
+}
 
 const Search = (props) => {
   const { query, page } = useParams();
@@ -27,36 +54,17 @@ const Search = (props) => {
     setData(json);
   }
 
-  const getMarkers = () => {
-    if (data) {
-      const allMarkers = data.map((home, idx) => {
-        if (idx < 20) {
-          let coordinates = [home.location.lat, home.location.long];
-          return (<Marker key={idx} position={coordinates} >
-            <Popup><Link to={`/listing/${home._id}`}><img style={{ width: '100%' }} src={home.photos[0]} /></Link>
-              <br />
-              {home.name}</Popup>
-          </Marker>)
-
-        }
-      })
-      setMutipleMarkers(allMarkers)
-    }
-  }
-
   useEffect(() => {
     countTotal();
-    getMarkers();
   }, [query]);
 
   useEffect(() => {
     fetchData();
-  }, [page]);
-
+  }, [pageNum, query]);
+  
   const loaded = () => {
 
     const pageCount = Math.ceil(total/pageLimit);
-    console.log('total',total,pageCount);
     const pageArr = new Array(pageCount).fill('');
     const pageList = pageArr.map((i,idx) => { 
       return (
@@ -68,7 +76,7 @@ const Search = (props) => {
         </>
       )
     });
-
+    const location = data ? [data[0].location.lat, data[0].location.long] : '';
     return (
       <div className="abnb-list-main-cont">
         <h1 className="listing-title">Search results</h1>
@@ -81,12 +89,12 @@ const Search = (props) => {
             Pages: &nbsp; &nbsp; {pageList}
           </div>
           <div className="mt-5">
-            <MapContainer center={data ? [data[0].location.lat, data[0].location.long] : ''} zoom={10} scrollWheelZoom={true}>
+            <MapContainer center={location} zoom={10} scrollWheelZoom={true}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              {multipleMarkers}
+              <Markers data={data} />
 
             </MapContainer>
           </div>
