@@ -3,7 +3,7 @@ import { Button, Card, Dropdown }from 'react-bootstrap'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { differenceInDays } from 'date-fns';
-import './CheckoutCard.css'
+import '../CssFiles/CheckoutCard.css'
 
 
 const CheckoutCard = (props) => {
@@ -89,51 +89,51 @@ const CheckoutCard = (props) => {
             
             <div style={{padding:'10px'}}>
               <Dropdown>
-      <Dropdown.Toggle variant="outline-dark" id="dropdown-basic" style={{width:'100%',fontSize:'8pt',fontWeight:'bold'}}>
-       GUESTS
-      </Dropdown.Toggle>
+              <Dropdown.Toggle variant="outline-dark" id="dropdown-basic" style={{width:'100%',fontSize:'8pt',fontWeight:'bold'}}>
+              GUESTS
+              </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item>Adults
-        <Button variant="outline-dark"
-         onClick={() => setAdults(adults - 1)} disabled={adults <= 0}>-</Button>
-        <span>{adults}</span>
-        <Button  variant="outline-dark" 
-        onClick={() => setAdults(adults+ 1)} disabled={adults >= 9}>+
-        </Button>
-        </Dropdown.Item>
-        <br />
-        <Dropdown.Item >Children
-        <Button variant="outline-dark"
-        onClick={() => setChildren(children - 1)} disabled={children <= 0}>-
-        </Button>
-        <span>{children}</span>
-        <Button variant="outline-dark"
-         onClick={() => setChildren(children + 1)} disabled={children >= 9}>+
-         </Button>
-         </Dropdown.Item>
-         <br />
-         <Dropdown.Item >Infants
-        <Button variant="outline-dark"
-        onClick={() => setInfants(infants - 1)} disabled={infants <= 0}>-
-        </Button>
-        <span>{infants}</span>
-        <Button variant="outline-dark"
-         onClick={() => setChildren(infants + 1)} disabled={infants >= 9}>+
-         </Button>
-         </Dropdown.Item>
-         <br />
-         <Dropdown.Item >pets
-        <Button variant="outline-dark"
-        onClick={() => setPets(pets - 1)} disabled={pets <= 0}>-
-        </Button>
-        <span>{pets}</span>
-        <Button variant="outline-dark"
-         onClick={() => setPets(pets + 1)} disabled={pets >= 9}>+
-         </Button>
-         </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+              <Dropdown.Menu>
+                <Dropdown.Item>Adults
+                  <Button variant="outline-dark"
+                  onClick={() => setAdults(adults - 1)} disabled={adults <= 0}>-</Button>
+                  <span>{adults}</span>
+                  <Button  variant="outline-dark" 
+                  onClick={() => setAdults(adults+ 1)} disabled={adults >= 9}>+
+                  </Button>
+                  </Dropdown.Item>
+                  <br />
+                  <Dropdown.Item >Children
+                  <Button variant="outline-dark"
+                  onClick={() => setChildren(children - 1)} disabled={children <= 0}>-
+                  </Button>
+                  <span>{children}</span>
+                  <Button variant="outline-dark"
+                  onClick={() => setChildren(children + 1)} disabled={children >= 9}>+
+                  </Button>
+                  </Dropdown.Item>
+                  <br />
+                  <Dropdown.Item >Infants
+                  <Button variant="outline-dark"
+                  onClick={() => setInfants(infants - 1)} disabled={infants <= 0}>-
+                  </Button>
+                  <span>{infants}</span>
+                  <Button variant="outline-dark"
+                  onClick={() => setChildren(infants + 1)} disabled={infants >= 9}>+
+                  </Button>
+                  </Dropdown.Item>
+                  <br />
+                  <Dropdown.Item >pets
+                  <Button variant="outline-dark"
+                  onClick={() => setPets(pets - 1)} disabled={pets <= 0}>-
+                  </Button>
+                  <span>{pets}</span>
+                  <Button variant="outline-dark"
+                  onClick={() => setPets(pets + 1)} disabled={pets >= 9}>+
+                  </Button>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             </div>
           </div>
           <div>

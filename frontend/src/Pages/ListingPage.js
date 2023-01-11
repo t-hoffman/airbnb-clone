@@ -127,9 +127,7 @@ const ListingPage = () => {
                   {listing.host.isSuperHost ? <><FontAwesomeIcon icon={faMedal} /> &nbsp; Superhost</> : ''}
                 </div>
                 <div className="pt-4">
-                  <div>{listing.host.about} 
-                  {/* <a href="#">read more</a> */}
-                </div>
+                  <div>{listing.host.about}</div>
                 </div>
               </div>
               <div className="pl-5" style={{width:'30%'}}>
