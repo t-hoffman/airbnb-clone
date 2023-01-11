@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 import Cards from 'Components/Cards';
-import { Carousel } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useParams } from 'react-router-dom';
 
-const Search = ({ query }) => {
+const Search = () => {
+  const { query } = useParams();
   const [data, setData] = useState(null);
 
   const fetchData = async () => {
-    const resp = await fetch(`/home/location/${query}`);
+    const resp = await fetch(`/home/location/${query}?limit=50`);
     const json = await resp.json();
     setData(json);
   }
@@ -26,41 +24,10 @@ const Search = ({ query }) => {
         <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
         <div className="abnb-main-cont mt-5">
           <div className="main-list">
-          {
-            data.map((house, idx) => {
-              const addSplit = house.address.split(','),
-              address = `${addSplit[0]}, ${addSplit[1]}`,
-              name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
-              photos = house.photos.splice(0,20);
-              return (
-                <div className="abnb-card" key={idx}>
-                  <Carousel indicators={false} 
-                            interval={null} 
-                            variant="dark" 
-                            prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
-                            nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
-                  fade>
-                  {
-                    photos.map((photo,pidx) => (
-                      <Carousel.Item key={pidx}>
-                        <Link to={`/listing/${house._id}`}><img src={photo} alt={address} /></Link>
-                      </Carousel.Item>
-                    ))
-                  }
-                  </Carousel>
-                  
-                  <div className="pt-3 pb-5">
-                    <div className="d-flex">
-                      <div className="w-100"><b>{address}</b></div>
-                      <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div>
-                    </div>
-                    <div style={{color:'#717171'}}>{name}<br />Feb 19 - 24</div>
-                    <b>${parseInt(house.rate).toLocaleString("en-US")}</b> night
-                  </div>
-                </div>
-              )
-            })
-          }  
+            <Cards data={data} /> 
+          </div>
+          <div className="text-center mt-3">
+            Pages | 1 2 3 4
           </div>
         </div>
       </div>
