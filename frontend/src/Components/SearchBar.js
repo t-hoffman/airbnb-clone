@@ -6,8 +6,7 @@ const SearchBar = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
-  const navClass = pathname === '/' ? 'abnb-navbar' : 'abnb-navbar justify-content-center',
-        divClass = pathname === '/' ? 'w-100 p-0' : 'abnb-1200',
+  const divClass = pathname === '/' ? 'w-100 p-0' : 'abnb-1200',
         rightPadding = pathname === '/' ? 'justify-content-end pr-5' : 'justify-content-end pr-0';
 
   const handleChange = (e) => { setQuery(e.target.value) }
@@ -19,9 +18,9 @@ const SearchBar = () => {
 
   const loaded = () => {
     return (
-      <div className={navClass}>
+      <div className="abnb-navbar justify-content-center">
         <div className={divClass}>
-          <div className="pl-5 logo"><h1><a href="/">airbnb</a></h1></div>
+          <div className="pl-5 logo"><h1><a href="/"><span style={{color:'#000'}}>a</span>bnb</a></h1></div>
           <div className="abnb-search justify-content-center">
             <form onSubmit={handleClick}>
             <div className="abnb-search-input pl-4" style={{width:'300px'}}>

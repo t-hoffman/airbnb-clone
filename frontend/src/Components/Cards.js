@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const Cards = (props) => {
   const [info, setInfo] = useState();
 
-  
   const fetchHouses = async () => {
     try {
       const ran1 = Math.floor(Math.random() * (18 - 1 +1)) + 1;
@@ -26,10 +25,11 @@ const Cards = (props) => {
       const addSplit = house.address.split(','),
             address = `${addSplit[0]}, ${addSplit[1]}`,
             name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
-            photos = house.photos.splice(0,20);
-            
-      return (
-        <div className="abnb-card" key={idx}>
+            photos = house.photos.splice(0,20),
+            searchStyle = props.data ? {width: '23%', marginRight: '25px'} : {};
+
+            return (
+        <div className="abnb-card" style={searchStyle} key={idx}>
           <Carousel indicators={false} 
                     interval={null} 
                     variant="dark" 

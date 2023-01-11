@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
+import SearchBar from 'Components/SearchBar';
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation();
@@ -7,6 +8,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <SearchBar />
       <div className={divClass}>
         {children}
       </div>
