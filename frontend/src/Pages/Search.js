@@ -8,12 +8,16 @@ const Markers = (props) => {
   const { data } = props;
   const map = useMap();
 
-  useEffect(() => {
+  useEffect((e) => {
     if (data) {
       const location = [];
-      data.map(home => location.push([home.location.lat, home.location.long]));
-      map.setView(location[8], map.getZoom());
-      map.fitBounds(location)
+      data.map(home => {
+        const lat = home.location.lat, long = home.location.long, latlng = [lat, long];
+        (lat && long) && location.push(latlng)
+      });
+      const mapLoc = location.length > 0 ? location[0] : [0,0];
+      map.setView(mapLoc, map.getZoom());
+      location.length > 0 && map.fitBounds(location)
     }
   }, [data]);
 
@@ -57,10 +61,9 @@ const Search = (props) => {
 
   const countTotal = async () => {
     const check = await fetch(`/home/location/${query}`),
-          checkJson = await check.json(),
-          totalCount = checkJson.length;
+          checkJson = await check.json();
 
-    setTotal(totalCount);
+    setTotal(checkJson.length);
   }
 
   const fetchData = async () => {
