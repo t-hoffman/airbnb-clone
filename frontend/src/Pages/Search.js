@@ -98,10 +98,12 @@ const Search = (props) => {
           location = data ? [lat, long] : '';
     return (
       <div className="abnb-list-main-cont">
-        <h1 className="listing-title">Search results</h1>
-        <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
-        <div className="d-flex w-100 justify-content-center mt-5">
-          <div className="map-container">
+        <div className="search-results">
+          <h1 className="listing-title">Search results</h1>
+          <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
+        </div>
+        <div className="d-flex w-100 justify-content-center mt-5 search-map-cont-wrapper">
+          <div className="search-map-container">
             <MapContainer center={location} zoom={10} scrollWheelZoom={false}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

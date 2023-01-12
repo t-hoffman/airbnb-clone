@@ -22,8 +22,8 @@ const SearchBar = () => {
         <div className={divClass}>
           <div className="pl-5 logo"><h1><a href="/"><span style={{color:'#000'}}>a</span>bnb</a></h1></div>
           <div className="abnb-search justify-content-center">
-            <form onSubmit={handleClick}>
-            <div className="abnb-search-input pl-4" style={{width:'300px'}}>
+            <form onSubmit={handleClick} className="w-100 d-flex justify-content-center">
+            <div className="abnb-search-input pl-4">
               <input type="text" value={query} onChange={handleChange} />
               <span className="sbutton" onClick={handleClick}>
               <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{display:'block',fill:'none',height:'12px',width:'12px',stroke:'currentcolor',strokeWidth:'5.33333',overflow:'visible'}}><g fill="none"><path d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"></path></g></svg>

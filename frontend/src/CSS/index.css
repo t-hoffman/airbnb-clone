@@ -89,6 +89,7 @@ a, a:hover, a:visited, a:active, a:focus {
 .abnb-search { width: 100%; height: 100% }
 
 .abnb-search-input {
+    width: 300px;
     border-radius: 40px;
     border: 1.5px solid #cacaca;
     box-shadow: 2px 2px 5px #efefef;
@@ -416,8 +417,11 @@ a, a:hover, a:visited, a:active, a:focus {
 @media screen and (max-width: 500px) {
     .logo { display: none !important }
     .right { display: none !important }
-    .abnb-icons { display: none }
+    .abnb-navbar { border: none }
     .nav-right { display: none !important }
+    .abnb-search-input { width: 100% }
+
+    .abnb-icons { display: none }
     .abnb-main-cont { margin-top: 25px }
     .abnb-card { margin-right: 0; font-size: 11pt }
     .main-footer { display: none }
@@ -427,4 +431,9 @@ a, a:hover, a:visited, a:active, a:focus {
     .list-photos { height: 20vh; border-radius: 0px }
     .main-photo { width: 100% }
     .smaller-photos { display: none }
+
+    .leaflet-container { height: 300px }
+    .search-map-cont-wrapper { margin-top: 10px !important }
+    .search-map-container { width: 100% }
+    .search-results { display: none }
 }
