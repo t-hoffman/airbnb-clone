@@ -10,10 +10,10 @@ const Markers = (props) => {
 
   useEffect(() => {
     if (data) {
-      const lat = data[0].location.lat ? data[0].location.lat : 1,
-            long = data[0].location.long ? data[0].location.long : 1,
-            location = [lat, long];
-      map.setView(location, map.getZoom());
+      const location = [];
+      data.map(home => location.push([home.location.lat, home.location.long]));
+      map.setView(location[8], map.getZoom());
+      map.fitBounds(location)
     }
   }, [data]);
 
@@ -80,16 +80,16 @@ const Search = (props) => {
   const loaded = () => {
     const pageCount = Math.ceil(total/pageLimit);
     const pageArr = new Array(pageCount).fill('');
-    const pageList = pageArr.map((i,idx) => { 
-      return (
-        <span key={idx}>
-          <a onClick={() => {navigate(`/search/${query}/${idx+1}`); window.scrollTo({top: 100, bottom: 0, behavior: 'smooth'})}} style={{cursor:'pointer'}}>{idx+1}</a> 
-          {
-            idx !== pageArr.length-1 && <>&nbsp; | &nbsp;</>
-          }
-        </span>
-      )
-    });
+    const pageList = pageArr.map((i,idx) => (
+      <span key={idx}>
+        {
+          pageNum == idx+1 ? idx+1 : <a onClick={() => {navigate(`/search/${query}/${idx+1}`); window.scrollTo({top: 100, bottom: 0, behavior: 'smooth'})}} style={{cursor:'pointer'}}>{idx+1}</a>
+        }
+        {
+          idx !== pageArr.length-1 && <>&nbsp; | &nbsp;</>
+        }
+      </span>
+    ));
     const lat = data[0].location.lat ? data[0].location.lat : 1,
           long = data[0].location.long ? data[0].location.long : 1,
           location = data ? [lat, long] : '';
