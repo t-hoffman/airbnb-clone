@@ -6,8 +6,8 @@ const SearchBar = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
-  const divClass = pathname === '/' || pathname === '/omg' ? 'w-100 p-0' : 'abnb-1200',
-        rightPadding = pathname === '/' || pathname === '/omg' ? 'justify-content-end pr-5' : 'justify-content-end pr-0';
+  const divClass = pathname === '/' || pathname === '/omg' ? 'abnb-navbar-full' : 'abnb-1200',
+        rightPadding = pathname === '/' || pathname === '/omg' ? 'pr-5 nav-right' : 'nav-right pr-0';
 
   const handleChange = (e) => { setQuery(e.target.value) }
   const handleClick  = (e) => { 
@@ -18,7 +18,7 @@ const SearchBar = () => {
 
   const loaded = () => {
     return (
-      <div className="abnb-navbar justify-content-center">
+      <div className="abnb-navbar">
         <div className={divClass}>
           <div className="pl-5 logo"><h1><a href="/"><span style={{color:'#000'}}>a</span>bnb</a></h1></div>
           <div className="abnb-search justify-content-center">

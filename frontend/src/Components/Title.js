@@ -24,7 +24,7 @@ const Title = (props) => {
         <div className="text-right" style={{width:'100px'}}><Icons.FaRegHeart/> &nbsp; <a href="#">Save</a></div>
       </div>
       <div className="list-photos" onClick={handleClick}>
-      <div className="main-photo" style={{backgroundImage: `url(${listing.photos[0]})`}}></div>
+        <div className="main-photo" style={{backgroundImage: `url(${listing.photos[0]})`}}></div>
         <div className="smaller-photos">
           <div className="d-flex h-50" style={{marginBottom:'3px'}}>
             <div className="small-column" style={{backgroundImage: `url(${listing.photos[1]})`}}></div>

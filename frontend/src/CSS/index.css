@@ -62,7 +62,7 @@ a, a:hover, a:visited, a:active, a:focus {
 
 .logo a, .logo a:visited { color: #FF385C; text-decoration: none }
 
-.abnb-1200 { width: 1300px !important }
+.abnb-1200 { width: 1300px }
 
 .right a, .right a:visited {
     text-decoration: none;
@@ -70,21 +70,23 @@ a, a:hover, a:visited, a:active, a:focus {
 
 .abnb-navbar {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
     border-bottom: 1.5px solid #efefef;
 }
 
+.abnb-navbar-full { width: 100% }
+
 .abnb-navbar div {
     display: flex;
     align-items: center;
-    width: calc(100% / 3);
-    padding: 5px;
     margin-bottom: 2px;
+    padding: 5px;
 }
 
 .abnb-navbar h1 { color: #FF385C; font-size: 16pt }
-.abnb-search { width: 70%; height: 100% }
+.abnb-search { width: 100%; height: 100% }
 
 .abnb-search-input {
     border-radius: 40px;
@@ -93,10 +95,10 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 .abnb-search input, .abnb-search input:focus {
+    width: 100%;
     background-color: white;
     border: none;
     outline: none;
-    width: 100%;
     font-size: 10pt;
 }
 
@@ -113,10 +115,11 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 .abnb-navbar .right {
-    width: fit-content;
+    display: block;
+    width: max-content;
     color: #3a3a3a;
     border: 1.5px solid #cacaca;
-    padding: 15px;
+    padding: 10px 15px;
     border-radius: 60px;
     font-size: 14pt;
 }
@@ -159,6 +162,7 @@ a, a:hover, a:visited, a:active, a:focus {
 
 .list-photos { 
     width: 100%;
+    height: 30vh;
     display: flex;
     margin: 25px 0;
     border-radius: 15px;
@@ -168,13 +172,13 @@ a, a:hover, a:visited, a:active, a:focus {
 
 .main-photo { 
     width: 50%; 
-    height: 540px; 
+    height: 100%; 
     padding-right: 5px; 
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.smaller-photos { width: 50%; height: 537px }
+.smaller-photos { width: 50%; height: 100% }
 .smaller-photos .small-column {
     width: 100%;
     background-size: cover;
@@ -401,6 +405,26 @@ a, a:hover, a:visited, a:active, a:focus {
     outline: none;
     border: none;
 }
-.dropdown-menu {
-    width: 100%;
+.dropdown-menu { width: 100% }
+
+@media screen and (max-width: 1300px) {
+    .abnb-1200 { width: 100% }
+    .abnb-list-container { width: 100% }
+    .abnb-list-main-cont { width: 100%; padding: 10px }
+}
+
+@media screen and (max-width: 500px) {
+    .logo { display: none !important }
+    .right { display: none !important }
+    .abnb-icons { display: none }
+    .nav-right { display: none !important }
+    .abnb-main-cont { margin-top: 25px }
+    .abnb-card { margin-right: 0; font-size: 11pt }
+    .main-footer { display: none }
+
+    .list-info-left { width: 100%; padding: 0 }
+    .list-info-right { display: none; padding: 0 }
+    .list-photos { height: 20vh; border-radius: 0px }
+    .main-photo { width: 100% }
+    .smaller-photos { display: none }
 }
