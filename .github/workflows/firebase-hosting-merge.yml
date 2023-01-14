@@ -20,3 +20,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ABNB_CLONE_PROJECT }}'
           channelId: live
           projectId: abnb-clone-project
+          env:
+            PROJECT_PATH: ./frontend
