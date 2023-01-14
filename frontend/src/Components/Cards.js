@@ -52,14 +52,16 @@ const Card = ({ house, data }) => {
   }
 
   const showPhotos = photos.map((photo,pidx) => {
-    return (<Carousel.Item key={pidx}>
-      <Link to={`/listing/${house._id}`}><img src={photo} alt={house.address} key={house._id+pidx} onLoad={() => onLoadImage(pidx)} /></Link>
-    </Carousel.Item>)
+    return (
+      <Carousel.Item key={pidx}>
+        <Link to={`/listing/${house._id}`}><img src={photo} alt={house.address} key={house._id+pidx} onLoad={() => onLoadImage(pidx)} /></Link>
+      </Carousel.Item>
+    )
   })
   
   const cardDisplay = loaded ? {display:'block'} : {display:'none'};
   const loadingDisplay = loaded ? {display:'none'} : {display:'block'};
-  
+  console.log('x')
   return (
     <div className="abnb-card" style={searchStyle}>   
       <div style={cardDisplay}>
