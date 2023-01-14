@@ -6,8 +6,6 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
-    paths:
-      - "frontend/**"
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -20,5 +18,3 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ABNB_CLONE_PROJECT }}'
           channelId: live
           projectId: abnb-clone-project
-          env:
-            PROJECT_PATH: ./frontend
