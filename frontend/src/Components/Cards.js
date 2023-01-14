@@ -11,7 +11,7 @@ const Cards = (props) => {
     try {
       const rand = [Math.floor(Math.random() * (18 - 1 +1)) + 1, 17];
       const random = props.omg ? 17 : rand[Math.floor(Math.random() * (1 - 0 +1))];
-      const res = await fetch(`/home/limit?limit=50&page=${random}`);
+      const res = await fetch(`/api/home/limit?limit=50&page=${random}`);
       const data = await res.json();
 
       setInfo(data);

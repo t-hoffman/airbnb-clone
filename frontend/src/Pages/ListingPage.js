@@ -16,7 +16,7 @@ const ListingPage = () => {
 
     const getListing = async () => {
       try {
-        const res = await fetch(`/home/${id}`);
+        const res = await fetch(`/api/home/${id}`);
         const fetchedListing = await res.json();
         setListing(fetchedListing);
       } catch (error) {

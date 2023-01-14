@@ -28,7 +28,7 @@ const ListingForm = ({ type }) => {
   });
   
   const fetchData = async () => {
-    const response = await fetch(`https://air-bnb-clone-backend.herokuapp.com/home/${id}`),
+    const response = await fetch(`/api/home/${id}`),
           data = await response.json();
     let photosString = '';
     for (let pic of data.photos) {
@@ -72,7 +72,7 @@ const ListingForm = ({ type }) => {
       const method = type === 'add' ? 'POST' : 'PUT',
             options = { method: method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
 
-      const listing = await fetch(`/home/${id}`, options);
+      const listing = await fetch(`/api/home/${id}`, options);
 
       navigate('/manage/');
     } catch (error) {

@@ -60,14 +60,14 @@ const Search = (props) => {
         navigate = useNavigate();
 
   const countTotal = async () => {
-    const check = await fetch(`/home/location/${query}`),
+    const check = await fetch(`/api/home/location/${query}`),
           checkJson = await check.json();
 
     setTotal(checkJson.length);
   }
 
   const fetchData = async () => {
-    const resp = await fetch(`/home/location/${query}?limit=${pageLimit}&page=${pageNum}`);
+    const resp = await fetch(`/api/home/location/${query}?limit=${pageLimit}&page=${pageNum}`);
     const json = await resp.json();
     setData(json);
   }

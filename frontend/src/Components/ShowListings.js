@@ -8,7 +8,7 @@ const ShowListings = () => {
   const [listings, setListings] = useState();
 
   const fetchData = async () => {
-    const resp = await fetch(`/home/user/${id}`);
+    const resp = await fetch(`/api/home/user/${id}`);
     const data = await resp.json();
     setListings(data)
   }
