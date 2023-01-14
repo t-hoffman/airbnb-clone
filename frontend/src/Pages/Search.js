@@ -75,7 +75,7 @@ const Search = (props) => {
   useEffect(() => {
     countTotal();
   }, [query]);
-
+ 
   useEffect(() => {
     fetchData();
   }, [pageNum, query]);
