@@ -23,39 +23,7 @@ const Cards = (props) => {
 
   const loaded = () => {
     return info.map((house, idx) => {
-      const addSplit = house.address.split(','),
-            address = `${addSplit[0]}, ${addSplit[1]}`,
-            name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
-            photos = house.photos.splice(0,10),
-            searchStyle = props.data ? {width: '23%', marginRight: '25px'} : {};
-
-      return (
-        <div className="abnb-card" style={searchStyle} key={idx}>
-          
-            <Carousel indicators={false} 
-                      interval={null} 
-                      variant="dark" 
-                      prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
-                      nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
-            fade>
-            {
-              photos.map((photo,pidx) => (
-                <Carousel.Item key={pidx}>
-                  <Link to={`/listing/${house._id}`}><img src={photo} alt={house.address} key={house._id+pidx} /></Link>
-                </Carousel.Item>
-              ))
-            }
-            </Carousel>
-          <div className="pt-3 pb-5">
-            <div className="d-flex">
-              <div className="w-100"><b>{address}</b></div>
-              {house.stars ? <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div> : ''}
-            </div>
-            <div style={{color:'#717171'}}>{name}<br />Feb 19 - 24</div>
-            <b>${parseInt(house.rate).toLocaleString("en-US")}</b> night
-          </div>
-        </div>
-      )
+      return <Card house={house} data={props.data} key={idx} />
     });
   };
 
@@ -69,5 +37,65 @@ const Cards = (props) => {
 
   return info ? loaded() : loading();
 };
+
+const Card = ({ house, data }) => {
+  const [loaded, setLoaded] = useState(false);
+
+  const addSplit = house.address.split(','),
+        address = `${addSplit[0]}, ${addSplit[1]}`,
+        name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
+        photos = house.photos,
+        searchStyle = data ? {width: '23%', marginRight: '25px'} : {};
+
+  const onLoadImage = (idx) => {
+    idx === photos.length-1 && setLoaded(true)
+  }
+
+  const showPhotos = photos.map((photo,pidx) => {
+    return (<Carousel.Item key={pidx}>
+      <Link to={`/listing/${house._id}`}><img src={photo} alt={house.address} key={house._id+pidx} onLoad={() => onLoadImage(pidx)} /></Link>
+    </Carousel.Item>)
+  })
+  
+  const cardDisplay = loaded ? {display:'block'} : {display:'none'};
+  const loadingDisplay = loaded ? {display:'none'} : {display:'block'};
+  
+  return (
+    <div className="abnb-card" style={searchStyle}>   
+      <div style={cardDisplay}>
+        <Carousel indicators={false} 
+                  interval={null} 
+                  variant="dark" 
+                  prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
+                  nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
+        fade>
+        {showPhotos}
+        </Carousel>
+        <div className="pt-3 pb-5">
+          <div className="d-flex">
+            <div className="w-100"><b>{address}</b></div>
+            {house.stars ? <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div> : ''}
+          </div>
+          <div style={{color:'#717171'}}>{name}<br />Feb 19 - 24</div>
+          <b>${parseInt(house.rate).toLocaleString("en-US")}</b> night
+        </div>
+      </div>
+      {!loaded && <Loading style={loadingDisplay} />}
+    </div>
+  )
+}
+
+const Loading = ({ style }) => {
+  return (
+    <>
+      <div className="loading-car-cont"></div>
+      <div className="pt-3 pb-5">
+        <div className="loading-bar mt-2">&nbsp;</div>
+        <div className="loading-bar mt-2" style={{width:'60%'}}></div>
+        <div className="loading-bar mt-2" style={{width:'35%'}}></div>
+      </div>  
+    </>
+  )
+}
 
 export default Cards;

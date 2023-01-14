@@ -291,3 +291,24 @@ a, a:hover, a:visited {
     display: flex;
     font-size: 10pt;
 }
+
+.abnb-card {
+    width: 300px;
+    margin-right: 15px;
+    text-align: left;
+}
+
+.loading-car-cont {
+    width: 100%;
+    height: 285px;
+    background-color: #efefef;
+    border-radius: 10px;
+}
+
+.loading-bar {
+    background-color: #efefef;
+    height: 25px;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+}

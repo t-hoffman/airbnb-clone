@@ -31,7 +31,7 @@ const Chart = (props) => {
   const avgRating= [
     {label:'Home', value: homeRating.toFixed(1)},
     {label:'Cleanliness', value:cleanlinessRating.toFixed(1)},
-    {label:'CheckIn' , value:checkInRating.toFixed(1)},
+    {label:'Check in' , value:checkInRating.toFixed(1)},
     {label:'Accuracy', value:accuracyRating.toFixed(1)},
     {label:'Location', value:locationRating.toFixed(1)},
     {label:'Value' , value: valueRating.toFixed(1)}
@@ -52,7 +52,7 @@ const Chart = (props) => {
                       <div className="rating-dark" style={{width: `${item.value *20}%`}}></div>
                     </div>
                   </div>
-                  <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value !== 'NaN' ? item.value : '0.0'}</b></div>
+                  <div className="text-right d-flex align-items-center ml-2" style={{fontSize:'10pt'}}><b>{item.value === 'NaN' ? item.value : '0.0'}</b></div>
                 </div>
               </div>
             </div>
