@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm run-script build
+      - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          entryPoint: ./frontend
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ABNB_CLONE_PROJECT }}'
           channelId: live
           projectId: abnb-clone-project
-          entryPoint: ./frontend
