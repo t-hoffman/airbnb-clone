@@ -69,7 +69,7 @@ const ListingPage = () => {
                         <FontAwesomeIcon icon={faMedal} style={{fontSize:'14pt',display:{hostMedal}}} />
                       </div>
                       <div className="w-100">
-                        <b>Fieldtrip is a Superhost
+                        <b>{listing.host.name} is a Superhost
                         </b><br />
                         <span style={{fontSize:'10pt',color:'#717171'}}>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</span>
                       </div>
@@ -97,7 +97,7 @@ const ListingPage = () => {
               </div>
               <Amenities />
             </div>
-            <div className="list-info-right" style={{border:'1px solid red'}}>
+            <div className="list-info-right">
               <CheckoutCard price={listing.rate} stars={listing.stars} review={listing.reviews.length} />
             </div>
           </div>
