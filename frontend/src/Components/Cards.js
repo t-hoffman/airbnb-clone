@@ -10,7 +10,8 @@ const Cards = (props) => {
   const fetchHouses = async () => {
     try {
       const rand = [Math.floor(Math.random() * (18 - 1 +1)) + 1, 17];
-      const random = props.omg ? 17 : rand[Math.floor(Math.random() * (1 - 0 +1))];
+      const skewed = rand[Math.floor(Math.random() * (1 - 0 +1))];
+      const random = props.omg ? 17 : Math.floor(Math.random() * (18 - 1 +1)) + 1;
       const res = await fetch(`/api/home/limit?limit=50&page=${random}`);
       const data = await res.json();
 
@@ -48,13 +49,20 @@ const Card = ({ house, data }) => {
         searchStyle = data ? {width: '23%', marginRight: '25px'} : {};
 
   const onLoadImage = (idx) => {
-    idx === photos.length-1 && setLoaded(true)
+    // idx === photos.length-1 && setLoaded(true)
+    idx === 4 && setLoaded(true);
   }
 
   const showPhotos = photos.map((photo,pidx) => {
     return (
       <Carousel.Item key={pidx}>
-        <Link to={`/listing/${house._id}`}><img src={photo} alt={house.address} key={house._id+pidx} onLoad={() => onLoadImage(pidx)} /></Link>
+        <Link to={`/listing/${house._id}`}>
+          <img src={photo} 
+               alt={house.address} 
+               key={house._id+pidx} 
+               onLoad={() => onLoadImage(pidx)}
+               onError={() => onLoadImage(pidx)}
+          /></Link>
       </Carousel.Item>
     )
   })
