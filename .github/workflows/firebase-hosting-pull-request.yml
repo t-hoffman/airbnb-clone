@@ -12,6 +12,7 @@ jobs:
         working-directory: ./frontend
     steps:
       - uses: actions/checkout@v2
+      - run: npm install
       - run: CI= npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
