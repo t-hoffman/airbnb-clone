@@ -19,3 +19,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ABNB_CLONE_PROJECT }}'
           projectId: abnb-clone-project
+          entryPoint: ./frontend
