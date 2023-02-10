@@ -47,21 +47,19 @@ const Card = ({ house, idx }) => {
         name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
         photos = house.photos
 
-  const showPhotos = photos.map((photo,pidx) => {
-    return (
-      <Carousel.Item key={pidx}>
-        <Link to={`/listing/${house._id}`}>
-          <img src={photo} 
-               alt={house.address} 
-               key={house._id+pidx} 
-               loading="lazy"
-          /></Link>
-      </Carousel.Item>
-    )
-  })
+  const showPhotos = photos.map((photo,pidx) => (
+    <Carousel.Item key={pidx}>
+      <Link to={`/listing/${house._id}`}>
+        <img src={photo} 
+              alt={house.address} 
+              key={house._id+pidx} 
+              loading="lazy"
+        /></Link>
+    </Carousel.Item>
+  ))
 
   useEffect(() => {
-    const time = (idx * 75) + 750
+    const time = (idx * 75) + 250
     const timer = setTimeout(() => {
       setSkeleton(false)
     }, time)
@@ -81,8 +79,9 @@ const Card = ({ house, idx }) => {
                 prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
                 nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
                 className={showCard}
-      fade>
-      {showPhotos}
+                fade
+      >
+        {showPhotos}
       </Carousel>
       <div className={`pt-3 ${showSkeleton}`}>
         <Skeleton width={`100%`} height="25px" className="mt-2" />

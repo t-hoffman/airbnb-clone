@@ -3,6 +3,7 @@ import Cards from 'Components/Cards';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import { Link } from 'react-router-dom';
+import '../CSS/search.css'
 
 const Markers = (props) => {
   const { data } = props;
@@ -74,6 +75,8 @@ const Search = (props) => {
 
   useEffect(() => {
     countTotal();
+
+    return () => setData(null)
   }, [query]);
  
   useEffect(() => {
@@ -93,15 +96,13 @@ const Search = (props) => {
         }
       </span>
     ));
+
     const lat = data[0].location.lat ? data[0].location.lat : 1,
           long = data[0].location.long ? data[0].location.long : 1,
           location = data ? [lat, long] : '';
+
     return (
-      <div className="abnb-list-main-cont">
-        <div className="search-results">
-          <h1 className="listing-title">Search results</h1>
-          <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
-        </div>
+      <>
         <div className="d-flex w-100 justify-content-center mt-5 search-map-cont-wrapper">
           <div className="search-map-container">
             <MapContainer center={location} zoom={10} scrollWheelZoom={false}>
@@ -124,25 +125,41 @@ const Search = (props) => {
             Pages: &nbsp; &nbsp; {pageList}
           </div>
         </div>
+      </>
+    )
+  }
+
+  const loading = () => {
+    return (
+      <div className="abnb-list-main-cont text-center mt-5">
+        <span className="loader"></span>
       </div>
     )
   }
 
-  if (data && data.length > 0 && total) {
-    return loaded();
-  } else if (data && data.length === 0) {
+  const noResults = () => {
     return (
-      <div className="abnb-list-main-cont text-align-center">
+      <div className="abnb-list-main-cont text-center">
         <h1 className="listing-title">Sorry, there are no results.  Please try again.</h1>
       </div>
     )
-  } else {
-    return (
-      <div className="abnb-list-main-cont text-align-center">
-        <h1 className="listing-title">Loading ...</h1>
-      </div>
-    )
   }
+
+  return (
+    <>
+      <div className="abnb-list-main-cont">
+        <div className="search-results">
+          <h1 className="listing-title">Search results</h1>
+          <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
+        </div>
+      </div>
+      {
+        data && data.length > 0 && total ? loaded() 
+        : (data && data.length === 0 ? noResults()
+        : loading())
+      }
+    </>
+  )
 }
 
 export default Search
