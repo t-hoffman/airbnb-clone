@@ -3,6 +3,8 @@ import { Carousel } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import SkeletonCards from "./Skeleton";
+import Skeleton from 'react-loading-skeleton'
 
 const Cards = (props) => {
   const [info, setInfo] = useState();
@@ -16,42 +18,34 @@ const Cards = (props) => {
       const data = await res.json();
 
       setInfo(data);
-      
     } catch (error) {
       console.error(error);
     }
   };
 
   const loaded = () => {
-    return info.map((house, idx) => {
-      return <Card house={house} data={props.data} key={idx} />
-    });
+    return info.map((house, idx) => (<Card house={house} data={props.data} key={idx} idx={idx} />))
+  };
+
+  const loading = () => {
+    return <SkeletonCards num={50} skeleton={true} />;
   };
 
   useEffect(() => {
     props.data ? setInfo(props.data) : fetchHouses();
   }, [props.data]);
 
-  const loading = () => {
-    return <h2>Loading. . .</h2>;
-  };
 
   return info ? loaded() : loading();
 };
 
-const Card = ({ house, data }) => {
-  const [loaded, setLoaded] = useState(false);
+const Card = ({ house, idx }) => {
+  const [skeleton, setSkeleton] = useState(true)
 
   const addSplit = house.address.split(','),
         address = `${addSplit[0]}, ${addSplit[1]}`,
         name = house.name.length > 37 ? house.name.slice(0, 37)+'...' : house.name,
-        photos = house.photos,
-        searchStyle = data ? {width: '23%', marginRight: '25px'} : {};
-
-  const onLoadImage = (idx) => {
-    // idx === photos.length-1 && setLoaded(true)
-    idx === 4 && setLoaded(true);
-  }
+        photos = house.photos
 
   const showPhotos = photos.map((photo,pidx) => {
     return (
@@ -60,51 +54,50 @@ const Card = ({ house, data }) => {
           <img src={photo} 
                alt={house.address} 
                key={house._id+pidx} 
-               onLoad={() => onLoadImage(pidx)}
-               onError={() => onLoadImage(pidx)}
+               loading="lazy"
           /></Link>
       </Carousel.Item>
     )
   })
+
+  useEffect(() => {
+    const time = (idx * 75) + 750
+    const timer = setTimeout(() => {
+      setSkeleton(false)
+    }, time)
+
+    return () => clearTimeout(timer)
+  }, [])
   
-  const cardDisplay = loaded ? {display:'block'} : {display:'none'};
-  const loadingDisplay = loaded ? {display:'none'} : {display:'block'};
-  console.log('x')
+  const showSkeleton = skeleton ? '' : 'd-none',
+        showCard = skeleton ? 'd-none' : ''
+
   return (
-    <div className="abnb-card" style={searchStyle}>   
-      <div style={cardDisplay}>
+      <div className={`abnb-card pb-5`}>
+        <Skeleton duration={2} height={285} width={300} className={showSkeleton} />
         <Carousel indicators={false} 
                   interval={null} 
                   variant="dark" 
                   prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
                   nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
+                  className={showCard}
         fade>
         {showPhotos}
         </Carousel>
-        <div className="pt-3 pb-5">
-          <div className="d-flex">
-            <div className="w-100"><b>{address}</b></div>
+        <div className={showSkeleton}>
+          <Skeleton width={`100%`} />
+          <Skeleton width={`60%`} />
+          <Skeleton width={`35%`} />
+        </div>
+        <div className={showCard}>
+          <div className="pt-3 d-flex">
+            <div className={`w-100 ${showCard}`}><b>{address}</b></div>
             {house.stars ? <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div> : ''}
           </div>
-          <div style={{color:'#717171'}}>{name}<br />Feb 19 - 24</div>
-          <b>${parseInt(house.rate).toLocaleString("en-US")}</b> night
+          <div style={{color:'#717171'}} className={showCard}>{name}<br />Feb 19 - 24</div>
+          <b className={showCard}>${parseInt(house.rate).toLocaleString("en-US")}</b> night
         </div>
       </div>
-      {!loaded && <Loading style={loadingDisplay} />}
-    </div>
-  )
-}
-
-const Loading = ({ style }) => {
-  return (
-    <>
-      <div className="loading-car-cont"></div>
-      <div className="pt-3 pb-5">
-        <div className="loading-bar mt-2">&nbsp;</div>
-        <div className="loading-bar mt-2" style={{width:'60%'}}></div>
-        <div className="loading-bar mt-2" style={{width:'35%'}}></div>
-      </div>  
-    </>
   )
 }
 
