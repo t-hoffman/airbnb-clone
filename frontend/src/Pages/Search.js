@@ -55,6 +55,7 @@ const Markers = (props) => {
 const Search = (props) => {
   const { query, page } = useParams();
   const [data, setData] = useState(null);
+  const [list, setList] = useState(null)
   const [total, setTotal] = useState(null);
   const pageNum = page ? page : 1,
         pageLimit = 16,
@@ -71,6 +72,7 @@ const Search = (props) => {
     const resp = await fetch(`/api/home/location/${query}?limit=${pageLimit}&page=${pageNum}`);
     const json = await resp.json();
     setData(json);
+    setList(json)
   }
 
   useEffect(() => {
@@ -81,6 +83,8 @@ const Search = (props) => {
  
   useEffect(() => {
     fetchData();
+
+    return () => setList(null)
   }, [pageNum, query]);
   
   const loaded = () => {
@@ -119,7 +123,7 @@ const Search = (props) => {
             Pages: &nbsp; &nbsp; {pageList}
           </div>
           <div className="main-list mt-5">
-            <Cards data={data} /> 
+            <Cards data={list} type="search" /> 
           </div>
           <div className="text-center mt-3 pt-4" style={{borderTop:'1px solid #efefef'}}>
             Pages: &nbsp; &nbsp; {pageList}

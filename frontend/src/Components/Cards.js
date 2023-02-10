@@ -32,7 +32,7 @@ const Cards = (props) => {
   };
 
   useEffect(() => {
-    props.data ? setInfo(props.data) : fetchHouses();
+    props.type === 'search' ? setInfo(props.data) : fetchHouses();
   }, [props.data]);
 
 
