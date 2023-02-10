@@ -423,6 +423,10 @@ a, a:hover, a:visited, a:active, a:focus {
     margin-top: 10px;
 }
 
+.react-loading-skeleton {
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 1300px) {
     .abnb-1200 { width: 100% }
     .abnb-list-container { width: 100% }

@@ -73,31 +73,32 @@ const Card = ({ house, idx }) => {
         showCard = skeleton ? 'd-none' : ''
 
   return (
-      <div className={`abnb-card pb-5`}>
-        <Skeleton duration={2} height={285} width={300} className={showSkeleton} />
-        <Carousel indicators={false} 
-                  interval={null} 
-                  variant="dark" 
-                  prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
-                  nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
-                  className={showCard}
-        fade>
-        {showPhotos}
-        </Carousel>
-        <div className={showSkeleton}>
-          <Skeleton width={`100%`} />
-          <Skeleton width={`60%`} />
-          <Skeleton width={`35%`} />
-        </div>
-        <div className={showCard}>
-          <div className="pt-3 d-flex">
-            <div className={`w-100 ${showCard}`}><b>{address}</b></div>
-            {house.stars ? <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div> : ''}
-          </div>
-          <div style={{color:'#717171'}} className={showCard}>{name}<br />Feb 19 - 24</div>
-          <b className={showCard}>${parseInt(house.rate).toLocaleString("en-US")}</b> night
-        </div>
+    <div className="abnb-card pb-5">
+      <Skeleton duration={2} height={285} width={300} className={showSkeleton} />
+      <Carousel indicators={false} 
+                interval={null} 
+                variant="dark" 
+                prevIcon={<FontAwesomeIcon icon={faAngleLeft} />}
+                nextIcon={<FontAwesomeIcon icon={faAngleRight} />} 
+                className={showCard}
+      fade>
+      {showPhotos}
+      </Carousel>
+      <div className={`pt-3 ${showSkeleton}`}>
+        <Skeleton width={`100%`} height="25px" className="mt-2" />
+        <Skeleton width={`60%`} height="25px" className="mt-3" />
+        <Skeleton width={`35%`} height="25px" className="mt-3" />
       </div>
+      <div className={showCard}>
+        <div className="pt-3 d-flex">
+          <div className={`w-100 ${showCard}`}><b>{address}</b></div>
+          {house.stars ? <div style={{width:'60px'}}><i className="fa fa-star"></i> {house.stars}</div> : ''}
+        </div>
+        <div style={{color:'#717171'}} className={showCard}>
+          <span style={{whiteSpace:'nowrap'}}>{name}</span><br />Feb 19 - 24</div>
+        <b className={showCard}>${parseInt(house.rate).toLocaleString("en-US")}</b> night
+      </div>
+    </div>
   )
 }
 
