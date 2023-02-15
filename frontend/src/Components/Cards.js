@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Carousel } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import SkeletonCards from "./Skeleton";
 import Skeleton from 'react-loading-skeleton'
@@ -11,9 +11,11 @@ const Cards = (props) => {
 
   const fetchHouses = async () => {
     try {
+      // Get random page # of listings to show on landing page, page 17 has our 'WOW' houses
       const rand = [Math.floor(Math.random() * (18 - 1 +1)) + 1, 17];
       const skewed = rand[Math.floor(Math.random() * (1 - 0 +1))];
-      const random = props.omg ? 17 : Math.floor(Math.random() * (18 - 1 +1)) + 1;
+      // const random = props.omg ? 17 : Math.floor(Math.random() * (18 - 1 +1)) + 1;
+      const random = props.omg ? 17 : skewed;
       const res = await fetch(`/api/home/limit?limit=50&page=${random}`);
       const data = await res.json();
 
@@ -33,6 +35,7 @@ const Cards = (props) => {
 
   useEffect(() => {
     props.type === 'search' ? setInfo(props.data) : fetchHouses();
+    // eslint-disable-next-line
   }, [props.data]);
 
 
@@ -65,6 +68,7 @@ const Card = ({ house, idx }) => {
     }, time)
 
     return () => clearTimeout(timer)
+    // eslint-disable-next-line
   }, [])
   
   const showSkeleton = skeleton ? '' : 'd-none',
