@@ -159,7 +159,7 @@ const Search = (props) => {
             <p></p>
             Search feature capabilities include filtering listings based on your query through location, title or description.  Our listings are only available for the following cities:
             <br />
-            <b>New York City, Los Angeles, Beverly Hills, West Hollywood, Palm Springs, Joshua Tree, Miami, Chicago, Paris</b> and a few random cities with amazing listings around the world.
+            <b>New York City, Los Angeles, Beverly Hills, West Hollywood, Malibu, Palm Springs, Joshua Tree, Miami, Chicago, Paris</b> and a few random cities with amazing listings around the world.
           </div>
           <h1 className="listing-title">Search results</h1>
           <span style={{fontSize:'10pt'}}>Query: '{query}'</span>
