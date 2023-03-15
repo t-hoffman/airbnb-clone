@@ -33,7 +33,7 @@ const SearchBar = () => {
           </div>
           <div className={rightPadding}>
             <div className="right">
-              <a href="/manage/add"style={{fontSize:'10pt'}}>Airbnb your home</a> &nbsp; | &nbsp; <a href="/manage/" className="pr-4" style={{fontSize:'10pt'}}>Manage</a> <i className="fa fa-bars"></i>
+              <a href="/manage/add"style={{fontSize:'10pt'}}>Abnb your home</a> &nbsp; | &nbsp; <a href="/manage/" className="pr-4" style={{fontSize:'10pt'}}>Manage</a> <i className="fa fa-bars"></i>
             </div>
           </div>
         </div>

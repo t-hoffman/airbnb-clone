@@ -9,6 +9,16 @@
   animation: rotation 1s linear infinite;
 }
 
+.search-info {
+  margin: 0 auto 25px auto;
+  width: 80%;
+  border: 1px solid #dddddd;
+  box-shadow: 2px 2px 2px rgb(221, 221, 221, 0.3);
+  border-radius: 15px;
+  padding: 10px 15px;
+  font-size: 10pt;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -16,4 +26,4 @@
   100% {
     transform: rotate(360deg);
   }
-} 
+}
